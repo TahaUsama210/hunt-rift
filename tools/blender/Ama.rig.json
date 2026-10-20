@@ -1,0 +1,538 @@
+{
+  "colors": {
+    "egg": [
+      255,
+      170,
+      240
+    ],
+    "eyes": [
+      255,
+      200,
+      250
+    ],
+    "gloves": [
+      120,
+      90,
+      140
+    ],
+    "gold": [
+      242,
+      169,
+      59
+    ],
+    "hood": [
+      110,
+      48,
+      128
+    ],
+    "mantle": [
+      52,
+      24,
+      64
+    ],
+    "robe": [
+      92,
+      40,
+      110
+    ],
+    "shadow": [
+      12,
+      8,
+      16
+    ],
+    "trim": [
+      224,
+      91,
+      208
+    ],
+    "wisp": [
+      224,
+      140,
+      255
+    ],
+    "wood": [
+      90,
+      64,
+      52
+    ]
+  },
+  "details": [
+    {
+      "color": "robe",
+      "pos": [
+        0,
+        1.4,
+        0
+      ],
+      "segment": "Robe",
+      "shape": "ellipsoid",
+      "size": [
+        3.6,
+        1.2,
+        3.6
+      ]
+    },
+    {
+      "color": "trim",
+      "pos": [
+        0,
+        0.95,
+        0
+      ],
+      "segment": "Robe",
+      "shape": "ellipsoid",
+      "size": [
+        3.7,
+        0.4,
+        3.7
+      ]
+    },
+    {
+      "color": "gold",
+      "pos": [
+        0,
+        3.6,
+        0
+      ],
+      "segment": "Torso",
+      "shape": "ellipsoid",
+      "size": [
+        2.45,
+        0.45,
+        1.95
+      ]
+    },
+    {
+      "color": "mantle",
+      "pos": [
+        0,
+        5.2,
+        0
+      ],
+      "segment": "Torso",
+      "shape": "ellipsoid",
+      "size": [
+        3,
+        1,
+        2.2
+      ]
+    },
+    {
+      "color": "egg",
+      "pos": [
+        0,
+        4.6,
+        -0.95
+      ],
+      "segment": "Torso",
+      "shape": "ellipsoid",
+      "size": [
+        0.5,
+        0.7,
+        0.3
+      ]
+    },
+    {
+      "color": "trim",
+      "pos": [
+        0,
+        6.35,
+        -0.88
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        2.2,
+        2.4,
+        0.35
+      ]
+    },
+    {
+      "color": "shadow",
+      "pos": [
+        0,
+        6.3,
+        -1
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        1.8,
+        2,
+        0.6
+      ]
+    },
+    {
+      "color": "hood",
+      "pos": [
+        0,
+        8,
+        0.5
+      ],
+      "rot": [
+        -25,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.9,
+        1.4,
+        0.9
+      ]
+    },
+    {
+      "color": "eyes",
+      "pos": [
+        -0.38,
+        6.45,
+        -1.26
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.38,
+        0.24,
+        0.12
+      ]
+    },
+    {
+      "color": "eyes",
+      "pos": [
+        0.38,
+        6.45,
+        -1.26
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.38,
+        0.24,
+        0.12
+      ]
+    },
+    {
+      "color": "trim",
+      "pos": [
+        1.75,
+        3.25,
+        -0.15
+      ],
+      "segment": "ArmR",
+      "shape": "ellipsoid",
+      "size": [
+        1.1,
+        0.45,
+        1.1
+      ]
+    },
+    {
+      "color": "gloves",
+      "pos": [
+        1.78,
+        3,
+        -0.3
+      ],
+      "segment": "ArmR",
+      "shape": "ellipsoid",
+      "size": [
+        0.6,
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "color": "trim",
+      "pos": [
+        -1.75,
+        3.25,
+        -0.15
+      ],
+      "segment": "ArmL",
+      "shape": "ellipsoid",
+      "size": [
+        1.1,
+        0.45,
+        1.1
+      ]
+    },
+    {
+      "color": "gloves",
+      "pos": [
+        -1.78,
+        3,
+        -0.3
+      ],
+      "segment": "ArmL",
+      "shape": "ellipsoid",
+      "size": [
+        0.6,
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "color": "wood",
+      "pos": [
+        1.8,
+        3.3,
+        -0.5
+      ],
+      "segment": "ArmR",
+      "shape": "block",
+      "size": [
+        0.3,
+        7,
+        0.3
+      ]
+    },
+    {
+      "color": "wood",
+      "pos": [
+        1.8,
+        6.85,
+        -0.85
+      ],
+      "segment": "ArmR",
+      "shape": "block",
+      "size": [
+        0.3,
+        0.3,
+        1
+      ]
+    },
+    {
+      "color": "egg",
+      "pos": [
+        1.8,
+        6.2,
+        -1.25
+      ],
+      "segment": "ArmR",
+      "shape": "ellipsoid",
+      "size": [
+        0.6,
+        0.8,
+        0.6
+      ]
+    },
+    {
+      "color": "wisp",
+      "pos": [
+        -1.2,
+        6,
+        2.1
+      ],
+      "segment": "Wisps",
+      "shape": "ellipsoid",
+      "size": [
+        0.35,
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "color": "wisp",
+      "pos": [
+        -1.2,
+        5,
+        -2.1
+      ],
+      "segment": "Wisps",
+      "shape": "ellipsoid",
+      "size": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  ],
+  "glow": {
+    "egg": true,
+    "eyes": true,
+    "trim": true,
+    "wisp": true
+  },
+  "hipHeight": 3,
+  "idle": {
+    "breathe": 0.04,
+    "float": 0.35,
+    "orbit": 45,
+    "period": 4,
+    "waveWith": "ShoulderL"
+  },
+  "points": {
+    "Lantern": {
+      "pos": [
+        1.8,
+        6.2,
+        -1.25
+      ],
+      "segment": "ArmR"
+    },
+    "Wisp": {
+      "pos": [
+        2.4,
+        5.5,
+        0
+      ],
+      "segment": "Wisps"
+    }
+  },
+  "rootSize": [
+    1,
+    1,
+    1
+  ],
+  "segments": [
+    {
+      "attach": "Root",
+      "color": "robe",
+      "joint": "Float",
+      "jointAt": [
+        0,
+        3,
+        0
+      ],
+      "name": "Robe",
+      "pos": [
+        0,
+        2.4,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        3,
+        2.6,
+        3
+      ],
+      "tris": 700
+    },
+    {
+      "attach": "Robe",
+      "color": "robe",
+      "joint": "Spine",
+      "jointAt": [
+        0,
+        3.4,
+        0
+      ],
+      "name": "Torso",
+      "pos": [
+        0,
+        4.2,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.4,
+        2.6,
+        1.9
+      ],
+      "tris": 1000
+    },
+    {
+      "attach": "Torso",
+      "color": "hood",
+      "joint": "Neck",
+      "jointAt": [
+        0,
+        5.5,
+        0
+      ],
+      "name": "Head",
+      "pos": [
+        0,
+        6.5,
+        0.1
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.6,
+        2.9,
+        2.6
+      ],
+      "tris": 1100
+    },
+    {
+      "attach": "Torso",
+      "color": "robe",
+      "joint": "ShoulderR",
+      "jointAt": [
+        1.3,
+        5.2,
+        0
+      ],
+      "name": "ArmR",
+      "pos": [
+        1.6,
+        4.3,
+        -0.1
+      ],
+      "rot": [
+        0,
+        0,
+        -10
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1,
+        2.4,
+        1
+      ],
+      "tris": 350
+    },
+    {
+      "attach": "Torso",
+      "color": "robe",
+      "joint": "ShoulderL",
+      "jointAt": [
+        -1.3,
+        5.2,
+        0
+      ],
+      "name": "ArmL",
+      "pos": [
+        -1.6,
+        4.3,
+        -0.1
+      ],
+      "rot": [
+        0,
+        0,
+        10
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1,
+        2.4,
+        1
+      ],
+      "tris": 350
+    },
+    {
+      "attach": "Root",
+      "color": "wisp",
+      "joint": "Orbit",
+      "jointAt": [
+        0,
+        5.5,
+        0
+      ],
+      "name": "Wisps",
+      "pos": [
+        2.4,
+        5.5,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        0.45,
+        0.45,
+        0.45
+      ],
+      "tris": 200
+    }
+  ]
+}

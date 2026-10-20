@@ -1,0 +1,1225 @@
+{
+ "colors": {
+  "egg": [
+   255,
+   170,
+   240
+  ],
+  "eyes": [
+   255,
+   200,
+   250
+  ],
+  "gloves": [
+   120,
+   90,
+   140
+  ],
+  "gold": [
+   242,
+   169,
+   59
+  ],
+  "hood": [
+   110,
+   48,
+   128
+  ],
+  "mantle": [
+   52,
+   24,
+   64
+  ],
+  "robe": [
+   92,
+   40,
+   110
+  ],
+  "shadow": [
+   12,
+   8,
+   16
+  ],
+  "trim": [
+   224,
+   91,
+   208
+  ],
+  "wisp": [
+   224,
+   140,
+   255
+  ],
+  "wood": [
+   90,
+   64,
+   52
+  ],
+  "rune": [
+   255,
+   196,
+   250
+  ]
+ },
+ "details": [
+  {
+   "color": "robe",
+   "pos": [
+    0,
+    1.4,
+    0
+   ],
+   "segment": "Robe",
+   "shape": "ellipsoid",
+   "size": [
+    3.6,
+    1.2,
+    3.6
+   ]
+  },
+  {
+   "color": "trim",
+   "pos": [
+    0,
+    0.95,
+    0
+   ],
+   "segment": "Robe",
+   "shape": "ellipsoid",
+   "size": [
+    3.7,
+    0.4,
+    3.7
+   ]
+  },
+  {
+   "color": "gold",
+   "pos": [
+    0,
+    3.6,
+    0
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    2.45,
+    0.45,
+    1.95
+   ]
+  },
+  {
+   "color": "mantle",
+   "pos": [
+    0,
+    5.2,
+    0
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    3,
+    1,
+    2.2
+   ]
+  },
+  {
+   "color": "egg",
+   "pos": [
+    0,
+    4.6,
+    -0.95
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "color": "trim",
+   "pos": [
+    0,
+    6.35,
+    -0.88
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    2.4,
+    0.35
+   ]
+  },
+  {
+   "color": "shadow",
+   "pos": [
+    0,
+    6.3,
+    -1
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    1.8,
+    2,
+    0.6
+   ]
+  },
+  {
+   "color": "hood",
+   "pos": [
+    0,
+    8,
+    0.5
+   ],
+   "rot": [
+    -25,
+    0,
+    0
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.9,
+    1.4,
+    0.9
+   ]
+  },
+  {
+   "color": "eyes",
+   "pos": [
+    -0.38,
+    6.45,
+    -1.26
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.38,
+    0.24,
+    0.12
+   ]
+  },
+  {
+   "color": "eyes",
+   "pos": [
+    0.38,
+    6.45,
+    -1.26
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.38,
+    0.24,
+    0.12
+   ]
+  },
+  {
+   "color": "trim",
+   "pos": [
+    1.75,
+    3.25,
+    -0.15
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    1.1,
+    0.45,
+    1.1
+   ]
+  },
+  {
+   "color": "gloves",
+   "pos": [
+    1.78,
+    3,
+    -0.3
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    0.6,
+    0.6,
+    0.6
+   ]
+  },
+  {
+   "color": "trim",
+   "pos": [
+    -1.75,
+    3.25,
+    -0.15
+   ],
+   "segment": "ArmL",
+   "shape": "ellipsoid",
+   "size": [
+    1.1,
+    0.45,
+    1.1
+   ]
+  },
+  {
+   "color": "gloves",
+   "pos": [
+    -1.78,
+    3,
+    -0.3
+   ],
+   "segment": "ArmL",
+   "shape": "ellipsoid",
+   "size": [
+    0.6,
+    0.6,
+    0.6
+   ]
+  },
+  {
+   "color": "wood",
+   "pos": [
+    1.8,
+    3.3,
+    -0.5
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.3,
+    7,
+    0.3
+   ]
+  },
+  {
+   "color": "wood",
+   "pos": [
+    1.8,
+    6.85,
+    -0.85
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.3,
+    0.3,
+    1
+   ]
+  },
+  {
+   "color": "egg",
+   "pos": [
+    1.8,
+    6.2,
+    -1.25
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    0.6,
+    0.8,
+    0.6
+   ]
+  },
+  {
+   "color": "wisp",
+   "pos": [
+    -1.2,
+    6,
+    2.1
+   ],
+   "segment": "Wisps",
+   "shape": "ellipsoid",
+   "size": [
+    0.35,
+    0.35,
+    0.35
+   ]
+  },
+  {
+   "color": "wisp",
+   "pos": [
+    -1.2,
+    5,
+    -2.1
+   ],
+   "segment": "Wisps",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    1.3627,
+    2.075,
+    0.5645
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    84.138,
+    13.851,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    0.5645,
+    2.075,
+    1.3627
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    76.079,
+    5.691,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.5645,
+    2.075,
+    1.3627
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    76.079,
+    -5.691,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.3627,
+    2.075,
+    0.5645
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    84.138,
+    -13.851,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.3627,
+    2.075,
+    -0.5645
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    95.862,
+    -13.851,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.5645,
+    2.075,
+    -1.3627
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    103.921,
+    -5.691,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    0.5645,
+    2.075,
+    -1.3627
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    103.921,
+    5.691,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "pos": [
+    1.3627,
+    2.075,
+    -0.5645
+   ],
+   "size": [
+    0.5,
+    0.5,
+    2.1225
+   ],
+   "rot": [
+    95.862,
+    13.851,
+    0.0
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    1.75,
+    1.25,
+    0.0
+   ],
+   "rot": [
+    0,
+    90.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    1.2374368670764582,
+    1.25,
+    1.237436867076458
+   ],
+   "rot": [
+    0,
+    45.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    1.071565949253934e-16,
+    1.25,
+    1.75
+   ],
+   "rot": [
+    0,
+    0.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    -1.237436867076458,
+    1.25,
+    1.2374368670764582
+   ],
+   "rot": [
+    0,
+    -45.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    -1.75,
+    1.25,
+    2.143131898507868e-16
+   ],
+   "rot": [
+    0,
+    -90.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    -1.2374368670764584,
+    1.25,
+    -1.237436867076458
+   ],
+   "rot": [
+    0,
+    -135.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    -3.214697847761802e-16,
+    1.25,
+    -1.75
+   ],
+   "rot": [
+    0,
+    -180.0,
+    45
+   ]
+  },
+  {
+   "segment": "Robe",
+   "color": "rune",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.22,
+    0.08
+   ],
+   "pos": [
+    1.237436867076458,
+    1.25,
+    -1.2374368670764584
+   ],
+   "rot": [
+    0,
+    -225.0,
+    45
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hood",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.575,
+    1.0
+   ],
+   "size": [
+    0.5,
+    0.45,
+    0.7629
+   ],
+   "rot": [
+    -34.992,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hood",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.725,
+    1.475
+   ],
+   "size": [
+    0.5,
+    0.45,
+    0.566
+   ],
+   "rot": [
+    6.34,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hood",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.525,
+    1.825
+   ],
+   "size": [
+    0.5,
+    0.45,
+    0.5376
+   ],
+   "rot": [
+    54.462,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.9,
+    0.2
+   ],
+   "pos": [
+    0,
+    4.6,
+    -0.88
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "size": [
+    1.35,
+    0.85,
+    1.35
+   ],
+   "pos": [
+    1.72,
+    3.7,
+    -0.15
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "trim",
+   "shape": "ellipsoid",
+   "size": [
+    1.45,
+    0.28,
+    1.45
+   ],
+   "pos": [
+    1.74,
+    3.3,
+    -0.15
+   ]
+  },
+  {
+   "segment": "ArmL",
+   "color": "robe",
+   "shape": "ellipsoid",
+   "size": [
+    1.35,
+    0.85,
+    1.35
+   ],
+   "pos": [
+    -1.72,
+    3.7,
+    -0.15
+   ]
+  },
+  {
+   "segment": "ArmL",
+   "color": "trim",
+   "shape": "ellipsoid",
+   "size": [
+    1.45,
+    0.28,
+    1.45
+   ],
+   "pos": [
+    -1.74,
+    3.3,
+    -0.15
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "wood",
+   "shape": "ellipsoid",
+   "pos": [
+    1.8,
+    7.0,
+    -0.56
+   ],
+   "size": [
+    0.3,
+    0.3,
+    0.6427
+   ],
+   "rot": [
+    -103.496,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "wood",
+   "shape": "ellipsoid",
+   "pos": [
+    1.8,
+    7.35,
+    -0.785
+   ],
+   "size": [
+    0.3,
+    0.3,
+    0.4823
+   ],
+   "rot": [
+    -148.782,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "wood",
+   "shape": "ellipsoid",
+   "pos": [
+    1.8,
+    7.375,
+    -1.125
+   ],
+   "size": [
+    0.3,
+    0.3,
+    0.476
+   ],
+   "rot": [
+    156.801,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "wood",
+   "shape": "ellipsoid",
+   "pos": [
+    1.8,
+    7.125,
+    -1.36
+   ],
+   "size": [
+    0.3,
+    0.3,
+    0.4625
+   ],
+   "rot": [
+    108.925,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    0.66,
+    0.86,
+    0.1
+   ],
+   "pos": [
+    1.8,
+    6.2,
+    -1.25
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    0.1,
+    0.86,
+    0.66
+   ],
+   "pos": [
+    1.8,
+    6.2,
+    -1.25
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    0.36,
+    0.15,
+    0.36
+   ],
+   "pos": [
+    1.8,
+    6.62,
+    -1.25
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    0.1,
+    0.32,
+    0.1
+   ],
+   "pos": [
+    1.8,
+    6.82,
+    -1.3
+   ]
+  },
+  {
+   "segment": "Wisps",
+   "color": "wisp",
+   "shape": "ellipsoid",
+   "pos": [
+    2.4,
+    5.5,
+    0.25
+   ],
+   "size": [
+    0.24,
+    0.24,
+    0.65
+   ],
+   "rot": [
+    -0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wisps",
+   "color": "wisp",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.4171,
+    6.0,
+    1.976
+   ],
+   "size": [
+    0.24,
+    0.24,
+    0.65
+   ],
+   "rot": [
+    -180.0,
+    -60.255,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wisps",
+   "color": "wisp",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9829,
+    5.0,
+    -2.224
+   ],
+   "size": [
+    0.24,
+    0.24,
+    0.65
+   ],
+   "rot": [
+    -180.0,
+    60.255,
+    0.0
+   ]
+  }
+ ],
+ "glow": {
+  "egg": true,
+  "eyes": true,
+  "trim": true,
+  "wisp": true,
+  "rune": true
+ },
+ "hipHeight": 3,
+ "idle": {
+  "breathe": 0.04,
+  "float": 0.35,
+  "orbit": 45,
+  "period": 4,
+  "waveWith": "ShoulderL"
+ },
+ "points": {
+  "Lantern": {
+   "pos": [
+    1.8,
+    6.2,
+    -1.25
+   ],
+   "segment": "ArmR"
+  },
+  "Wisp": {
+   "pos": [
+    2.4,
+    5.5,
+    0
+   ],
+   "segment": "Wisps"
+  }
+ },
+ "rootSize": [
+  1,
+  1,
+  1
+ ],
+ "segments": [
+  {
+   "attach": "Root",
+   "color": "robe",
+   "joint": "Float",
+   "jointAt": [
+    0,
+    3,
+    0
+   ],
+   "name": "Robe",
+   "pos": [
+    0,
+    2.4,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    3,
+    2.6,
+    3
+   ],
+   "tris": 1020
+  },
+  {
+   "attach": "Robe",
+   "color": "robe",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    3.4,
+    0
+   ],
+   "name": "Torso",
+   "pos": [
+    0,
+    4.2,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.4,
+    2.6,
+    1.9
+   ],
+   "tris": 1450
+  },
+  {
+   "attach": "Torso",
+   "color": "hood",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    5.5,
+    0
+   ],
+   "name": "Head",
+   "pos": [
+    0,
+    6.5,
+    0.1
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.6,
+    2.9,
+    2.6
+   ],
+   "tris": 1600,
+   "voxel": 0.025,
+   "smoothAngle": 50
+  },
+  {
+   "attach": "Torso",
+   "color": "robe",
+   "joint": "ShoulderR",
+   "jointAt": [
+    1.3,
+    5.2,
+    0
+   ],
+   "name": "ArmR",
+   "pos": [
+    1.6,
+    4.3,
+    -0.1
+   ],
+   "rot": [
+    0,
+    0,
+    -10
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    1,
+    2.4,
+    1
+   ],
+   "tris": 510
+  },
+  {
+   "attach": "Torso",
+   "color": "robe",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -1.3,
+    5.2,
+    0
+   ],
+   "name": "ArmL",
+   "pos": [
+    -1.6,
+    4.3,
+    -0.1
+   ],
+   "rot": [
+    0,
+    0,
+    10
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    1,
+    2.4,
+    1
+   ],
+   "tris": 510
+  },
+  {
+   "attach": "Root",
+   "color": "wisp",
+   "joint": "Orbit",
+   "jointAt": [
+    0,
+    5.5,
+    0
+   ],
+   "name": "Wisps",
+   "pos": [
+    2.4,
+    5.5,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    0.45,
+    0.45
+   ],
+   "tris": 290
+  }
+ ],
+ "name": "Ama",
+ "paintLight": true,
+ "skin": {
+  "cell": 0.3,
+  "depth": 0,
+  "noise": 0
+ },
+ "displace": {},
+ "uvBoost": {
+  "Head": 1.7
+ },
+ "sky": [
+  0.42,
+  0.4,
+  0.55
+ ],
+ "smoothAngle": 35,
+ "styles": {
+  "robe": "cloth",
+  "hood": "cloth",
+  "mantle": "cloth",
+  "gloves": "leather",
+  "wood": "wood"
+ }
+}

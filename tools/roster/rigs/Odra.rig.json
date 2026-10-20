@@ -1,0 +1,1661 @@
+{
+ "colors": {
+  "bone": [
+   240,
+   234,
+   218
+  ],
+  "cloak": [
+   34,
+   62,
+   52
+  ],
+  "eye": [
+   24,
+   22,
+   20
+  ],
+  "feather": [
+   232,
+   142,
+   38
+  ],
+  "featherTip": [
+   60,
+   198,
+   184
+  ],
+  "fur": [
+   214,
+   198,
+   170
+  ],
+  "hair": [
+   52,
+   40,
+   34
+  ],
+  "hat": [
+   78,
+   58,
+   42
+  ],
+  "leather": [
+   92,
+   60,
+   40
+  ],
+  "pants": [
+   60,
+   54,
+   48
+  ],
+  "paper": [
+   236,
+   224,
+   190
+  ],
+  "scar": [
+   150,
+   90,
+   80
+  ],
+  "seal": [
+   200,
+   40,
+   50
+  ],
+  "skin": [
+   176,
+   122,
+   88
+  ],
+  "trim": [
+   242,
+   169,
+   59
+  ],
+  "tunic": [
+   58,
+   92,
+   70
+  ],
+  "wood": [
+   120,
+   84,
+   52
+  ],
+  "mouth": [
+   92,
+   42,
+   38
+  ],
+  "white": [
+   255,
+   255,
+   255
+  ],
+  "hatDark": [
+   56,
+   40,
+   30
+  ],
+  "quill": [
+   250,
+   240,
+   222
+  ],
+  "sole": [
+   32,
+   26,
+   22
+  ],
+  "paperDark": [
+   214,
+   196,
+   158
+  ]
+ },
+ "details": [
+  {
+   "color": "pants",
+   "pos": [
+    -0.55,
+    1.4,
+    0
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.9,
+    2.6,
+    1
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    -0.55,
+    0.6,
+    -0.1
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    1.05,
+    1.2,
+    1.35
+   ]
+  },
+  {
+   "color": "pants",
+   "pos": [
+    0.55,
+    1.4,
+    0
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.9,
+    2.6,
+    1
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    0.55,
+    0.6,
+    -0.1
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    1.05,
+    1.2,
+    1.35
+   ]
+  },
+  {
+   "color": "cloak",
+   "pos": [
+    0,
+    3.4,
+    0.95
+   ],
+   "rot": [
+    6,
+    0,
+    0
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    2.9,
+    4.8,
+    0.3
+   ]
+  },
+  {
+   "color": "fur",
+   "pos": [
+    0,
+    5.75,
+    0.05
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    1.1,
+    2.2
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    0,
+    3.35,
+    0
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    2.7,
+    0.45,
+    1.75
+   ]
+  },
+  {
+   "color": "bone",
+   "pos": [
+    0,
+    5,
+    -0.85
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.25,
+    0.5,
+    0.2
+   ]
+  },
+  {
+   "color": "bone",
+   "pos": [
+    -0.35,
+    5.1,
+    -0.82
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.2,
+    0.4,
+    0.18
+   ]
+  },
+  {
+   "color": "bone",
+   "pos": [
+    0.35,
+    5.1,
+    -0.82
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.2,
+    0.4,
+    0.18
+   ]
+  },
+  {
+   "color": "wood",
+   "pos": [
+    0.4,
+    5,
+    1.3
+   ],
+   "rot": [
+    0,
+    0,
+    -25
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    0.25,
+    6.5,
+    0.25
+   ]
+  },
+  {
+   "color": "bone",
+   "pos": [
+    2.02,
+    8.5,
+    1.3
+   ],
+   "rot": [
+    0,
+    0,
+    -25
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    1.3,
+    0.4
+   ]
+  },
+  {
+   "color": "hat",
+   "pos": [
+    0,
+    7.75,
+    0
+   ],
+   "rot": [
+    -6,
+    0,
+    0
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    4.4,
+    0.35,
+    4
+   ]
+  },
+  {
+   "color": "hat",
+   "pos": [
+    0,
+    8.3,
+    0.1
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    2.3,
+    1.5,
+    2.2
+   ]
+  },
+  {
+   "color": "trim",
+   "pos": [
+    0,
+    7.95,
+    0.1
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    2.35,
+    0.4,
+    2.25
+   ]
+  },
+  {
+   "color": "feather",
+   "pos": [
+    0.9,
+    9,
+    0.6
+   ],
+   "rot": [
+    -20,
+    0,
+    -25
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    2.6,
+    1
+   ]
+  },
+  {
+   "color": "featherTip",
+   "pos": [
+    1.2,
+    8.6,
+    0.8
+   ],
+   "rot": [
+    -30,
+    0,
+    -40
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    1.8,
+    0.8
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0,
+    6.1,
+    -0.6
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    1.7,
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "color": "skin",
+   "pos": [
+    0,
+    6.75,
+    -1.12
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    0.6,
+    0.45
+   ]
+  },
+  {
+   "color": "scar",
+   "pos": [
+    0.55,
+    6.85,
+    -1.06
+   ],
+   "rot": [
+    0,
+    0,
+    20
+   ],
+   "segment": "Head",
+   "shape": "block",
+   "size": [
+    0.12,
+    0.7,
+    0.1
+   ]
+  },
+  {
+   "color": "eye",
+   "pos": [
+    -0.42,
+    7,
+    -1.05
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    0.26,
+    0.15
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    -0.45,
+    7.25,
+    -1.02
+   ],
+   "rot": [
+    0,
+    0,
+    -10
+   ],
+   "segment": "Head",
+   "shape": "block",
+   "size": [
+    0.6,
+    0.16,
+    0.15
+   ]
+  },
+  {
+   "color": "eye",
+   "pos": [
+    0.42,
+    7,
+    -1.05
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    0.26,
+    0.15
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0.45,
+    7.25,
+    -1.02
+   ],
+   "rot": [
+    0,
+    0,
+    10
+   ],
+   "segment": "Head",
+   "shape": "block",
+   "size": [
+    0.6,
+    0.16,
+    0.15
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    1.7,
+    3.4,
+    0
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.95,
+    0.9,
+    0.95
+   ]
+  },
+  {
+   "color": "skin",
+   "pos": [
+    1.75,
+    2.8,
+    -0.05
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    0.75,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    -1.7,
+    3.4,
+    0
+   ],
+   "segment": "ArmL",
+   "shape": "block",
+   "size": [
+    0.95,
+    0.9,
+    0.95
+   ]
+  },
+  {
+   "color": "skin",
+   "pos": [
+    -1.75,
+    2.8,
+    -0.05
+   ],
+   "segment": "ArmL",
+   "shape": "ellipsoid",
+   "size": [
+    0.75,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "color": "paper",
+   "pos": [
+    1.75,
+    2.8,
+    -0.5
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.4,
+    0.4,
+    1.6
+   ]
+  },
+  {
+   "color": "seal",
+   "pos": [
+    1.75,
+    2.8,
+    -1.32
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    0.35,
+    0.35,
+    0.12
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "white",
+   "shape": "ellipsoid",
+   "size": [
+    0.1,
+    0.1,
+    0.05
+   ],
+   "pos": [
+    0.36,
+    7.05,
+    -1.12
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "white",
+   "shape": "ellipsoid",
+   "size": [
+    0.1,
+    0.1,
+    0.05
+   ],
+   "pos": [
+    -0.36,
+    7.05,
+    -1.12
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "mouth",
+   "shape": "ellipsoid",
+   "size": [
+    0.46,
+    0.07,
+    0.06
+   ],
+   "pos": [
+    0,
+    6.42,
+    -1.0581666528902849
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hatDark",
+   "shape": "ellipsoid",
+   "size": [
+    0.2,
+    0.22,
+    1.5
+   ],
+   "pos": [
+    0,
+    9.02,
+    0.1
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "trim",
+   "shape": "block",
+   "size": [
+    0.38,
+    0.34,
+    0.1
+   ],
+   "pos": [
+    0,
+    7.95,
+    -1.03
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hatDark",
+   "shape": "block",
+   "size": [
+    0.2,
+    0.18,
+    0.12
+   ],
+   "pos": [
+    0,
+    7.95,
+    -1.04
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "quill",
+   "shape": "ellipsoid",
+   "size": [
+    0.52,
+    2.5,
+    0.1
+   ],
+   "pos": [
+    0.9,
+    9.0,
+    0.6
+   ],
+   "rot": [
+    -20,
+    0,
+    -25
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "quill",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    1.72,
+    0.08
+   ],
+   "pos": [
+    1.2,
+    8.6,
+    0.8
+   ],
+   "rot": [
+    -30,
+    0,
+    -40
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "featherTip",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    1.2,
+    0.6
+   ],
+   "pos": [
+    0.62,
+    8.75,
+    0.95
+   ],
+   "rot": [
+    -35,
+    0,
+    -10
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    1.45,
+    5.6,
+    0.05
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.332
+   ],
+   "rot": [
+    90.0,
+    12.575,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    1.2557,
+    5.6,
+    0.525
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3274
+   ],
+   "rot": [
+    85.82,
+    10.906,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    0.725,
+    5.6,
+    0.8727
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3184
+   ],
+   "rot": [
+    82.786,
+    6.314,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    5.6,
+    1.0
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3138
+   ],
+   "rot": [
+    81.685,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.725,
+    5.6,
+    0.8727
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3184
+   ],
+   "rot": [
+    82.786,
+    -6.314,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.2557,
+    5.6,
+    0.525
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3274
+   ],
+   "rot": [
+    85.82,
+    -10.906,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.45,
+    5.6,
+    0.05
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.332
+   ],
+   "rot": [
+    90.0,
+    -12.575,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.2557,
+    5.6,
+    -0.425
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3274
+   ],
+   "rot": [
+    94.18,
+    -10.906,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.725,
+    5.6,
+    -0.7727
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3184
+   ],
+   "rot": [
+    97.214,
+    -6.314,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.0,
+    5.6,
+    -0.9
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3138
+   ],
+   "rot": [
+    98.315,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    0.725,
+    5.6,
+    -0.7727
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3184
+   ],
+   "rot": [
+    97.214,
+    6.314,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "pos": [
+    1.2557,
+    5.6,
+    -0.425
+   ],
+   "size": [
+    0.62,
+    0.6,
+    1.3274
+   ],
+   "rot": [
+    94.18,
+    10.906,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    4.4,
+    0.32
+   ],
+   "pos": [
+    -0.95,
+    3.3,
+    1.1
+   ],
+   "rot": [
+    6,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    4.4,
+    0.32
+   ],
+   "pos": [
+    -0.3,
+    3.3,
+    1.1
+   ],
+   "rot": [
+    6,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    4.4,
+    0.32
+   ],
+   "pos": [
+    0.35,
+    3.3,
+    1.1
+   ],
+   "rot": [
+    6,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    4.4,
+    0.32
+   ],
+   "pos": [
+    1.0,
+    3.3,
+    1.1
+   ],
+   "rot": [
+    6,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.1,
+    1.3,
+    1.15
+   ],
+   "size": [
+    0.55,
+    0.28,
+    1.2123
+   ],
+   "rot": [
+    83.346,
+    4.732,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    1.3,
+    1.15
+   ],
+   "size": [
+    0.55,
+    0.28,
+    1.2123
+   ],
+   "rot": [
+    83.346,
+    4.732,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "pos": [
+    0.3,
+    1.3,
+    1.15
+   ],
+   "size": [
+    0.55,
+    0.28,
+    1.2123
+   ],
+   "rot": [
+    83.346,
+    4.732,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "cloak",
+   "shape": "ellipsoid",
+   "pos": [
+    1.0,
+    1.3,
+    1.15
+   ],
+   "size": [
+    0.55,
+    0.28,
+    1.2123
+   ],
+   "rot": [
+    83.346,
+    4.732,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "block",
+   "pos": [
+    -0.6,
+    4.925,
+    -0.6758
+   ],
+   "size": [
+    0.32,
+    0.12,
+    0.6545
+   ],
+   "rot": [
+    119.703,
+    37.672,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "block",
+   "pos": [
+    -0.2,
+    4.475,
+    -0.8301
+   ],
+   "size": [
+    0.32,
+    0.12,
+    0.6043
+   ],
+   "rot": [
+    96.567,
+    41.446,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "block",
+   "pos": [
+    0.2,
+    4.025,
+    -0.8033
+   ],
+   "size": [
+    0.32,
+    0.12,
+    0.6112
+   ],
+   "rot": [
+    76.826,
+    40.876,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "block",
+   "pos": [
+    0.51,
+    3.7,
+    -0.6848
+   ],
+   "size": [
+    0.32,
+    0.12,
+    0.3252
+   ],
+   "rot": [
+    56.626,
+    42.571,
+    0.0
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "trim",
+   "shape": "block",
+   "size": [
+    0.42,
+    0.38,
+    0.1
+   ],
+   "pos": [
+    0,
+    3.35,
+    -0.9
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "block",
+   "size": [
+    0.45,
+    0.55,
+    0.4
+   ],
+   "pos": [
+    1.15,
+    3.0,
+    -0.55
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "hatDark",
+   "shape": "block",
+   "size": [
+    0.5,
+    0.2,
+    0.45
+   ],
+   "pos": [
+    1.16,
+    3.28,
+    -0.56
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "leather",
+   "shape": "ellipsoid",
+   "size": [
+    0.36,
+    0.35,
+    0.36
+   ],
+   "pos": [
+    1.82,
+    8.03,
+    1.3
+   ],
+   "rot": [
+    0,
+    0,
+    -25
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "featherTip",
+   "shape": "ellipsoid",
+   "pos": [
+    1.75,
+    7.9,
+    1.3
+   ],
+   "size": [
+    0.3,
+    0.12,
+    1.9545
+   ],
+   "rot": [
+    80.538,
+    20.987,
+    0.0
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "paper",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    0.42,
+    1.62
+   ],
+   "pos": [
+    1.75,
+    2.8,
+    -0.5
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "paperDark",
+   "shape": "ellipsoid",
+   "size": [
+    0.46,
+    0.46,
+    0.1
+   ],
+   "pos": [
+    1.75,
+    2.8,
+    0.3
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "paperDark",
+   "shape": "ellipsoid",
+   "size": [
+    0.46,
+    0.46,
+    0.1
+   ],
+   "pos": [
+    1.75,
+    2.8,
+    -1.28
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "seal",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    0.45,
+    0.12
+   ],
+   "pos": [
+    1.75,
+    2.8,
+    -0.5
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "sole",
+   "shape": "block",
+   "size": [
+    1.1300000000000001,
+    0.17,
+    1.4300000000000002
+   ],
+   "pos": [
+    0.55,
+    0.085,
+    -0.1
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "leather",
+   "shape": "ellipsoid",
+   "size": [
+    1.0,
+    0.675,
+    0.7
+   ],
+   "pos": [
+    0.55,
+    0.375,
+    -0.675
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "sole",
+   "shape": "block",
+   "size": [
+    1.1300000000000001,
+    0.17,
+    1.4300000000000002
+   ],
+   "pos": [
+    -0.55,
+    0.085,
+    -0.1
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "leather",
+   "shape": "ellipsoid",
+   "size": [
+    1.0,
+    0.675,
+    0.7
+   ],
+   "pos": [
+    -0.55,
+    0.375,
+    -0.675
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    0.35,
+    1.45
+   ],
+   "pos": [
+    0.55,
+    1.2,
+    -0.05
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "fur",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    0.35,
+    1.45
+   ],
+   "pos": [
+    -0.55,
+    1.2,
+    -0.05
+   ]
+  }
+ ],
+ "glow": {},
+ "hipHeight": 3,
+ "idle": {
+  "breathe": 0.05,
+  "period": 3.8,
+  "waveWith": "ShoulderR"
+ },
+ "points": {
+  "Contract": {
+   "pos": [
+    1.75,
+    2.8,
+    -0.5
+   ],
+   "segment": "ArmR"
+  }
+ },
+ "rootSize": [
+  1,
+  1,
+  1
+ ],
+ "segments": [
+  {
+   "attach": "Root",
+   "color": "pants",
+   "jointAt": [
+    0,
+    3,
+    0
+   ],
+   "name": "Hips",
+   "pos": [
+    0,
+    3,
+    0
+   ],
+   "shape": "block",
+   "size": [
+    2.2,
+    0.9,
+    1.4
+   ],
+   "tris": 1007
+  },
+  {
+   "attach": "Hips",
+   "color": "tunic",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    3.2,
+    0
+   ],
+   "name": "Torso",
+   "pos": [
+    0,
+    4.4,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.6,
+    3,
+    1.6
+   ],
+   "tris": 1880
+  },
+  {
+   "attach": "Torso",
+   "color": "skin",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    6,
+    0
+   ],
+   "name": "Head",
+   "pos": [
+    0,
+    6.9,
+    -0.05
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    2.4,
+    2.2
+   ],
+   "tris": 2030,
+   "voxel": 0.025,
+   "smoothAngle": 50
+  },
+  {
+   "attach": "Torso",
+   "color": "tunic",
+   "joint": "ShoulderR",
+   "jointAt": [
+    1.45,
+    5.4,
+    0
+   ],
+   "name": "ArmR",
+   "pos": [
+    1.65,
+    4.3,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    -5
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.85,
+    2.6,
+    0.85
+   ],
+   "tris": 580
+  },
+  {
+   "attach": "Torso",
+   "color": "tunic",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -1.45,
+    5.4,
+    0
+   ],
+   "name": "ArmL",
+   "pos": [
+    -1.65,
+    4.3,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    5
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.85,
+    2.6,
+    0.85
+   ],
+   "tris": 580
+  }
+ ],
+ "name": "Odra",
+ "paintLight": true,
+ "skin": {
+  "cell": 0.3,
+  "depth": 0,
+  "noise": 0
+ },
+ "displace": {},
+ "uvBoost": {
+  "Head": 1.7
+ },
+ "sky": [
+  0.42,
+  0.4,
+  0.55
+ ],
+ "smoothAngle": 35,
+ "styles": {
+  "hair": "hair",
+  "feather": "hair",
+  "featherTip": "hair",
+  "fur": "fur",
+  "pants": "cloth",
+  "cloak": "cloth",
+  "tunic": "cloth",
+  "leather": "leather",
+  "hat": "leather",
+  "hatDark": "leather",
+  "wood": "wood"
+ }
+}

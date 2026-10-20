@@ -76,6 +76,10 @@ The game builds the Thornjaw from plain parts until the mesh is imported.
 
 To remake the mesh after changing the body plan, see "Monster meshes" in CLAUDE.md.
 
+The camp hunters (Brannoc, Wren, Odra, Pell and Ama) import the same way: pick
+`assets/<Name>/<Name>.fbx`, rename the model to that name and drag it into `ServerStorage/Assets`.
+Each one replaces its plain-part stand-in the next time you press Play.
+
 ## 8. Upload the menu icons (optional, emoji show until then)
 The camp tiles use 3D-rendered icons from `assets/ui/icons/`. Roblox only shows uploaded images.
 1. In Studio: **View > Asset Manager**, then **Bulk Import** and pick all the PNGs in

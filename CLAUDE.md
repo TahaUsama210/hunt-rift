@@ -83,7 +83,10 @@ monster always works without the import. Triangle budgets per segment live in th
   monster format, so the Blender pipeline can mesh them. Each also has `points` (named spots
   that become attachments for effects) and `idle` (breathing, wave arm, a `work` swing whose
   `at` names the attachment that bursts on the strike, `float`, `orbit`). A station names its
-  rig, color, marker and lines in `Config/Hub`.
+  rig, color, marker and lines in `Config/Hub`. Their meshes: export the rig with
+  `lune run tools/export_rig.luau <Name>`, then `python tools/roster/designs/npcs.py <Name>`
+  (adds sculpt-only detail and surface styles) and `python tools/roster/build_roster_mesh.py <Name>`.
+  Keep segment names and the props at `points`, since the camp animates and decorates by name.
 - Effects: every particle recipe, light, spin speed and the camp's dusk lighting are in
   `Config/Fx` (built-in textures, nothing to upload). `server/HubWorld` builds and never moves
   anything; `client/CampLife` animates it all on each screen (NPCs, portal rings, runes,
