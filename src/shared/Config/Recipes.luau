@@ -6,6 +6,10 @@ return {
 		gold = 1200,
 		materials = { CinderwingScale = 2, FlameSac = 1 },
 	},
+	GlowcapHat = {
+		gold = 200,
+		materials = { PuffgourdHide = 2, GlowLantern = 1 },
+	},
 	ThornjawHelm = {
 		gold = 300,
 		materials = { ThornjawScale = 2, ThornjawCrest = 1 },

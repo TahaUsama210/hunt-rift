@@ -9,6 +9,8 @@ return {
 	-- position is { x, y, z } in studs; the monster is dropped onto whatever ground is below.
 	spawns = {
 		{ monsterId = "Thornjaw", position = { 0, 0, -50 } },
+		-- Far enough from Thornjaw that neither notices players fighting the other.
+		{ monsterId = "Puffgourd", position = { -160, 0, 40 } },
 	},
 	-- Seconds a slain monster's body stays, and seconds until a fresh one spawns.
 	corpseSeconds = 6,

@@ -6,7 +6,8 @@
 -- left, z = roll). Segments are the moving pieces: each one with a joint gets a Motor6D at
 -- jointAt so it can animate, one without is welded. Details are decoration welded to a segment;
 -- when the imported mesh is used they are already baked into that segment's mesh.
--- hitzone matches Config/Monsters hitzones. breaksWith hides the segment when that part breaks.
+-- hitzone matches Config/Monsters hitzones. breaksWith names the part a segment belongs to for
+-- breaking; fallsOff (at the bottom) lists the segments that disappear when it breaks.
 -- tris is the triangle budget for the segment's mesh (the whole monster is about 6,000).
 
 export type Shape = "ellipsoid" | "block" | "wedge"
@@ -47,7 +48,8 @@ export type Animation = {
 	-- Where recovery starts from when strike ends somewhere awkward (after a full spin).
 	recoverFrom: Pose?,
 	-- Seconds for actions that are not attacks (attacks take theirs from Config/Monsters).
-	timing: { windup: number, active: number, recovery: number }?,
+	-- down: seconds to stay in the strike pose before recovering (a long stagger).
+	timing: { windup: number, active: number, down: number?, recovery: number }?,
 	-- Keep the strike pose when finished instead of returning to rest.
 	hold: boolean?,
 }
@@ -501,6 +503,20 @@ return {
 	segments = segments,
 	details = details,
 	-- Walk cycle: degrees of leg swing and knee bend, and studs walked per full step.
-	gait = { stride = 26, knee = 30, stepLength = 7, tailSway = 7, bob = 0.25 },
+	gait = {
+		stride = 26,
+		knee = 30,
+		stepLength = 7,
+		tailSway = 7,
+		bob = 0.25,
+		-- Leg and knee joints and when in the step each one swings (0 to 1).
+		legs = { HipFL = 0, HipBR = 0, HipFR = 0.5, HipBL = 0.5 },
+		knees = { KneeFL = 0, KneeBR = 0, KneeFR = 0.5, KneeBL = 0.5 },
+		tail = { "TailA", "TailB", "TailC" },
+		neck = "Neck",
+		jaw = "Jaw",
+	},
+	-- The amber crest drops off when the head breaks.
+	fallsOff = { Crest = true },
 	animations = animations,
 }

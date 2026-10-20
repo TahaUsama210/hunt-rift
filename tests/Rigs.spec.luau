@@ -68,10 +68,36 @@ T.test("rig pieces attach to pieces that exist, and stay under the mesh budget",
 					end
 				end
 			end
-			for name in monster.ai.attacks do
+			for name, attack in monster.ai.attacks do
 				assert(rig.animations[name], `{id} attack {name} has no animation`)
+				if attack.lostWith then
+					assert(
+						monster.breakHp[attack.lostWith],
+						`{id}.{name} is lost with an unbreakable part`
+					)
+				end
 			end
 			assert(rig.animations.flinch and rig.animations.death, `{id} needs flinch and death`)
+			for part, action in monster.ai.breakActions or {} do
+				assert(monster.breakHp[part], `{id} has a break action for unbreakable {part}`)
+				local anim = rig.animations[action]
+				assert(
+					anim and anim.timing,
+					`{id} break action {action} needs an animation with timing`
+				)
+			end
+			local gait = rig.gait
+			for _, group in { gait.legs, gait.knees } do
+				for joint in group do
+					assert(joints[joint], `{id} walk cycle moves unknown joint {joint}`)
+				end
+			end
+			for _, joint in gait.tail do
+				assert(joints[joint], `{id} tail sway moves unknown joint {joint}`)
+			end
+			for name in rig.fallsOff do
+				assert(names[name], `{id} fallsOff names unknown segment {name}`)
+			end
 		end
 	end
 end)

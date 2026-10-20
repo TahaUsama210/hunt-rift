@@ -31,13 +31,15 @@ end
 
 -- Picks an attack that is off cooldown and whose range and angle fit the target, weighted
 -- by each attack's weight. readyAt maps attack name to the time it can be used again.
+-- An attack with lostWith is gone once that part is in broken (popping a spore lantern).
 function MonsterAI.pickAttack(
 	ai: any,
 	distance: number,
 	angle: number,
 	readyAt: { [string]: number },
 	now: number,
-	roll: number
+	roll: number,
+	broken: { [string]: boolean }?
 ): string?
 	local names = {}
 	for name in ai.attacks do
@@ -49,10 +51,12 @@ function MonsterAI.pickAttack(
 	for _, name in names do
 		local attack = ai.attacks[name]
 		local ready = (readyAt[name] or 0) <= now
+		local lost = attack.lostWith ~= nil and broken ~= nil and broken[attack.lostWith] == true
 		local fits = distance <= attack.range
+			and distance >= (attack.minRange or 0)
 			and angle >= attack.minAngle
 			and angle <= attack.maxAngle
-		if ready and fits then
+		if ready and fits and not lost then
 			table.insert(options, name)
 			total += attack.weight
 		end
@@ -70,6 +74,11 @@ end
 -- Whether a target at this distance and angle is caught by the attack.
 function MonsterAI.inHitArea(attack: any, distance: number, angle: number): boolean
 	return distance <= attack.hitRange and angle <= attack.hitArc / 2
+end
+
+-- Seconds a non-attack action (flinch, topple) keeps the monster busy.
+function MonsterAI.actionSeconds(timing: any): number
+	return timing.windup + timing.active + (timing.down or 0) + timing.recovery
 end
 
 -- Seconds an attack keeps the monster busy, and when it can be used again.

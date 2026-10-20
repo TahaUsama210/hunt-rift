@@ -27,6 +27,11 @@ All four must pass before anything is tested in Studio:
   The tests already check every monster has loot and every weapon move works on every part.
   To spawn it, it also needs `rig` (a body plan in `src/shared/Rigs/`, with an animation for
   every attack plus flinch and death), `ai`, and an entry in `Config/Hunt.luau` spawns.
+- Roster monster (designed in `tools/roster/`): run `python tools/roster/rig_to_luau.py <Name>`
+  to copy its body plan into `src/shared/Rigs/<Name>.luau`, then fill in by hand below the
+  generated block: the walk cycle (`gait`: which joints are legs, knees, tail, neck, jaw),
+  `fallsOff` (segments that disappear when their part breaks) and the animations. Rerunning the
+  script after a design change only rewrites the generated block.
 - New weapon: add it to `Config/Weapons.luau` with its moves' motion values and a `swings`
   entry per move (button, arm style, timings, reach).
 - New rule: put it in `Rules/`, add a `tests/<Name>.spec.luau`, then call it from the server.

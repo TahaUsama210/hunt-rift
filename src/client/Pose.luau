@@ -13,7 +13,7 @@ export type Values = {
 	z: number?,
 }
 export type Pose = { [string]: Values }
-export type Timing = { windup: number, active: number, recovery: number }
+export type Timing = { windup: number, active: number, down: number?, recovery: number }
 
 local KEYS = { "pitch", "yaw", "roll", "x", "y", "z" }
 
@@ -60,18 +60,19 @@ function Pose.add(a: Pose, b: Pose)
 	end
 end
 
--- Where an action is at `elapsed` seconds: rest -> windup -> strike -> rest.
+-- Where an action is at `elapsed` seconds: rest -> windup -> strike (held for `down`) -> rest.
 -- Returns nil once it has finished (unless hold keeps the strike pose).
 function Pose.action(anim: any, timing: Timing, elapsed: number): Pose?
 	local w, a, r = timing.windup, timing.active, timing.recovery
+	local held = a + (timing.down or 0)
 	if elapsed < w then
 		return Pose.lerp({}, anim.windup, Pose.smooth(elapsed / w))
 	elseif elapsed < w + a then
 		return Pose.lerp(anim.windup, anim.strike, Pose.snap((elapsed - w) / a))
-	elseif anim.hold then
+	elseif anim.hold or elapsed < w + held then
 		return anim.strike
-	elseif elapsed < w + a + r then
-		return Pose.lerp(anim.recoverFrom or anim.strike, {}, Pose.smooth((elapsed - w - a) / r))
+	elseif elapsed < w + held + r then
+		return Pose.lerp(anim.recoverFrom or anim.strike, {}, Pose.smooth((elapsed - w - held) / r))
 	end
 	return nil
 end

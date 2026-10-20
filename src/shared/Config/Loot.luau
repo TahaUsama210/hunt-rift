@@ -17,6 +17,15 @@ return {
 			tail = "CinderwingTail",
 		},
 	},
+	Puffgourd = {
+		rolls = 3,
+		drops = {
+			{ item = "PuffgourdHide", weight = 50 },
+			{ item = "SporeCap", weight = 35 },
+			{ item = "MarshGel", weight = 15 },
+		},
+		breakRewards = { pod = "GlowLantern", head = "PuffgourdLip" },
+	},
 	Thornjaw = {
 		rolls = 3,
 		drops = {
