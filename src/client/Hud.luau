@@ -186,10 +186,11 @@ function Hud.start(controls: { string })
 	hurtFlash.BorderSizePixel = 0
 	hurtFlash.Parent = gui
 
+	-- Top-left, under Roblox's own buttons: the bottom-left belongs to the camp wallet.
 	local playerFill, playerLabel = bar(
 		"PlayerHealth",
-		UDim2.new(0, 20, 1, -60),
-		Vector2.new(0, 1),
+		UDim2.new(0, 20, 0, 66),
+		Vector2.new(0, 0),
 		280,
 		Color3.fromRGB(70, 190, 90)
 	)

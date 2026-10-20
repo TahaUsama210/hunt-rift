@@ -76,9 +76,11 @@ return {
 			id = "Glowmire",
 			displayName = "Glowmire Fungal Marsh",
 			color = { 176, 124, 255 },
-			minRank = 2,
+			-- Rank 1 until rift ranks are saved, so new hunters can reach both monsters.
+			minRank = 1,
+			monsterId = "Puffgourd",
 			angle = 70,
-			arrival = { 0, 0, 40 },
+			arrival = { -160, 0, 100 },
 		},
 		{
 			id = "Badlands",

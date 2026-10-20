@@ -28,8 +28,14 @@ Remotes.Events = {
 	CraftResult = "CraftResult",
 	-- client -> server: {} asks for this player's inventory
 	InventoryRequest = "InventoryRequest",
-	-- server -> client: { items, gold } this player's inventory after any change
+	-- server -> client: { items, gold, shards } this player's inventory after any change
 	InventoryChanged = "InventoryChanged",
+	-- server -> client: { day, canClaim, secondsUntilNext, streak } the daily reward calendar
+	DailyStatus = "DailyStatus",
+	-- client -> server: {} claim today's daily reward
+	DailyClaim = "DailyClaim",
+	-- client -> server: { areaId } teleport to a station or portal in camp (Config/Hub areas)
+	Teleport = "Teleport",
 	-- server -> client: { portalId, memberNames, secondsLeft, lockedReason } for the portal you
 	-- stand on (lockedReason set and no members if you cannot enter it), or { nil } once off it
 	PartyUpdate = "PartyUpdate",

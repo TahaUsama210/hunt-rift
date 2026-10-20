@@ -65,10 +65,19 @@ monster always works without the import. Triangle budgets per segment live in th
   hunting ground. Design boards (layout, UI kit, every menu): the "Hunt Rift hub and UI" canvas.
 - `server/Hub` tracks who stands on each portal pad (`Rules/PortalParty`: up to 4, 10 second
   countdown, Go now) and moves the party to the portal's `arrival`. The player attribute
-  `Location` is `"Camp"` or the portal id. After a kill the party returns to camp.
+  `Location` is `"Camp"` or the portal id. After a kill, the hunters of that monster go back
+  to camp and get its rewards.
 - Station prompts (F, since E is the heavy attack) open the client menus in `client/Stations`,
   drawn with the shared kit in `client/Ui`. The server re-checks every action (crafting only
   at the blacksmith). The nest raid countdown is `Rules/NestRotation` on server time.
+- The camp screen (`client/CampHud`: wallet, profile card, nest timer, party card) and the side
+  tiles (`client/Menus`: Gear, Codex, Eggs, Areas, Rewards, Profile, the rest "coming soon")
+  share one ScreenGui with the station menus, and `Ui.modal` keeps one panel open at a time.
+  Screens read `client/PlayerData`, the last profile the server sent; they never decide anything.
+- `server/Profiles` saves items, gold, Rift Shards and the daily streak (DataStore
+  `HuntRiftProfiles_v1`). A profile that failed to load is never saved, so a DataStore outage
+  cannot wipe anyone. Daily rewards are `Rules/DailyRewards` on UTC days, amounts in
+  `Config/DailyRewards`. The Areas teleport (`Teleport`) only works while in camp.
 
 ## Traps
 Write each mistake that cost real time here, with the reason, so it is not repeated.

@@ -24,6 +24,9 @@ The first Selene run downloads Roblox's API list, then all four checks should pa
 1. In the project folder run `rojo serve`.
 2. Open a new Baseplate in Studio, click the Rojo plugin, then Connect.
 3. Press Play. The Output window should say `MonsterHunt server ready` and `MonsterHunt client ready`.
+4. To keep gold, items and the daily reward streak between play sessions, publish the place once
+   (File > Publish to Roblox), then turn on Game Settings > Security > **Enable Studio Access to
+   API Services**. Without it everything still works, but each play test starts fresh.
 
 ## 4. Connect Claude Code to Studio (the built-in MCP)
 1. In Studio, open the Assistant panel, click the three dots, then **Manage MCP Servers**.

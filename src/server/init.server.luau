@@ -25,8 +25,12 @@ local MonsterController = require(script:WaitForChild("MonsterController"))
 local Loadout = require(script:WaitForChild("Loadout"))
 local HubServer = require(script:WaitForChild("Hub"))
 local HubConfig = require(Config:WaitForChild("Hub"))
+local DailyConfig = require(Config:WaitForChild("DailyRewards"))
+local DailyRewards = require(Rules:WaitForChild("DailyRewards"))
+local Profiles = require(script:WaitForChild("Profiles"))
 
 Remotes.setup()
+Profiles.start()
 Loadout.start(Hunt)
 MonsterController.start()
 HubServer.start()
@@ -38,7 +42,6 @@ end
 
 type Hunt = { hp: number, partDamage: { [string]: number }, broken: { string } }
 local hunts: { [string]: Hunt } = {}
-local inventories: { [Player]: Crafting.Inventory } = {}
 local swings: { [Player]: Swing.State } = {}
 
 local function getHunt(monsterId: string): Hunt
@@ -51,19 +54,52 @@ local function getHunt(monsterId: string): Hunt
 end
 
 local function sendInventory(player: Player)
-	local inventory = inventories[player]
-	if inventory then
-		Remotes.get("InventoryChanged"):FireClient(player, inventory.items, inventory.gold)
+	local profile = Profiles.get(player)
+	if profile then
+		Remotes.get("InventoryChanged")
+			:FireClient(player, profile.items, profile.gold, profile.shards)
 	end
 end
 
-Players.PlayerAdded:Connect(function(player)
-	inventories[player] = { items = {}, gold = 500 }
+local function sendDaily(player: Player)
+	local profile = Profiles.get(player)
+	if profile then
+		local status = DailyRewards.status(profile.daily, os.time(), #DailyConfig.days)
+		Remotes.get("DailyStatus"):FireClient(
+			player,
+			status.day,
+			status.canClaim,
+			status.secondsUntilNext,
+			profile.daily.streak
+		)
+	end
+end
+
+-- The client asks once its screens are ready; answer when the profile has loaded.
+Remotes.get("InventoryRequest").OnServerEvent:Connect(function(player)
+	Profiles.whenReady(player, function()
+		sendInventory(player)
+		sendDaily(player)
+	end)
 end)
-Remotes.get("InventoryRequest").OnServerEvent:Connect(sendInventory)
 Players.PlayerRemoving:Connect(function(player)
-	inventories[player] = nil
 	swings[player] = nil
+end)
+
+Remotes.get("DailyClaim").OnServerEvent:Connect(function(player)
+	local profile = Profiles.get(player)
+	if not profile then
+		return
+	end
+	local state, day = DailyRewards.claim(profile.daily, os.time(), #DailyConfig.days)
+	if state and day then
+		local reward = DailyConfig.days[day]
+		profile.daily = state
+		profile.gold += reward.gold
+		profile.shards += reward.shards
+		sendInventory(player)
+	end
+	sendDaily(player)
 end)
 
 -- Distance from a point to the nearest edge of a part's box (0 if inside).
@@ -155,18 +191,19 @@ Remotes.get("AttackHit").OnServerEvent:Connect(function(player, weaponId, moveNa
 
 	if hunt.hp == 0 then
 		local rewards = LootRoll.rollRewards(Loot[monster.lootTable], hunt.broken, roll)
-		-- Everyone out on the hunt shares the rewards; hunters still in camp get nothing.
-		for _, other in Players:GetPlayers() do
-			local inventory = inventories[other]
-			if inventory and other:GetAttribute("Location") ~= "Camp" then
+		-- Everyone out hunting this monster shares the rewards and then heads home together.
+		local hunters = HubServer.huntersOf(monsterId)
+		for _, other in hunters do
+			local profile = Profiles.get(other)
+			if profile then
 				for _, item in rewards do
-					inventory.items[item] = (inventory.items[item] or 0) + 1
+					profile.items[item] = (profile.items[item] or 0) + 1
 				end
 				sendInventory(other)
 			end
+			Remotes.get("HuntComplete"):FireClient(other, monsterId, rewards)
 		end
-		Remotes.get("HuntComplete"):FireAllClients(monsterId, rewards)
-		HubServer.returnHunters(HubConfig.returnSeconds)
+		HubServer.returnHunters(hunters, HubConfig.returnSeconds)
 		MonsterController.kill(monsterId)
 		hunts[monsterId] = nil
 	end
@@ -175,14 +212,15 @@ end)
 
 Remotes.get("CraftRequest").OnServerEvent:Connect(function(player, recipeId)
 	local recipe = Recipes[recipeId]
-	local inventory = inventories[player]
+	local inventory = Profiles.get(player)
 	-- Crafting only happens at the blacksmith, not from anywhere in the world.
 	if not (recipe and inventory and HubServer.isAtStation(player, "Blacksmith")) then
 		return
 	end
 	local crafted = Crafting.craft(inventory, recipe, recipeId)
 	if crafted then
-		inventories[player] = crafted
+		inventory.items = crafted.items
+		inventory.gold = crafted.gold
 		sendInventory(player)
 	end
 	Remotes.get("CraftResult")

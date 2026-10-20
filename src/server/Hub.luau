@@ -167,15 +167,50 @@ function HubServer.isAtStation(player: Player, stationId: string): boolean
 	return (root.Position - at).Magnitude <= Hub.stationReach
 end
 
--- Brings everyone out on a hunt back to camp after a short wait (the rewards moment).
-function HubServer.returnHunters(delaySeconds: number)
+-- Everyone out on a hunt for this monster: they share its rewards.
+function HubServer.huntersOf(monsterId: string): { Player }
+	local hunters = {}
+	for _, player in Players:GetPlayers() do
+		local portal = portalById[player:GetAttribute("Location") :: any]
+		if portal and portal.monsterId == monsterId then
+			table.insert(hunters, player)
+		end
+	end
+	return hunters
+end
+
+-- Brings these hunters back to camp after a short wait (the rewards moment). Anyone who
+-- already walked home or left another way is skipped.
+function HubServer.returnHunters(hunters: { Player }, delaySeconds: number)
+	local from: { [Player]: any } = {}
+	for _, player in hunters do
+		from[player] = player:GetAttribute("Location")
+	end
 	task.delay(delaySeconds, function()
-		for _, player in Players:GetPlayers() do
-			if player:GetAttribute("Location") ~= CAMP then
+		for player, location in from do
+			if player.Parent == Players and player:GetAttribute("Location") == location then
 				sendTo(player, campPosition(), CAMP)
 			end
 		end
 	end)
+end
+
+-- Where the Areas menu drops you: in front of a station's counter, or onto a portal's pad.
+local function areaPosition(areaId: string, player: Player): CFrame?
+	local origin = Vector3.new(Hub.origin[1], Hub.origin[2], Hub.origin[3])
+	local stationAt = built.stations[areaId]
+	if stationAt then
+		local toMiddle = Vector3.new(origin.X - stationAt.X, 0, origin.Z - stationAt.Z)
+		local dir = if toMiddle.Magnitude > 0.1 then toMiddle.Unit else Vector3.new(0, 0, 1)
+		local at = stationAt + dir * 8
+		return CFrame.lookAt(at, stationAt)
+	end
+	local portal = portalById[areaId]
+	if portal and PortalParty.canEnter(portal, ranks[player] or Hub.startingRank) then
+		local padAt = built.portals[areaId]
+		return CFrame.lookAt(padAt, Vector3.new(origin.X, padAt.Y, origin.Z))
+	end
+	return nil
 end
 
 -- A stone at each hunting ground's arrival point that takes you home.
@@ -242,6 +277,17 @@ function HubServer.start()
 	Players.PlayerRemoving:Connect(function(player)
 		ranks[player] = nil
 		lastSent[player] = nil
+	end)
+
+	-- Areas menu: only works in camp, and only to stations and portals you may use.
+	Remotes.get("Teleport").OnServerEvent:Connect(function(player, areaId)
+		if typeof(areaId) ~= "string" or player:GetAttribute("Location") ~= CAMP then
+			return
+		end
+		local where = areaPosition(areaId, player)
+		if where then
+			sendTo(player, where, CAMP)
+		end
 	end)
 
 	Remotes.get("PartyGo").OnServerEvent:Connect(function(player, portalId)

@@ -1,6 +1,8 @@
 --!strict
--- The camp screen: gold and rift rank top-left, the nest raid countdown top-middle, the party
--- card while you stand on a portal, and the gold beam over the portal you pinned.
+-- The camp screen (see the camp screen board on the design canvas): Rift Shard and gold pills
+-- over your profile card bottom-left, the nest raid countdown top-middle, the party card while
+-- you stand on a portal, and the gold beam over the portal you pinned. All of it shows only in
+-- camp; out on a hunt the hunt bars take over.
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -12,6 +14,7 @@ local Hub = require(Shared:WaitForChild("Config"):WaitForChild("Hub"))
 local NestRotation = require(Shared:WaitForChild("Rules"):WaitForChild("NestRotation"))
 local Remotes = require(Shared:WaitForChild("Remotes"))
 local Ui = require(script.Parent:WaitForChild("Ui"))
+local PlayerData = require(script.Parent:WaitForChild("PlayerData"))
 
 local CampHud = {}
 
@@ -21,36 +24,99 @@ for _, portal in Hub.portals do
 	portalById[portal.id] = portal
 end
 
-local function chip(parent: Instance, x: number, width: number): (Frame, TextLabel)
-	local frame = Ui.frame(parent, UDim2.fromOffset(width, 44), Ui.colors.panel)
-	frame.Position = UDim2.fromOffset(x, 20)
-	frame.BackgroundTransparency = 0.1
-	Ui.corner(frame, 22)
-	local label = Ui.text(frame, "", 16, Ui.colors.text, Ui.fonts.bold, 44)
-	label.AutomaticSize = Enum.AutomaticSize.None
-	label.TextXAlignment = Enum.TextXAlignment.Center
-	label.Size = UDim2.fromScale(1, 1)
-	return frame, label
+-- Pills over the profile card, bottom-left. onPlus opens the way to earn more.
+local function walletAndProfile(gui: ScreenGui, onPlus: () -> ()): Frame
+	local block = Ui.frame(gui, UDim2.fromOffset(300, 140))
+	block.AnchorPoint = Vector2.new(0, 1)
+	block.Position = UDim2.new(0, 16, 1, -16)
+
+	local pills = Ui.frame(block, UDim2.new(1, 0, 0, 40))
+	Ui.stack(pills, 8, true)
+	local shards = Ui.pill(pills, Ui.colors.shard, onPlus)
+	local gold = Ui.pill(pills, Ui.colors.gold, onPlus)
+
+	local card = Ui.frame(block, UDim2.new(1, 0, 0, 88), Ui.colors.night)
+	card.Position = UDim2.fromOffset(0, 52)
+	card.BackgroundTransparency = 0.1
+	Ui.corner(card, 12)
+	Ui.stroke(card, Color3.fromRGB(43, 46, 58), 2)
+	local avatar = Instance.new("ImageLabel")
+	avatar.Position = UDim2.fromOffset(10, 10)
+	avatar.Size = UDim2.fromOffset(68, 68)
+	avatar.BackgroundColor3 = Ui.colors.raised
+	avatar.BorderSizePixel = 0
+	Ui.corner(avatar, 10)
+	Ui.stroke(avatar, Color3.fromRGB(240, 122, 106), 2)
+	avatar.Parent = card
+	task.spawn(function()
+		local ok, image = pcall(function()
+			return Players:GetUserThumbnailAsync(
+				player.UserId,
+				Enum.ThumbnailType.HeadShot,
+				Enum.ThumbnailSize.Size150x150
+			)
+		end)
+		if ok then
+			avatar.Image = image
+		end
+	end)
+	local name = Ui.text(card, player.DisplayName, 18, Ui.colors.text, Ui.fonts.heading, 22)
+	name.AutomaticSize = Enum.AutomaticSize.None
+	name.Position = UDim2.fromOffset(90, 12)
+	name.Size = UDim2.new(1, -100, 0, 22)
+	name.TextTruncate = Enum.TextTruncate.AtEnd
+	Ui.ink(name)
+	local handle = Ui.text(card, `@{player.Name}`, 12, Ui.colors.muted, Ui.fonts.bold, 16)
+	handle.AutomaticSize = Enum.AutomaticSize.None
+	handle.Position = UDim2.fromOffset(90, 34)
+	handle.Size = UDim2.new(1, -100, 0, 16)
+	handle.TextTruncate = Enum.TextTruncate.AtEnd
+	local rank = Ui.text(card, "", 13, Ui.colors.text, Ui.fonts.button, 24)
+	rank.AutomaticSize = Enum.AutomaticSize.None
+	rank.Position = UDim2.fromOffset(90, 54)
+	rank.Size = UDim2.fromOffset(120, 24)
+	rank.TextXAlignment = Enum.TextXAlignment.Center
+	rank.BackgroundTransparency = 0
+	rank.BackgroundColor3 = Ui.colors.rift
+	Ui.corner(rank, 12)
+	Ui.ink(rank)
+
+	local function showWallet()
+		shards.Text = Ui.number(PlayerData.shards)
+		gold.Text = Ui.number(PlayerData.gold)
+	end
+	PlayerData.changed:Connect(showWallet)
+	showWallet()
+	local function showRank()
+		rank.Text = `RIFT RANK {player:GetAttribute("RiftRank") or Hub.startingRank}`
+	end
+	player:GetAttributeChangedSignal("RiftRank"):Connect(showRank)
+	showRank()
+	return block
 end
 
-local function nestWidget(gui: ScreenGui)
-	local box = Ui.frame(gui, UDim2.fromOffset(250, 58), Color3.fromRGB(36, 27, 46))
+local function nestWidget(gui: ScreenGui): Frame
+	local box = Ui.frame(gui, UDim2.fromOffset(270, 62), Ui.colors.night)
 	box.AnchorPoint = Vector2.new(0.5, 0)
-	box.Position = UDim2.new(0.5, 0, 0, 18)
+	box.Position = UDim2.new(0.5, 0, 0, 16)
 	box.BackgroundTransparency = 0.1
-	Ui.corner(box, 10)
-	Ui.stroke(box, Ui.colors.rift, 1)
+	Ui.corner(box, 12)
+	Ui.stroke(box, Ui.colors.rift, 3)
 	-- The egg's silhouette: you know which monster, not what the egg looks like.
-	local egg = Ui.frame(box, UDim2.fromOffset(26, 34), Color3.fromRGB(5, 7, 10))
-	egg.Position = UDim2.fromOffset(14, 12)
-	Ui.corner(egg, 13)
-	Ui.stroke(egg, Color3.fromRGB(107, 74, 122))
-	local top = Ui.text(box, "NEXT NEST RAID", 11, Color3.fromRGB(215, 194, 228), Ui.fonts.bold, 16)
-	top.Position = UDim2.fromOffset(54, 8)
-	top.Size = UDim2.new(1, -60, 0, 16)
-	local time = Ui.text(box, "", 20, Ui.colors.text, Ui.fonts.heading, 26)
-	time.Position = UDim2.fromOffset(54, 24)
-	time.Size = UDim2.new(1, -60, 0, 26)
+	local egg = Ui.frame(box, UDim2.fromOffset(28, 36), Color3.fromRGB(5, 7, 10))
+	egg.Position = UDim2.fromOffset(14, 13)
+	Ui.corner(egg, 14)
+	Ui.stroke(egg, Ui.colors.rift, 2)
+	local top =
+		Ui.text(box, "NEXT NEST RAID", 11, Color3.fromRGB(240, 196, 236), Ui.fonts.heading, 16)
+	top.AutomaticSize = Enum.AutomaticSize.None
+	top.Position = UDim2.fromOffset(56, 9)
+	top.Size = UDim2.new(1, -66, 0, 16)
+	local time = Ui.text(box, "", 22, Ui.colors.text, Ui.fonts.button, 28)
+	time.AutomaticSize = Enum.AutomaticSize.None
+	time.Position = UDim2.fromOffset(56, 25)
+	time.Size = UDim2.new(1, -66, 0, 28)
+	Ui.ink(time)
 
 	local last = -1
 	RunService.Heartbeat:Connect(function()
@@ -80,23 +146,26 @@ local function nestWidget(gui: ScreenGui)
 end
 
 local function partyCard(gui: ScreenGui)
-	local card = Ui.frame(gui, UDim2.fromOffset(520, 170), Ui.colors.panel)
+	local card = Ui.frame(gui, UDim2.fromOffset(540, 184), Ui.colors.panel)
 	card.AnchorPoint = Vector2.new(0.5, 1)
-	card.Position = UDim2.new(0.5, 0, 1, -40)
+	card.Position = UDim2.new(0.5, 0, 1, -24)
+	card.BackgroundTransparency = 0.04
 	card.Visible = false
-	Ui.corner(card, 12)
-	local stroke = Instance.new("UIStroke")
-	stroke.Thickness = 2
-	stroke.Parent = card
+	Ui.corner(card, 16)
+	local stroke = Ui.stroke(card, Ui.colors.line, 3)
 	Ui.padding(card, 18)
 
 	local title = Ui.text(card, "HUNTING PARTY", 22, Ui.colors.text, Ui.fonts.heading, 28)
-	title.Size = UDim2.new(0.6, 0, 0, 28)
-	local countdown = Ui.text(card, "", 16, Ui.colors.muted, Ui.fonts.bold, 28)
+	title.AutomaticSize = Enum.AutomaticSize.None
+	title.Size = UDim2.new(0.62, 0, 0, 28)
+	title.TextTruncate = Enum.TextTruncate.AtEnd
+	local countdown = Ui.text(card, "", 18, Ui.colors.gold, Ui.fonts.button, 28)
+	countdown.AutomaticSize = Enum.AutomaticSize.None
 	countdown.AnchorPoint = Vector2.new(1, 0)
 	countdown.Position = UDim2.fromScale(1, 0)
-	countdown.Size = UDim2.new(0.4, 0, 0, 28)
+	countdown.Size = UDim2.new(0.38, 0, 0, 28)
 	countdown.TextXAlignment = Enum.TextXAlignment.Right
+	Ui.ink(countdown)
 
 	local slots = Ui.frame(card, UDim2.new(1, 0, 0, 54))
 	slots.Position = UDim2.fromOffset(0, 40)
@@ -112,11 +181,9 @@ local function partyCard(gui: ScreenGui)
 		slot.Font = Ui.fonts.bold
 		slot.TextSize = 14
 		slot.TextTruncate = Enum.TextTruncate.AtEnd
+		slot.BorderSizePixel = 0
 		Ui.corner(slot)
-		local slotStroke = Instance.new("UIStroke")
-		slotStroke.Thickness = 2
-		slotStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-		slotStroke.Parent = slot
+		Ui.stroke(slot, Ui.colors.line, 2)
 		slot.Parent = slots
 		slotLabels[i] = slot
 	end
@@ -126,21 +193,23 @@ local function partyCard(gui: ScreenGui)
 		"Step off the portal to leave the party.",
 		13,
 		Ui.colors.muted,
-		Ui.fonts.body,
+		Ui.fonts.bold,
 		48
 	)
 	hint.AutomaticSize = Enum.AutomaticSize.None
-	hint.Position = UDim2.fromOffset(0, 106)
-	hint.Size = UDim2.new(1, -170, 0, 48)
+	hint.AnchorPoint = Vector2.new(0, 1)
+	hint.Position = UDim2.fromScale(0, 1)
+	hint.Size = UDim2.new(1, -180, 0, 48)
 	hint.TextYAlignment = Enum.TextYAlignment.Center
 	local currentPortal: string? = nil
-	local go = Ui.button(card, "Go now", "primary", function()
+	local go = Ui.button(card, "Go Now", "claim", function()
 		if currentPortal then
 			Remotes.get("PartyGo"):FireServer(currentPortal)
 		end
 	end)
 	go.AnchorPoint = Vector2.new(1, 1)
 	go.Position = UDim2.fromScale(1, 1)
+	go.Size = UDim2.fromOffset(160, 48)
 
 	Remotes.get("PartyUpdate").OnClientEvent:Connect(function(portalId, names, seconds, locked)
 		local portal = portalId and portalById[portalId]
@@ -155,7 +224,9 @@ local function partyCard(gui: ScreenGui)
 		title.Text = string.upper(portal.displayName)
 		if locked then
 			countdown.Text = locked
+			countdown.TextColor3 = Ui.colors.bad
 			hint.Text = "This portal is locked. Check the Hunting Board for hunts you can take."
+			hint.Size = UDim2.new(1, 0, 0, 48)
 			go.Visible = false
 			slots.Visible = false
 			return
@@ -163,13 +234,16 @@ local function partyCard(gui: ScreenGui)
 		go.Visible = true
 		slots.Visible = true
 		countdown.Text = `Leaving in {seconds}`
+		countdown.TextColor3 = Ui.colors.gold
 		hint.Text = "Step off the portal to leave the party."
+		hint.Size = UDim2.new(1, -180, 0, 48)
 		for i, slot in slotLabels do
 			local name = names[i]
 			slot.Text = name or "Open"
 			slot.TextColor3 = if name then Ui.colors.text else Ui.colors.disabledText
-			slot.BackgroundColor3 = Ui.colors.raised
-			slot.BackgroundTransparency = if name then 0 else 1
+			slot.BackgroundColor3 = if name
+				then color:Lerp(Color3.new(0, 0, 0), 0.65)
+				else Ui.colors.inset
 			local s = slot:FindFirstChildOfClass("UIStroke") :: UIStroke
 			s.Color = if name then color else Ui.colors.line
 		end
@@ -205,27 +279,15 @@ function CampHud.pin(portalId: string?)
 	beam = part
 end
 
-function CampHud.start()
-	local gui = Ui.screen("CampHud", 5)
-	local _, goldLabel = chip(gui, 24, 120)
-	local _, rankLabel = chip(gui, 154, 150)
-	goldLabel.TextColor3 = Ui.colors.gold
-	goldLabel.Text = "0 gold"
-	local nest = nestWidget(gui)
-	partyCard(gui)
-
-	Remotes.get("InventoryChanged").OnClientEvent:Connect(function(_, gold)
-		goldLabel.Text = `{gold} gold`
-	end)
-	local function showRank()
-		local rank = player:GetAttribute("RiftRank")
-		rankLabel.Text = `RIFT RANK {rank or Hub.startingRank}`
-	end
-	player:GetAttributeChangedSignal("RiftRank"):Connect(showRank)
-	showRank()
-	-- The nest countdown only shows in camp; gold and rank stay visible everywhere.
+-- onPlus: what the pills' + buttons open.
+function CampHud.start(screen: ScreenGui, onPlus: () -> ())
+	local wallet = walletAndProfile(screen, onPlus)
+	local nest = nestWidget(screen)
+	partyCard(screen)
 	local function showLocation()
-		nest.Visible = player:GetAttribute("Location") == "Camp"
+		local inCamp = player:GetAttribute("Location") == "Camp"
+		wallet.Visible = inCamp
+		nest.Visible = inCamp
 	end
 	player:GetAttributeChangedSignal("Location"):Connect(showLocation)
 	showLocation()

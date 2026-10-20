@@ -1,6 +1,6 @@
 --!strict
 -- Client entry point: input and swings, monster animation, the on-screen bars, and the camp
--- screen and station menus.
+-- screen, side menus and station menus (which share one screen so only one panel is open).
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -14,12 +14,18 @@ local MonsterAnimator = require(script:WaitForChild("MonsterAnimator"))
 local PlayerCombat = require(script:WaitForChild("PlayerCombat"))
 local CampHud = require(script:WaitForChild("CampHud"))
 local Stations = require(script:WaitForChild("Stations"))
+local Menus = require(script:WaitForChild("Menus"))
+local PlayerData = require(script:WaitForChild("PlayerData"))
+local Ui = require(script:WaitForChild("Ui"))
 
 Hud.start(PlayerCombat.controls(Hunt.startingWeapon))
 MonsterAnimator.start()
 PlayerCombat.start()
-CampHud.start()
-Stations.start(CampHud.pin, Hud.toast)
+local camp = Ui.screen("Camp", 5)
+Menus.start(camp)
+CampHud.start(camp, Menus.openRewards)
+Stations.start(camp, CampHud.pin, Hud.toast)
+PlayerData.start()
 
 local function displayName(monsterId: string): string
 	local monster = Monsters[monsterId]

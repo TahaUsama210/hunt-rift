@@ -1,7 +1,7 @@
 --!strict
 -- The station menus in Rift Camp. Each station's prompt (F) opens its menu; walking away or
--- the close button shuts it. The server still checks every action (crafting needs you at
--- the blacksmith), the menus only show what is possible.
+-- the red X shuts it. The server still checks every action (crafting needs you at the
+-- blacksmith), the menus only show what is possible.
 
 local Players = game:GetService("Players")
 local ProximityPromptService = game:GetService("ProximityPromptService")
@@ -23,13 +23,13 @@ local PortalParty = require(Rules:WaitForChild("PortalParty"))
 local NestRotation = require(Rules:WaitForChild("NestRotation"))
 local Remotes = require(Shared:WaitForChild("Remotes"))
 local Ui = require(script.Parent:WaitForChild("Ui"))
+local PlayerData = require(script.Parent:WaitForChild("PlayerData"))
 
 local Stations = {}
 
 local player = Players.LocalPlayer
 local gui: ScreenGui
-local open: { panel: Ui.Panel, stationId: string, refresh: () -> () }? = nil
-local inventory: Crafting.Inventory = { items = {}, gold = 0 }
+local open: { root: Frame, stationId: string?, refresh: () -> () }? = nil
 local onPin: (portalId: string?) -> () = function(_: string?) end
 local pinned: string? = nil
 
@@ -42,41 +42,39 @@ local function rgb(c: { number }): Color3
 	return Color3.fromRGB(c[1], c[2], c[3])
 end
 
-local function close()
-	if open then
-		open.panel.root:Destroy()
-		open = nil
-	end
-end
-
 local function rank(): number
 	local r = player:GetAttribute("RiftRank")
 	return if typeof(r) == "number" then r else Hub.startingRank
 end
 
-local function heading(parent: Instance, text: string)
-	Ui.text(parent, string.upper(text), 28, Ui.colors.text, Ui.fonts.heading, 34)
+local function inventory(): Crafting.Inventory
+	return { items = PlayerData.items, gold = PlayerData.gold }
+end
+
+local function heading(parent: Instance, text: string, color: Color3?)
+	Ui.text(parent, text, 26, color or Ui.colors.gold, Ui.fonts.heading, 32)
 end
 
 local function smallCaps(parent: Instance, text: string)
-	Ui.text(parent, string.upper(text), 12, Ui.colors.muted, Ui.fonts.bold, 18)
+	Ui.text(parent, string.upper(text), 14, Ui.colors.text, Ui.fonts.heading, 18)
 end
 
--- The gold action pinned to the bottom-right of the details side.
+-- The one action, full width along the bottom of the details box.
 local function footerButton(detail: Frame, text: string, kind: string, onClick: (() -> ())?)
 	local button = Ui.button(detail, text, kind, onClick)
-	button.AnchorPoint = Vector2.new(1, 1)
-	button.Position = UDim2.fromScale(1, 1)
+	button.AnchorPoint = Vector2.new(0, 1)
+	button.Position = UDim2.fromScale(0, 1)
+	button.Size = UDim2.new(1, 0, 0, 50)
 	return button
 end
 
 local function body(detail: Frame): Frame
-	local column = Ui.frame(detail, UDim2.new(1, 0, 1, -60))
+	local column = Ui.frame(detail, UDim2.new(1, 0, 1, -62))
 	Ui.stack(column, 10)
 	return column
 end
 
--- Hunting Board: one contract per biome for now, until Rules/Contract rolls conditions.
+-- Hunting Board: one hunt per biome for now, until Rules/Contract rolls conditions.
 local function boardMenu(panel: Ui.Panel, selected: { id: string? })
 	Ui.clear(panel.list)
 	Ui.clear(panel.detail)
@@ -85,21 +83,22 @@ local function boardMenu(panel: Ui.Panel, selected: { id: string? })
 	for _, portal in Hub.portals do
 		local ok, why = PortalParty.canEnter(portal, rank())
 		local monster = portal.monsterId and Monsters[portal.monsterId]
-		local subtitle = if ok
-			then `{portal.displayName} · Rank {portal.minRank}`
-			else `{portal.displayName} · {why}`
 		local title = if monster then `Hunt a {monster.displayName}` else portal.displayName
 		Ui.listItem(
 			panel.list,
 			title,
-			subtitle,
+			if ok
+				then `{portal.displayName} · Rank {portal.minRank}`
+				else `{portal.displayName} · {why}`,
 			if pinned == portal.id then "PINNED" elseif ok then nil else "LOCKED",
-			if pinned == portal.id then Ui.colors.gold else Ui.colors.muted,
+			if pinned == portal.id then Ui.colors.gold else Ui.colors.text,
 			selected.id == portal.id,
 			function()
 				selected.id = portal.id
 				boardMenu(panel, selected)
-			end
+			end,
+			if ok then "Hunt" else "Locked",
+			if ok then rgb(portal.color):Lerp(Color3.new(0, 0, 0), 0.15) else Ui.colors.disabled
 		)
 		if selected.id == portal.id then
 			chosen = portal
@@ -110,30 +109,27 @@ local function boardMenu(panel: Ui.Panel, selected: { id: string? })
 	end
 	local column = body(panel.detail)
 	local monster = chosen.monsterId and Monsters[chosen.monsterId]
-	heading(column, if monster then `Hunt a {monster.displayName}` else chosen.displayName)
-	Ui.text(
+	Ui.text(column, chosen.displayName, 14, Ui.colors.muted, Ui.fonts.bold)
+	heading(
 		column,
-		`{chosen.displayName} · Rift Rank {chosen.minRank}`,
-		15,
-		rgb(chosen.color),
-		Ui.fonts.bold
+		if monster then `Hunt a {monster.displayName}` else chosen.displayName,
+		rgb(chosen.color)
 	)
+	Ui.text(column, `Rift Rank {chosen.minRank}`, 15, Ui.colors.text, Ui.fonts.bold)
 	local ok, why = PortalParty.canEnter(chosen, rank())
 	if monster then
 		smallCaps(column, "Likely rewards")
-		local lootTable = Loot[monster.lootTable]
 		local names = {}
-		for _, drop in lootTable.drops do
+		for _, drop in Loot[monster.lootTable].drops do
 			table.insert(names, Ui.pretty(drop.item))
 		end
-		Ui.text(column, table.concat(names, ", "), 15, Ui.colors.text, Ui.fonts.body, 40)
+		Ui.text(column, table.concat(names, ", "), 15, Ui.colors.text, Ui.fonts.bold)
 		Ui.text(
 			column,
 			"Step onto its portal in the north of camp. Friends who join within 10 seconds hunt with you.",
 			14,
 			Ui.colors.muted,
-			Ui.fonts.body,
-			40
+			Ui.fonts.bold
 		)
 	else
 		Ui.text(
@@ -152,7 +148,7 @@ local function boardMenu(panel: Ui.Panel, selected: { id: string? })
 			boardMenu(panel, selected)
 		end)
 	else
-		footerButton(panel.detail, "Pin contract", "primary", function()
+		footerButton(panel.detail, "Pin Hunt", "social", function()
 			pinned = chosen.id
 			onPin(chosen.id)
 			boardMenu(panel, selected)
@@ -160,12 +156,14 @@ local function boardMenu(panel: Ui.Panel, selected: { id: string? })
 	end
 end
 
-local function shortBy(recipe: any): number
-	local count = 0
-	for _, n in Crafting.missing(inventory, recipe) do
-		count += n
+local function shortCount(missing: { [string]: number }): number
+	local short = 0
+	for item, n in missing do
+		if item ~= "gold" then
+			short += n
+		end
 	end
-	return count
+	return short
 end
 
 -- Blacksmith: every recipe, what it costs and what you still need.
@@ -179,26 +177,21 @@ local function forgeMenu(panel: Ui.Panel, selected: { id: string? })
 	table.sort(ids)
 	selected.id = selected.id or ids[1]
 	for _, id in ids do
-		local recipe = Recipes[id]
-		local missing = Crafting.missing(inventory, recipe)
-		local short = 0
-		for item, n in missing do
-			if item ~= "gold" then
-				short += n
-			end
-		end
+		local missing = Crafting.missing(inventory(), Recipes[id])
 		local ready = next(missing) == nil
 		Ui.listItem(
 			panel.list,
 			Ui.pretty(id),
-			if Weapons[id] then "Weapon" else "Armour",
-			if ready then "READY" else `{short} short`,
-			if ready then Ui.colors.good else Ui.colors.bad,
+			if ready then "Ready to forge" else `{shortCount(missing)} materials short`,
+			if ready then "READY" else nil,
+			Ui.colors.good,
 			selected.id == id,
 			function()
 				selected.id = id
 				forgeMenu(panel, selected)
-			end
+			end,
+			if Weapons[id] then "Weapon" else "Armour",
+			if Weapons[id] then Ui.colors.orange else Ui.colors.blue
 		)
 	end
 	local id = selected.id
@@ -207,6 +200,7 @@ local function forgeMenu(panel: Ui.Panel, selected: { id: string? })
 	end
 	local recipe = Recipes[id]
 	local column = body(panel.detail)
+	Ui.text(column, if Weapons[id] then "Weapon" else "Armour", 14, Ui.colors.muted, Ui.fonts.bold)
 	heading(column, Ui.pretty(id))
 	smallCaps(column, "Materials")
 	local materials = {}
@@ -215,10 +209,10 @@ local function forgeMenu(panel: Ui.Panel, selected: { id: string? })
 	end
 	table.sort(materials)
 	for _, item in materials do
-		Ui.costRow(column, Ui.pretty(item), inventory.items[item] or 0, recipe.materials[item])
+		Ui.costRow(column, Ui.pretty(item), PlayerData.items[item] or 0, recipe.materials[item])
 	end
-	Ui.costRow(column, "Gold", inventory.gold, recipe.gold)
-	local missing = Crafting.missing(inventory, recipe)
+	Ui.costRow(column, "Gold", PlayerData.gold, recipe.gold)
+	local missing = Crafting.missing(inventory(), recipe)
 	if next(missing) == nil then
 		footerButton(panel.detail, "Craft", "primary", function()
 			Remotes.get("CraftRequest"):FireServer(id)
@@ -227,16 +221,20 @@ local function forgeMenu(panel: Ui.Panel, selected: { id: string? })
 		-- Say what is missing instead of just greying the button out.
 		local first, n = next(missing)
 		local text = if first == "gold"
-			then `Need {n} gold`
+			then `Need {Ui.number(n)} Gold`
 			else `Need {n} {Ui.pretty(first :: string)}`
 		footerButton(panel.detail, text, "disabled")
-	end
-	if shortBy(recipe) > 0 then
-		Ui.text(column, "Materials come from carves and part breaks on hunts.", 14, Ui.colors.muted)
+		Ui.text(
+			column,
+			"Materials come from carves and part breaks on hunts.",
+			14,
+			Ui.colors.muted,
+			Ui.fonts.bold
+		)
 	end
 end
 
--- Upgrade Table: shows your weapon. Levels and bonus-stat rerolls come with Rules/Upgrade.
+-- Upgrade Table: shows your weapon. The upgrade tree comes with Rules/Upgrade.
 local function upgradeMenu(panel: Ui.Panel)
 	Ui.clear(panel.list)
 	Ui.clear(panel.detail)
@@ -254,74 +252,106 @@ local function upgradeMenu(panel: Ui.Panel)
 		panel.list,
 		weapon.displayName,
 		"Equipped",
-		"Lv 1",
-		Ui.colors.muted,
+		"LV 1",
+		Ui.colors.text,
 		true,
-		function() end
+		function() end,
+		"Weapon",
+		Ui.colors.orange
 	)
 	local column = body(panel.detail)
 	heading(column, weapon.displayName)
-	Ui.text(column, `Attack {weapon.attack}   ·   Affinity {weapon.affinity}%`, 16)
 	Ui.text(
 		column,
-		"Wren will level weapons up (each level adds attack) and reroll the bonus stat on Rare and better gear. Coming in the gear update.",
+		`Attack {weapon.attack}   ·   Affinity {weapon.affinity}%`,
+		16,
+		Ui.colors.text,
+		Ui.fonts.bold
+	)
+	Ui.text(
+		column,
+		"Wren will open an upgrade tree for each weapon: Attack, Affinity, Element and Break branches, one Upgrade Stone per node. Coming in the gear update.",
 		14,
 		Ui.colors.muted,
-		Ui.fonts.body,
-		60
+		Ui.fonts.bold
 	)
-	footerButton(panel.detail, "Coming soon", "disabled")
+	footerButton(panel.detail, "Coming Soon", "disabled")
 end
 
 local function shopMenu(panel: Ui.Panel)
 	Ui.clear(panel.list)
 	Ui.clear(panel.detail)
 	local column = body(panel.detail)
-	heading(column, "Token shop")
+	heading(column, "Token Shop")
 	Ui.text(
 		column,
 		"Every finished hunt will pay monster tokens. Pell trades them for any part of that monster, so bad luck never blocks a piece of gear for long.",
 		15,
 		Ui.colors.muted,
-		Ui.fonts.body,
-		70
+		Ui.fonts.bold
 	)
-	footerButton(panel.detail, "Coming soon", "disabled")
+	footerButton(panel.detail, "Coming Soon", "disabled")
 end
 
-local function nestMenu(panel: Ui.Panel)
-	Ui.clear(panel.list)
-	Ui.clear(panel.detail)
-	local column = body(panel.detail)
+-- The nest raid card, also used by the Eggs tile.
+function Stations.nestCard(parent: Frame)
+	local column = body(parent)
 	local state = NestRotation.at(Hub.nest, Workspace:GetServerTimeNow())
-	heading(column, if state.open then `{state.egg} egg raid` else "Next nest raid")
+	Ui.text(
+		column,
+		if state.open then "Raid open now" else "Next nest raid",
+		14,
+		Ui.colors.muted,
+		Ui.fonts.bold
+	)
+	heading(column, `{state.egg} Egg`, Ui.colors.rift)
 	Ui.text(
 		column,
 		if state.open
-			then `Open now, closes in {NestRotation.format(state.secondsLeft)}`
-			else `{state.egg} egg in {NestRotation.format(state.secondsLeft)}`,
-		18,
-		Ui.colors.rift,
-		Ui.fonts.bold
+			then `Closes in {NestRotation.format(state.secondsLeft)}`
+			else `Opens in {NestRotation.format(state.secondsLeft)}`,
+		20,
+		Ui.colors.text,
+		Ui.fonts.button
 	)
 	Ui.text(
 		column,
 		"Each raid features one monster's egg. Sneak into its nest, grab the egg and get out before the parent catches you. Hatched eggs become pets.",
 		15,
 		Ui.colors.muted,
-		Ui.fonts.body,
-		70
+		Ui.fonts.bold
 	)
-	footerButton(panel.detail, "Raids open in a later update", "disabled")
+	footerButton(parent, "Raids Open Soon", "disabled")
+end
+
+local function nestMenu(panel: Ui.Panel)
+	Ui.clear(panel.list)
+	Ui.clear(panel.detail)
+	local schedule = Hub.nest
+	for i, egg in schedule.eggs do
+		Ui.listItem(
+			panel.list,
+			`{egg} Egg`,
+			"Featured in turn",
+			nil,
+			nil,
+			false,
+			function() end,
+			`Raid {i}`,
+			Ui.colors.purple
+		)
+	end
+	Stations.nestCard(panel.detail)
 end
 
 local function openStation(stationId: string)
-	close()
 	local station = stationById[stationId]
 	if not station then
 		return
 	end
-	local panel = Ui.panel(gui, station.npc, station.title, rgb(station.color), close)
+	local panel = Ui.panel(gui, station.npc, station.title, rgb(station.color), function()
+		open = nil
+	end)
 	local selected = { id = nil :: string? }
 	local refresh: () -> ()
 	if station.kind == "board" then
@@ -345,16 +375,15 @@ local function openStation(stationId: string)
 			nestMenu(panel)
 		end
 	end
-	panel.root.Parent = gui
-	open = { panel = panel, stationId = stationId, refresh = refresh }
+	open = { root = panel.root, stationId = stationId, refresh = refresh }
 	refresh()
 end
 
--- Shuts the menu when you walk away from its station.
+-- Shuts a station's menu when you walk away from it.
 local function watchDistance()
 	RunService.Heartbeat:Connect(function()
 		local current = open
-		if not current then
+		if not (current and current.stationId) then
 			return
 		end
 		local folder = Workspace:FindFirstChild("Hub")
@@ -363,28 +392,29 @@ local function watchDistance()
 		local hunter = model and model:FindFirstChild("Hunter")
 		local character = player.Character
 		local root = character and character:FindFirstChild("HumanoidRootPart")
-		if not (hunter and hunter:IsA("Model") and root and root:IsA("BasePart")) then
-			close()
-			return
-		end
-		if (hunter:GetPivot().Position - root.Position).Magnitude > Hub.stationReach + 2 then
-			close()
+		local far = not (hunter and hunter:IsA("Model") and root and root:IsA("BasePart"))
+			or (hunter:GetPivot().Position - root.Position).Magnitude > Hub.stationReach + 2
+		if far and Ui.isOpen(current.root) then
+			Ui.closeOpen()
 		end
 	end)
 end
 
 -- onPinChanged is told the pinned portal id (or nil) so the camp can light that portal.
-function Stations.start(onPinChanged: (portalId: string?) -> (), toast: (string) -> ())
+function Stations.start(
+	screen: ScreenGui,
+	onPinChanged: (portalId: string?) -> (),
+	toast: (string) -> ()
+)
+	gui = screen
 	onPin = onPinChanged
-	gui = Ui.screen("StationMenus", 10)
 	ProximityPromptService.PromptTriggered:Connect(function(prompt, who)
 		local stationId = prompt:GetAttribute("Station")
 		if who == player and typeof(stationId) == "string" then
 			openStation(stationId)
 		end
 	end)
-	Remotes.get("InventoryChanged").OnClientEvent:Connect(function(items, gold)
-		inventory = { items = items, gold = gold }
+	PlayerData.changed:Connect(function()
 		if open then
 			open.refresh()
 		end
@@ -394,7 +424,6 @@ function Stations.start(onPinChanged: (portalId: string?) -> (), toast: (string)
 			if ok then `Crafted {Ui.pretty(recipeId)}!` else `Can't craft {Ui.pretty(recipeId)} yet`
 		)
 	end)
-	Remotes.get("InventoryRequest"):FireServer()
 	watchDistance()
 end
 
