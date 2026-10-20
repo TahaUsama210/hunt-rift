@@ -42,12 +42,13 @@ each one and choose **Copy Asset ID**.
 
 ## 3. Look at it
 - Anchor the whole model (the snippet does this), press **Play** and walk around it.
-- A fresh import can come in far too big (seen in Studio on 2026-10-20; cause still being
-  checked). Fix it right after import with the command below, which scales the model until the
-  2-stud `Root` cube is 2 studs, anchors it, hides the Root and stands it on the ground:
+- The files import at their real size: the `Root` cube comes in 2 studs wide. (Before
+  2026-10-20 they came in 100 times too big because Studio reads the FBX numbers as studs. If a
+  monster you imported earlier is huge, delete it, `git pull` and import it again, or select it
+  and run this in the command bar to shrink it from its Root cube:)
 
 ```lua
-local m = game.Selection:Get()[1]; local r = m:FindFirstChild("Root", true); print("ROOT SIZE", r.Size.X); m:ScaleTo(m:GetScale() * 2 / r.Size.X); for _, p in m:GetDescendants() do if p:IsA("BasePart") then p.Anchored = true end end; r.Transparency = 1; local cf, s = m:GetBoundingBox(); m:PivotTo(m:GetPivot() + Vector3.new(0, s.Y / 2 - cf.Position.Y, 0))
+local m = game.Selection:Get()[1]; local r = m:FindFirstChild("Root", true); m:ScaleTo(m:GetScale() * 2 / r.Size.X); for _, p in m:GetDescendants() do if p:IsA("BasePart") then p.Anchored = true end end; r.Transparency = 1; local cf, s = m:GetBoundingBox(); m:PivotTo(m:GetPivot() + Vector3.new(0, s.Y / 2 - cf.Position.Y, 0))
 ```
 
 - Big monsters are meant to be big, about 2 to 5 times a player's height.
