@@ -42,8 +42,15 @@ each one and choose **Copy Asset ID**.
 
 ## 3. Look at it
 - Anchor the whole model (the snippet does this), press **Play** and walk around it.
-- The files import at the right size: the `Root` cube comes in exactly 2 studs wide (checked in
-  Studio on 2026-10-20). Big monsters are meant to be big, about 2 to 5 times a player's height.
+- A fresh import can come in far too big (seen in Studio on 2026-10-20; cause still being
+  checked). Fix it right after import with the command below, which scales the model until the
+  2-stud `Root` cube is 2 studs, anchors it, hides the Root and stands it on the ground:
+
+```lua
+local m = game.Selection:Get()[1]; local r = m:FindFirstChild("Root", true); print("ROOT SIZE", r.Size.X); m:ScaleTo(m:GetScale() * 2 / r.Size.X); for _, p in m:GetDescendants() do if p:IsA("BasePart") then p.Anchored = true end end; r.Transparency = 1; local cf, s = m:GetBoundingBox(); m:PivotTo(m:GetPivot() + Vector3.new(0, s.Y / 2 - cf.Position.Y, 0))
+```
+
+- Big monsters are meant to be big, about 2 to 5 times a player's height.
 - Expected heights next to a 5-stud player: Shardkite 13, Burrowmaw 11, Puffgourd 11,
   Cragmaul 12, Vexmantis 13, Slagstrider 17, Riftwarden 26, Gnasher 5.5, Mossback 7.5,
   Glidewing 2.5 (it hovers).
