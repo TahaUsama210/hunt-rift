@@ -1,0 +1,59 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 900,
+      "highTris": 218788
+    },
+    "Head": {
+      "tris": 899,
+      "highTris": 278292
+    },
+    "PetalTop": {
+      "tris": 220,
+      "highTris": 80136
+    },
+    "PetalR": {
+      "tris": 220,
+      "highTris": 80160
+    },
+    "PetalL": {
+      "tris": 220,
+      "highTris": 80932
+    },
+    "ArmR": {
+      "tris": 250,
+      "highTris": 85808
+    },
+    "SpadeR": {
+      "tris": 450,
+      "highTris": 167196
+    },
+    "ArmL": {
+      "tris": 250,
+      "highTris": 85808
+    },
+    "SpadeL": {
+      "tris": 450,
+      "highTris": 167196
+    },
+    "SegA": {
+      "tris": 698,
+      "highTris": 221472
+    },
+    "SegB": {
+      "tris": 500,
+      "highTris": 193068
+    },
+    "SegC": {
+      "tris": 398,
+      "highTris": 166128
+    },
+    "Tail": {
+      "tris": 296,
+      "highTris": 110244
+    }
+  },
+  "totalTris": 5751,
+  "highTris": 1935228,
+  "seconds": 275
+}

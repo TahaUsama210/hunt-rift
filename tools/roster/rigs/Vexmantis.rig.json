@@ -1,0 +1,1764 @@
+{
+ "name": "Vexmantis",
+ "displayName": "Vexmantis",
+ "colors": {
+  "leaf": [
+   102,
+   160,
+   72
+  ],
+  "dark": [
+   52,
+   92,
+   46
+  ],
+  "vein": [
+   200,
+   220,
+   120
+  ],
+  "belly": [
+   180,
+   200,
+   120
+  ],
+  "blade": [
+   70,
+   52,
+   88
+  ],
+  "edge": [
+   200,
+   110,
+   255
+  ],
+  "eye": [
+   210,
+   150,
+   255
+  ],
+  "mandible": [
+   40,
+   30,
+   40
+  ]
+ },
+ "glow": {
+  "edge": true,
+  "eye": true
+ },
+ "displace": {
+  "leaf": 1.0,
+  "dark": 1.0,
+  "vein": 0.5,
+  "belly": 0.6,
+  "blade": 0.4,
+  "mandible": 0.0
+ },
+ "skin": {
+  "cell": 0.8,
+  "depth": 0.035,
+  "noise": 0.025,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 5.0,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    5.0,
+    0.5
+   ],
+   "color": "leaf",
+   "hitzone": "body",
+   "tris": 1100,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    4.5,
+    4.0
+   ],
+   "size": [
+    3.6,
+    2.6,
+    7.6655
+   ],
+   "rot": [
+    7.496,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Wings",
+   "attach": "Body",
+   "joint": "Wings",
+   "jointAt": [
+    0,
+    5.8,
+    0.4
+   ],
+   "color": "dark",
+   "hitzone": "body",
+   "tris": 500,
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    0.8,
+    2.0
+   ],
+   "pos": [
+    0,
+    5.9,
+    0.6
+   ],
+   "fine": true
+  },
+  {
+   "name": "Thorax",
+   "attach": "Body",
+   "joint": "Waist",
+   "jointAt": [
+    0,
+    5.2,
+    -0.2
+   ],
+   "color": "leaf",
+   "hitzone": "body",
+   "tris": 400,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    6.95,
+    -0.9
+   ],
+   "size": [
+    1.6,
+    1.4,
+    4.8549
+   ],
+   "rot": [
+    -122.381,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "attach": "Thorax",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    9.2,
+    -2.4
+   ],
+   "color": "leaf",
+   "hitzone": "head",
+   "tris": 600,
+   "shape": "ellipsoid",
+   "size": [
+    2.6,
+    1.8,
+    1.6
+   ],
+   "pos": [
+    0,
+    9.6,
+    -2.8
+   ],
+   "fine": true,
+   "breaksWith": "head"
+  },
+  {
+   "name": "ScytheArmR",
+   "attach": "Thorax",
+   "joint": "ShoulderR",
+   "jointAt": [
+    0.7,
+    8.0,
+    -1.7
+   ],
+   "color": "leaf",
+   "hitzone": "arm",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    1.25,
+    7.55,
+    -3.1
+   ],
+   "size": [
+    1.0,
+    1.1,
+    3.7946
+   ],
+   "rot": [
+    159.864,
+    22.139,
+    0.0
+   ]
+  },
+  {
+   "name": "BladeR",
+   "attach": "ScytheArmR",
+   "joint": "ElbowR",
+   "jointAt": [
+    1.9,
+    7.0,
+    -4.6
+   ],
+   "color": "blade",
+   "hitzone": "blade",
+   "tris": 500,
+   "shape": "ellipsoid",
+   "pos": [
+    2.05,
+    5.35,
+    -5.9
+   ],
+   "size": [
+    0.42,
+    1.7,
+    4.6195
+   ],
+   "rot": [
+    130.601,
+    3.724,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "arm"
+  },
+  {
+   "name": "ScytheArmL",
+   "attach": "Thorax",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -0.7,
+    8.0,
+    -1.7
+   ],
+   "color": "leaf",
+   "hitzone": "arm",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -1.25,
+    7.55,
+    -3.1
+   ],
+   "size": [
+    1.0,
+    1.1,
+    3.7946
+   ],
+   "rot": [
+    159.864,
+    -22.139,
+    -0.0
+   ]
+  },
+  {
+   "name": "BladeL",
+   "attach": "ScytheArmL",
+   "joint": "ElbowL",
+   "jointAt": [
+    -1.9,
+    7.0,
+    -4.6
+   ],
+   "color": "blade",
+   "hitzone": "blade",
+   "tris": 500,
+   "shape": "ellipsoid",
+   "pos": [
+    -2.05,
+    5.35,
+    -5.9
+   ],
+   "size": [
+    0.42,
+    1.7,
+    4.6195
+   ],
+   "rot": [
+    130.601,
+    -3.724,
+    -0.0
+   ],
+   "fine": true,
+   "breaksWith": "arm"
+  },
+  {
+   "name": "LegMR",
+   "attach": "Body",
+   "joint": "HipMR",
+   "jointAt": [
+    0.9,
+    4.9,
+    0.4
+   ],
+   "color": "leaf",
+   "hitzone": "leg",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    2.2,
+    5.65,
+    0.1
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.4913
+   ],
+   "rot": [
+    -111.801,
+    60.016,
+    0.0
+   ]
+  },
+  {
+   "name": "LegML",
+   "attach": "Body",
+   "joint": "HipML",
+   "jointAt": [
+    -0.9,
+    4.9,
+    0.4
+   ],
+   "color": "leaf",
+   "hitzone": "leg",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    -2.2,
+    5.65,
+    0.1
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.4913
+   ],
+   "rot": [
+    -111.801,
+    -60.016,
+    -0.0
+   ]
+  },
+  {
+   "name": "LegBR",
+   "attach": "Body",
+   "joint": "HipBR",
+   "jointAt": [
+    0.9,
+    4.9,
+    2.0
+   ],
+   "color": "leaf",
+   "hitzone": "leg",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    2.2,
+    5.65,
+    2.4
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.5377
+   ],
+   "rot": [
+    -61.928,
+    58.736,
+    0.0
+   ]
+  },
+  {
+   "name": "LegBL",
+   "attach": "Body",
+   "joint": "HipBL",
+   "jointAt": [
+    -0.9,
+    4.9,
+    2.0
+   ],
+   "color": "leaf",
+   "hitzone": "leg",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    -2.2,
+    5.65,
+    2.4
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.5377
+   ],
+   "rot": [
+    -61.928,
+    -58.736,
+    -0.0
+   ]
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    4.0,
+    3.9
+   ],
+   "size": [
+    2.8,
+    1.6,
+    6.6483
+   ],
+   "rot": [
+    6.911,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.4,
+    0.4
+   ],
+   "pos": [
+    0,
+    4.75,
+    1.6
+   ],
+   "rot": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.4,
+    0.4
+   ],
+   "pos": [
+    0,
+    4.61,
+    2.9000000000000004
+   ],
+   "rot": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.4,
+    0.4
+   ],
+   "pos": [
+    0,
+    4.47,
+    4.2
+   ],
+   "rot": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.4,
+    0.4
+   ],
+   "pos": [
+    0,
+    4.33,
+    5.5
+   ],
+   "rot": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.4,
+    0.4
+   ],
+   "pos": [
+    0,
+    4.1899999999999995,
+    6.800000000000001
+   ],
+   "rot": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    1.95,
+    4.26,
+    2.9
+   ],
+   "size": [
+    1.9,
+    0.22,
+    3.3087
+   ],
+   "rot": [
+    16.294,
+    35.046,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.95,
+    4.31,
+    2.9
+   ],
+   "size": [
+    0.25,
+    0.26,
+    3.3087
+   ],
+   "rot": [
+    16.294,
+    35.046,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    1.85,
+    4.06,
+    4.9
+   ],
+   "size": [
+    1.9,
+    0.22,
+    3.1981
+   ],
+   "rot": [
+    16.294,
+    32.112,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.85,
+    4.11,
+    4.9
+   ],
+   "size": [
+    0.25,
+    0.26,
+    3.1981
+   ],
+   "rot": [
+    16.294,
+    32.112,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    1.6,
+    3.88,
+    6.7
+   ],
+   "size": [
+    1.9,
+    0.22,
+    2.6074
+   ],
+   "rot": [
+    18.122,
+    27.402,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.6,
+    3.93,
+    6.7
+   ],
+   "size": [
+    0.25,
+    0.26,
+    2.6074
+   ],
+   "rot": [
+    18.122,
+    27.402,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.95,
+    4.26,
+    2.9
+   ],
+   "size": [
+    1.9,
+    0.22,
+    3.3087
+   ],
+   "rot": [
+    16.294,
+    -35.046,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.95,
+    4.31,
+    2.9
+   ],
+   "size": [
+    0.25,
+    0.26,
+    3.3087
+   ],
+   "rot": [
+    16.294,
+    -35.046,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.85,
+    4.06,
+    4.9
+   ],
+   "size": [
+    1.9,
+    0.22,
+    3.1981
+   ],
+   "rot": [
+    16.294,
+    -32.112,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.85,
+    4.11,
+    4.9
+   ],
+   "size": [
+    0.25,
+    0.26,
+    3.1981
+   ],
+   "rot": [
+    16.294,
+    -32.112,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.6,
+    3.88,
+    6.7
+   ],
+   "size": [
+    1.9,
+    0.22,
+    2.6074
+   ],
+   "rot": [
+    18.122,
+    -27.402,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.6,
+    3.93,
+    6.7
+   ],
+   "size": [
+    0.25,
+    0.26,
+    2.6074
+   ],
+   "rot": [
+    18.122,
+    -27.402,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.85,
+    5.55,
+    4.2
+   ],
+   "size": [
+    2.8,
+    0.3,
+    8.4865
+   ],
+   "rot": [
+    7.461,
+    3.378,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    0.85,
+    5.6,
+    4.2
+   ],
+   "size": [
+    0.3,
+    0.34,
+    8.4865
+   ],
+   "rot": [
+    7.461,
+    3.378,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.3,
+    5.745,
+    3.12
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    42.289,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.425,
+    5.47,
+    5.22
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    42.289,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    1.55,
+    5.195,
+    7.32
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    42.289,
+    0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.85,
+    5.55,
+    4.2
+   ],
+   "size": [
+    2.8,
+    0.3,
+    8.4865
+   ],
+   "rot": [
+    7.461,
+    -3.378,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.85,
+    5.6,
+    4.2
+   ],
+   "size": [
+    0.3,
+    0.34,
+    8.4865
+   ],
+   "rot": [
+    7.461,
+    -3.378,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.3,
+    5.745,
+    3.12
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    -42.289,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.425,
+    5.47,
+    5.22
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    -42.289,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Wings",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.55,
+    5.195,
+    7.32
+   ],
+   "size": [
+    0.18,
+    0.3,
+    1.6348
+   ],
+   "rot": [
+    7.125,
+    -42.289,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Thorax",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    7.8,
+    -1.45
+   ],
+   "size": [
+    2.6,
+    0.9,
+    1.8358
+   ],
+   "rot": [
+    -119.358,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Thorax",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    1.8,
+    2.2
+   ],
+   "pos": [
+    0,
+    5.2,
+    -0.2
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.4,
+    -2.9
+   ],
+   "size": [
+    1.1,
+    0.9,
+    2.9732
+   ],
+   "rot": [
+    109.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    1.3,
+    1.5,
+    1.2
+   ],
+   "pos": [
+    1.25,
+    9.95,
+    -2.85
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    0.35,
+    8.3,
+    -3.3
+   ],
+   "size": [
+    0.35,
+    0.35,
+    1.6882
+   ],
+   "rot": [
+    119.745,
+    -17.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    0.4,
+    10.2,
+    -3.0
+   ],
+   "size": [
+    0.24,
+    0.24,
+    7.133
+   ],
+   "rot": [
+    -118.301,
+    34.109,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    1.3,
+    1.5,
+    1.2
+   ],
+   "pos": [
+    -1.25,
+    9.95,
+    -2.85
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.35,
+    8.3,
+    -3.3
+   ],
+   "size": [
+    0.35,
+    0.35,
+    1.6882
+   ],
+   "rot": [
+    119.745,
+    17.228,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    10.2,
+    -3.0
+   ],
+   "size": [
+    0.24,
+    0.24,
+    7.133
+   ],
+   "rot": [
+    -118.301,
+    -34.109,
+    -0.0
+   ]
+  },
+  {
+   "segment": "ScytheArmR",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    1.4,
+    7.45,
+    -3.4
+   ],
+   "size": [
+    0.6,
+    0.9,
+    2.265
+   ],
+   "rot": [
+    160.71,
+    20.684,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    1.9,
+    7.0,
+    -4.6
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.1,
+    4.95,
+    -5.75
+   ],
+   "size": [
+    0.3,
+    0.5,
+    4.2743
+   ],
+   "rot": [
+    129.289,
+    4.025,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    1.995,
+    6.875,
+    -4.67
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.034,
+    6.42,
+    -5.034
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.073,
+    5.965,
+    -5.398
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.112,
+    5.51,
+    -5.762
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.151,
+    5.055,
+    -6.126
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.19,
+    4.6,
+    -6.49
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "BladeR",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    2.2,
+    3.8,
+    -7.2
+   ],
+   "size": [
+    0.45,
+    0.8,
+    3.2265
+   ],
+   "rot": [
+    150.255,
+    1.776,
+    0.0
+   ]
+  },
+  {
+   "segment": "ScytheArmL",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.4,
+    7.45,
+    -3.4
+   ],
+   "size": [
+    0.6,
+    0.9,
+    2.265
+   ],
+   "rot": [
+    160.71,
+    -20.684,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    -1.9,
+    7.0,
+    -4.6
+   ],
+   "rot": null
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.1,
+    4.95,
+    -5.75
+   ],
+   "size": [
+    0.3,
+    0.5,
+    4.2743
+   ],
+   "rot": [
+    129.289,
+    -4.025,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.995,
+    6.875,
+    -4.67
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.034,
+    6.42,
+    -5.034
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.073,
+    5.965,
+    -5.398
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.112,
+    5.51,
+    -5.762
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.151,
+    5.055,
+    -6.126
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.19,
+    4.6,
+    -6.49
+   ],
+   "size": [
+    0.22,
+    0.22,
+    1.4866
+   ],
+   "rot": [
+    -19.654,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "BladeL",
+   "color": "edge",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.2,
+    3.8,
+    -7.2
+   ],
+   "size": [
+    0.45,
+    0.8,
+    3.2265
+   ],
+   "rot": [
+    150.255,
+    -1.776,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LegMR",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    4.3,
+    3.3,
+    -0.5
+   ],
+   "size": [
+    0.42,
+    0.42,
+    6.6397
+   ],
+   "rot": [
+    95.528,
+    12.667,
+    0.0
+   ]
+  },
+  {
+   "segment": "LegMR",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.7
+   ],
+   "pos": [
+    3.6,
+    6.4,
+    -0.19999999999999996
+   ]
+  },
+  {
+   "segment": "LegMR",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    5.0,
+    0.5,
+    -0.8
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.3121
+   ],
+   "rot": [
+    129.806,
+    17.749,
+    0.0
+   ]
+  },
+  {
+   "segment": "LegML",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    -4.3,
+    3.3,
+    -0.5
+   ],
+   "size": [
+    0.42,
+    0.42,
+    6.6397
+   ],
+   "rot": [
+    95.528,
+    -12.667,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LegML",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.7
+   ],
+   "pos": [
+    -3.6,
+    6.4,
+    -0.19999999999999996
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LegML",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.0,
+    0.5,
+    -0.8
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.3121
+   ],
+   "rot": [
+    129.806,
+    -17.749,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LegBR",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    4.3,
+    3.3,
+    3.2
+   ],
+   "size": [
+    0.42,
+    0.42,
+    6.6625
+   ],
+   "rot": [
+    82.648,
+    12.623,
+    0.0
+   ]
+  },
+  {
+   "segment": "LegBR",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.7
+   ],
+   "pos": [
+    3.6,
+    6.4,
+    2.8
+   ]
+  },
+  {
+   "segment": "LegBR",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    5.0,
+    0.5,
+    3.6
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.3121
+   ],
+   "rot": [
+    129.806,
+    17.749,
+    0.0
+   ]
+  },
+  {
+   "segment": "LegBL",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "pos": [
+    -4.3,
+    3.3,
+    3.2
+   ],
+   "size": [
+    0.42,
+    0.42,
+    6.6625
+   ],
+   "rot": [
+    82.648,
+    -12.623,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LegBL",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.7
+   ],
+   "pos": [
+    -3.6,
+    6.4,
+    2.8
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LegBL",
+   "color": "mandible",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.0,
+    0.5,
+    3.6
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.3121
+   ],
+   "rot": [
+    129.806,
+    -17.749,
+    -0.0
+   ]
+  }
+ ],
+ "notes": "Elderbough Canopy. Sharp. Ambush from trunks; pollen flare; bleeding cuts; breakable blades.",
+ "sky": [
+  0.58,
+  0.72,
+  0.6
+ ]
+}

@@ -1,0 +1,39 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 1598,
+      "highTris": 207980
+    },
+    "Crown": {
+      "tris": 700,
+      "highTris": 161532
+    },
+    "Head": {
+      "tris": 900,
+      "highTris": 126268
+    },
+    "Jaw": {
+      "tris": 447,
+      "highTris": 115124
+    },
+    "LegFR": {
+      "tris": 380,
+      "highTris": 136332
+    },
+    "LegBR": {
+      "tris": 380,
+      "highTris": 214548
+    },
+    "LegFL": {
+      "tris": 380,
+      "highTris": 136332
+    },
+    "LegBL": {
+      "tris": 380,
+      "highTris": 214548
+    }
+  },
+  "totalTris": 5165,
+  "highTris": 1312664,
+  "seconds": 197
+}

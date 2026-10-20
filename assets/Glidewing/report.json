@@ -1,0 +1,27 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 348,
+      "highTris": 22204
+    },
+    "Head": {
+      "tris": 400,
+      "highTris": 14196
+    },
+    "WingR": {
+      "tris": 450,
+      "highTris": 41892
+    },
+    "WingL": {
+      "tris": 450,
+      "highTris": 41892
+    },
+    "Tail": {
+      "tris": 300,
+      "highTris": 16780
+    }
+  },
+  "totalTris": 1948,
+  "highTris": 136964,
+  "seconds": 94
+}

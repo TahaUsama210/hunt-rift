@@ -1,0 +1,1829 @@
+{
+ "name": "Riftwarden",
+ "displayName": "Riftwarden",
+ "colors": {
+  "hide": [
+   214,
+   208,
+   196
+  ],
+  "slate": [
+   62,
+   64,
+   78
+  ],
+  "void": [
+   44,
+   34,
+   74
+  ],
+  "gold": [
+   214,
+   176,
+   96
+  ],
+  "rift": [
+   255,
+   226,
+   150
+  ],
+  "hoof": [
+   52,
+   50,
+   58
+  ],
+  "eye": [
+   255,
+   240,
+   200
+  ]
+ },
+ "glow": {
+  "rift": true,
+  "eye": true
+ },
+ "displace": {
+  "hide": 1.0,
+  "slate": 1.0,
+  "void": 0.6,
+  "gold": 0.3,
+  "hoof": 0.3
+ },
+ "skin": {
+  "cell": 0.42,
+  "depth": 0.06,
+  "noise": 0.05,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 12.0,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    12.0,
+    0
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 1100,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.6,
+    0.7
+   ],
+   "size": [
+    6.4,
+    6.6,
+    11.463
+   ],
+   "rot": [
+    -173.991,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Neck",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    14.2,
+    -5.4
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.8,
+    -6.6
+   ],
+   "size": [
+    3.2,
+    3.4,
+    5.9464
+   ],
+   "rot": [
+    -132.274,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "attach": "Neck",
+   "joint": "Head",
+   "jointAt": [
+    0,
+    18.2,
+    -8.8
+   ],
+   "color": "hide",
+   "hitzone": "head",
+   "tris": 650,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    18.1,
+    -10.5
+   ],
+   "size": [
+    2.8,
+    2.6,
+    4.3174
+   ],
+   "rot": [
+    166.608,
+    0.0,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "head"
+  },
+  {
+   "name": "Jaw",
+   "attach": "Head",
+   "joint": "Jaw",
+   "jointAt": [
+    0,
+    17.4,
+    -9.4
+   ],
+   "color": "slate",
+   "hitzone": "head",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    17.05,
+    -11.2
+   ],
+   "size": [
+    1.8,
+    0.9,
+    3.6346
+   ],
+   "rot": [
+    172.093,
+    0.0,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "Antlers",
+   "attach": "Head",
+   "joint": "Crown",
+   "jointAt": [
+    0,
+    19.6,
+    -9.4
+   ],
+   "color": "gold",
+   "hitzone": "horn",
+   "tris": 700,
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    1.2,
+    1.6
+   ],
+   "pos": [
+    0,
+    19.8,
+    -9.4
+   ],
+   "fine": true,
+   "breaksWith": "horn"
+  },
+  {
+   "name": "UpperFrontR",
+   "attach": "Body",
+   "joint": "HipFrontR",
+   "jointAt": [
+    2.8,
+    12.0,
+    -3.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    3.0,
+    9.4,
+    -4.1
+   ],
+   "size": [
+    2.6,
+    2.7300000000000004,
+    5.8414
+   ],
+   "rot": [
+    100.886,
+    4.32,
+    0.0
+   ]
+  },
+  {
+   "name": "LowerFrontR",
+   "attach": "UpperFrontR",
+   "joint": "KneeFrontR",
+   "jointAt": [
+    3.2,
+    6.8,
+    -4.6
+   ],
+   "color": "slate",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    3.2,
+    3.85,
+    -4.2
+   ],
+   "size": [
+    1.3,
+    1.4,
+    6.4303
+   ],
+   "rot": [
+    82.278,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "UpperFrontL",
+   "attach": "Body",
+   "joint": "HipFrontL",
+   "jointAt": [
+    -2.8,
+    12.0,
+    -3.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.0,
+    9.4,
+    -4.1
+   ],
+   "size": [
+    2.6,
+    2.7300000000000004,
+    5.8414
+   ],
+   "rot": [
+    100.886,
+    -4.32,
+    -0.0
+   ]
+  },
+  {
+   "name": "LowerFrontL",
+   "attach": "UpperFrontL",
+   "joint": "KneeFrontL",
+   "jointAt": [
+    -3.2,
+    6.8,
+    -4.6
+   ],
+   "color": "slate",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.2,
+    3.85,
+    -4.2
+   ],
+   "size": [
+    1.3,
+    1.4,
+    6.4303
+   ],
+   "rot": [
+    82.278,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "name": "UpperBackR",
+   "attach": "Body",
+   "joint": "HipBackR",
+   "jointAt": [
+    2.6,
+    12.4,
+    4.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    2.9,
+    9.9,
+    5.9
+   ],
+   "size": [
+    3.0,
+    3.1500000000000004,
+    6.2342
+   ],
+   "rot": [
+    62.526,
+    6.077,
+    0.0
+   ]
+  },
+  {
+   "name": "LowerBackR",
+   "attach": "UpperBackR",
+   "joint": "KneeBackR",
+   "jointAt": [
+    3.2,
+    7.4,
+    7.2
+   ],
+   "color": "slate",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    3.2,
+    4.15,
+    6.3
+   ],
+   "size": [
+    1.3,
+    1.4,
+    7.2842
+   ],
+   "rot": [
+    105.479,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "UpperBackL",
+   "attach": "Body",
+   "joint": "HipBackL",
+   "jointAt": [
+    -2.6,
+    12.4,
+    4.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -2.9,
+    9.9,
+    5.9
+   ],
+   "size": [
+    3.0,
+    3.1500000000000004,
+    6.2342
+   ],
+   "rot": [
+    62.526,
+    -6.077,
+    -0.0
+   ]
+  },
+  {
+   "name": "LowerBackL",
+   "attach": "UpperBackL",
+   "joint": "KneeBackL",
+   "jointAt": [
+    -3.2,
+    7.4,
+    7.2
+   ],
+   "color": "slate",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.2,
+    4.15,
+    6.3
+   ],
+   "size": [
+    1.3,
+    1.4,
+    7.2842
+   ],
+   "rot": [
+    105.479,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "name": "TailA",
+   "attach": "Body",
+   "joint": "TailA",
+   "jointAt": [
+    0,
+    13.4,
+    7.0
+   ],
+   "color": "hide",
+   "hitzone": "tail",
+   "tris": 350,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.8,
+    9.2
+   ],
+   "size": [
+    2.6,
+    2.4,
+    5.8241
+   ],
+   "rot": [
+    15.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "TailB",
+   "attach": "TailA",
+   "joint": "TailB",
+   "jointAt": [
+    0,
+    12.0,
+    11.8
+   ],
+   "color": "slate",
+   "hitzone": "tail",
+   "tris": 350,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    11.35,
+    14.0
+   ],
+   "size": [
+    1.6,
+    1.5,
+    5.412
+   ],
+   "rot": [
+    16.091,
+    0.0,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "tail"
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    6.6,
+    7.6,
+    6.4
+   ],
+   "pos": [
+    0,
+    12.6,
+    -3.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    6.0,
+    6.2,
+    5.6
+   ],
+   "pos": [
+    0,
+    12.6,
+    4.8
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "slate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.9,
+    -0.3
+   ],
+   "size": [
+    4.4,
+    3.2,
+    8.6209
+   ],
+   "rot": [
+    -176.009,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.0,
+    4.6,
+    4.4
+   ],
+   "pos": [
+    2.6,
+    12.4,
+    -3.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.2,
+    5.0,
+    5.0
+   ],
+   "pos": [
+    2.4,
+    12.6,
+    4.8
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    1.9,
+    15.299999999999999,
+    -2.0
+   ],
+   "rot": [
+    0,
+    0,
+    -32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    1.9,
+    15.0,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    -32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    1.9,
+    15.1,
+    4.0
+   ],
+   "rot": [
+    0,
+    0,
+    -32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.0,
+    4.6,
+    4.4
+   ],
+   "pos": [
+    -2.6,
+    12.4,
+    -3.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.2,
+    5.0,
+    5.0
+   ],
+   "pos": [
+    -2.4,
+    12.6,
+    4.8
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    -1.9,
+    15.299999999999999,
+    -2.0
+   ],
+   "rot": [
+    0,
+    0,
+    32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    -1.9,
+    15.0,
+    1.0
+   ],
+   "rot": [
+    0,
+    0,
+    32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "void",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    -1.9,
+    15.1,
+    4.0
+   ],
+   "rot": [
+    0,
+    0,
+    32
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.184,
+    -3.8
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.388,
+    -2.1
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.592,
+    -0.4
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.604,
+    1.3
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.4,
+    3.0
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.196,
+    4.7
+   ],
+   "size": [
+    0.7,
+    0.45,
+    4.8374
+   ],
+   "rot": [
+    -60.255,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "slate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.0,
+    -7.2
+   ],
+   "size": [
+    2.2,
+    2.0,
+    4.8166
+   ],
+   "rot": [
+    -131.634,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    15.2,
+    -4.6
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    25.59,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    15.2,
+    -4.6
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    -25.59,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    15.95,
+    -5.5
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    25.59,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    15.95,
+    -5.5
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    -25.59,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    16.7,
+    -6.4
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    25.59,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    16.7,
+    -6.4
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    -25.59,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    17.45,
+    -7.3
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    25.59,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    17.45,
+    -7.3
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    -25.59,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    18.2,
+    -8.2
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    25.59,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    18.2,
+    -8.2
+   ],
+   "size": [
+    1.0,
+    0.25,
+    4.6303
+   ],
+   "rot": [
+    -16.699,
+    -25.59,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    17.65,
+    -12.1
+   ],
+   "size": [
+    1.8,
+    1.6,
+    2.6926
+   ],
+   "rot": [
+    164.932,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "size": [
+    2.4,
+    0.5,
+    2.2
+   ],
+   "pos": [
+    0,
+    19.6,
+    -9.6
+   ],
+   "rot": [
+    -10,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.6,
+    0.45,
+    0.8
+   ],
+   "pos": [
+    1.25,
+    18.8,
+    -10.4
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "void",
+   "shape": "ellipsoid",
+   "pos": [
+    1.05,
+    17.9,
+    -10.9
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.8018
+   ],
+   "rot": [
+    158.962,
+    -6.147,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "slate",
+   "shape": "ellipsoid",
+   "size": [
+    0.35,
+    0.3,
+    0.4
+   ],
+   "pos": [
+    0.55,
+    17.6,
+    -13.3
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.6,
+    0.45,
+    0.8
+   ],
+   "pos": [
+    -1.25,
+    18.8,
+    -10.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "void",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.05,
+    17.9,
+    -10.9
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.8018
+   ],
+   "rot": [
+    158.962,
+    6.147,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "slate",
+   "shape": "ellipsoid",
+   "size": [
+    0.35,
+    0.3,
+    0.4
+   ],
+   "pos": [
+    -0.55,
+    17.6,
+    -13.3
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Antlers",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    1.85,
+    21.3,
+    -8.6
+   ],
+   "size": [
+    0.75,
+    0.75,
+    3.7802
+   ],
+   "rot": [
+    -65.225,
+    33.565,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    2.8,
+    22.6,
+    -8.0
+   ],
+   "size": [
+    0.65,
+    0.65,
+    7.6525
+   ],
+   "rot": [
+    -51.843,
+    21.463,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    1.8,
+    21.3,
+    -8.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    6.0959
+   ],
+   "rot": [
+    -153.435,
+    36.197,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    2.8,
+    22.6,
+    -8.0
+   ],
+   "size": [
+    0.45,
+    0.45,
+    4.6303
+   ],
+   "rot": [
+    -146.31,
+    71.852,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    3.4,
+    23.8,
+    -7.0
+   ],
+   "size": [
+    0.45,
+    0.45,
+    5.2
+   ],
+   "rot": [
+    -104.036,
+    -17.92,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    3.8,
+    24.6,
+    -6.4
+   ],
+   "size": [
+    0.45,
+    0.45,
+    5.7966
+   ],
+   "rot": [
+    -32.005,
+    49.382,
+    0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.85,
+    21.3,
+    -8.6
+   ],
+   "size": [
+    0.75,
+    0.75,
+    3.7802
+   ],
+   "rot": [
+    -65.225,
+    -33.565,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.8,
+    22.6,
+    -8.0
+   ],
+   "size": [
+    0.65,
+    0.65,
+    7.6525
+   ],
+   "rot": [
+    -51.843,
+    -21.463,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.8,
+    21.3,
+    -8.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    6.0959
+   ],
+   "rot": [
+    -153.435,
+    -36.197,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.8,
+    22.6,
+    -8.0
+   ],
+   "size": [
+    0.45,
+    0.45,
+    4.6303
+   ],
+   "rot": [
+    -146.31,
+    -71.852,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.4,
+    23.8,
+    -7.0
+   ],
+   "size": [
+    0.45,
+    0.45,
+    5.2
+   ],
+   "rot": [
+    -104.036,
+    17.92,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Antlers",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.8,
+    24.6,
+    -6.4
+   ],
+   "size": [
+    0.45,
+    0.45,
+    5.7966
+   ],
+   "rot": [
+    -32.005,
+    -49.382,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerFrontR",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    1.7,
+    1.7,
+    1.8
+   ],
+   "pos": [
+    3.2,
+    6.8,
+    -4.6
+   ]
+  },
+  {
+   "segment": "LowerFrontR",
+   "color": "hoof",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    1.3,
+    1.8
+   ],
+   "pos": [
+    3.2,
+    0.65,
+    -4.1
+   ]
+  },
+  {
+   "segment": "LowerFrontR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    3.2,
+    1.7,
+    -3.8
+   ],
+   "size": [
+    1.7,
+    1.7,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerFrontL",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    1.7,
+    1.7,
+    1.8
+   ],
+   "pos": [
+    -3.2,
+    6.8,
+    -4.6
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerFrontL",
+   "color": "hoof",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    1.3,
+    1.8
+   ],
+   "pos": [
+    -3.2,
+    0.65,
+    -4.1
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerFrontL",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.2,
+    1.7,
+    -3.8
+   ],
+   "size": [
+    1.7,
+    1.7,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerBackR",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    1.7,
+    1.7,
+    1.8
+   ],
+   "pos": [
+    3.2,
+    7.4,
+    7.2
+   ]
+  },
+  {
+   "segment": "LowerBackR",
+   "color": "hoof",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    1.3,
+    1.8
+   ],
+   "pos": [
+    3.2,
+    0.65,
+    5.1000000000000005
+   ]
+  },
+  {
+   "segment": "LowerBackR",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    3.2,
+    1.7,
+    5.4
+   ],
+   "size": [
+    1.7,
+    1.7,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerBackL",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    1.7,
+    1.7,
+    1.8
+   ],
+   "pos": [
+    -3.2,
+    7.4,
+    7.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerBackL",
+   "color": "hoof",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    1.3,
+    1.8
+   ],
+   "pos": [
+    -3.2,
+    0.65,
+    5.1000000000000005
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerBackL",
+   "color": "gold",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.2,
+    1.7,
+    5.4
+   ],
+   "size": [
+    1.7,
+    1.7,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "TailB",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    16.2
+   ],
+   "size": [
+    0.8,
+    0.3,
+    6.8
+   ],
+   "rot": [
+    -28.072,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailB",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    16.2
+   ],
+   "size": [
+    0.8,
+    0.3,
+    5.8493
+   ],
+   "rot": [
+    -18.153,
+    28.6,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailB",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    16.2
+   ],
+   "size": [
+    0.8,
+    0.3,
+    5.8493
+   ],
+   "rot": [
+    -18.153,
+    -28.6,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailB",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    16.2
+   ],
+   "size": [
+    0.8,
+    0.3,
+    6.1626
+   ],
+   "rot": [
+    10.685,
+    45.56,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailB",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    16.2
+   ],
+   "size": [
+    0.8,
+    0.3,
+    6.1626
+   ],
+   "rot": [
+    10.685,
+    -45.56,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailA",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    14.4,
+    7.5
+   ],
+   "size": [
+    0.5,
+    0.4,
+    2.5612
+   ],
+   "rot": [
+    -38.66,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailA",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    13.95,
+    9.1
+   ],
+   "size": [
+    0.5,
+    0.4,
+    2.5612
+   ],
+   "rot": [
+    -38.66,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "TailA",
+   "color": "rift",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    13.5,
+    10.7
+   ],
+   "size": [
+    0.5,
+    0.4,
+    2.5612
+   ],
+   "rot": [
+    -38.66,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "notes": "Elder. Appears in any biome through a rift; borrows other biomes' hazards; antler branches break.",
+ "sky": [
+  0.5,
+  0.52,
+  0.66
+ ]
+}

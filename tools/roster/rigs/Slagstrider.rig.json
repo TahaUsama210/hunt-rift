@@ -1,0 +1,1746 @@
+{
+ "name": "Slagstrider",
+ "displayName": "Slagstrider",
+ "colors": {
+  "ash": [
+   92,
+   86,
+   84
+  ],
+  "crust": [
+   34,
+   30,
+   32
+  ],
+  "magma": [
+   255,
+   110,
+   30
+  ],
+  "sac": [
+   255,
+   150,
+   50
+  ],
+  "beak": [
+   60,
+   50,
+   48
+  ],
+  "eye": [
+   255,
+   200,
+   80
+  ],
+  "toe": [
+   70,
+   60,
+   58
+  ]
+ },
+ "glow": {
+  "magma": true,
+  "sac": true,
+  "eye": true
+ },
+ "displace": {
+  "ash": 1.0,
+  "crust": 1.0,
+  "beak": 0.2,
+  "toe": 0.5
+ },
+ "skin": {
+  "cell": 0.4,
+  "depth": 0.07,
+  "noise": 0.05,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 10.5,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    10.5,
+    0
+   ],
+   "color": "ash",
+   "hitzone": "body",
+   "tris": 1000,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    10.7,
+    0.0
+   ],
+   "size": [
+    4.2,
+    3.8,
+    5.2953
+   ],
+   "rot": [
+    -169.114,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Crust",
+   "attach": "Body",
+   "joint": "Crust",
+   "jointAt": [
+    0,
+    12.0,
+    0
+   ],
+   "color": "crust",
+   "hitzone": "back",
+   "tris": 600,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    11.9,
+    0.0
+   ],
+   "size": [
+    4.0,
+    2.4,
+    5.6886
+   ],
+   "rot": [
+    -169.875,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "back"
+  },
+  {
+   "name": "Neck",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    11.4,
+    -2.4
+   ],
+   "color": "ash",
+   "hitzone": "body",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.9,
+    -3.3
+   ],
+   "size": [
+    1.7,
+    1.8,
+    4.2802
+   ],
+   "rot": [
+    -127.405,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "attach": "Neck",
+   "joint": "Head",
+   "jointAt": [
+    0,
+    14.7,
+    -4.7
+   ],
+   "color": "ash",
+   "hitzone": "head",
+   "tris": 650,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    14.85,
+    -5.6
+   ],
+   "size": [
+    1.7,
+    1.5,
+    2.816
+   ],
+   "rot": [
+    173.884,
+    0.0,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "head"
+  },
+  {
+   "name": "Jaw",
+   "attach": "Head",
+   "joint": "Jaw",
+   "jointAt": [
+    0,
+    14.4,
+    -5.0
+   ],
+   "color": "beak",
+   "hitzone": "head",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    14.15,
+    -7.1
+   ],
+   "size": [
+    0.75,
+    0.42,
+    4.219
+   ],
+   "rot": [
+    174.56,
+    0.0,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "UpperLegFR",
+   "attach": "Body",
+   "joint": "HipFR",
+   "jointAt": [
+    1.7,
+    10.3,
+    -1.4
+   ],
+   "color": "ash",
+   "hitzone": "leg",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    3.15,
+    12.15,
+    -2.4
+   ],
+   "size": [
+    1.1,
+    1.1,
+    5.7219
+   ],
+   "rot": [
+    -118.393,
+    34.586,
+    0.0
+   ]
+  },
+  {
+   "name": "LowerLegFR",
+   "attach": "UpperLegFR",
+   "joint": "KneeFR",
+   "jointAt": [
+    4.6,
+    14.0,
+    -3.4
+   ],
+   "color": "crust",
+   "hitzone": "leg",
+   "tris": 330,
+   "shape": "ellipsoid",
+   "pos": [
+    5.8,
+    7.25,
+    -4.4
+   ],
+   "size": [
+    0.7,
+    0.75,
+    14.5496
+   ],
+   "rot": [
+    98.427,
+    9.974,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "UpperLegFL",
+   "attach": "Body",
+   "joint": "HipFL",
+   "jointAt": [
+    -1.7,
+    10.3,
+    -1.4
+   ],
+   "color": "ash",
+   "hitzone": "leg",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.15,
+    12.15,
+    -2.4
+   ],
+   "size": [
+    1.1,
+    1.1,
+    5.7219
+   ],
+   "rot": [
+    -118.393,
+    -34.586,
+    -0.0
+   ]
+  },
+  {
+   "name": "LowerLegFL",
+   "attach": "UpperLegFL",
+   "joint": "KneeFL",
+   "jointAt": [
+    -4.6,
+    14.0,
+    -3.4
+   ],
+   "color": "crust",
+   "hitzone": "leg",
+   "tris": 330,
+   "shape": "ellipsoid",
+   "pos": [
+    -5.8,
+    7.25,
+    -4.4
+   ],
+   "size": [
+    0.7,
+    0.75,
+    14.5496
+   ],
+   "rot": [
+    98.427,
+    -9.974,
+    -0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "UpperLegBR",
+   "attach": "Body",
+   "joint": "HipBR",
+   "jointAt": [
+    1.7,
+    10.3,
+    1.4
+   ],
+   "color": "ash",
+   "hitzone": "leg",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    3.15,
+    12.15,
+    2.4
+   ],
+   "size": [
+    1.1,
+    1.1,
+    5.7219
+   ],
+   "rot": [
+    -61.607,
+    34.586,
+    0.0
+   ]
+  },
+  {
+   "name": "LowerLegBR",
+   "attach": "UpperLegBR",
+   "joint": "KneeBR",
+   "jointAt": [
+    4.6,
+    14.0,
+    3.4
+   ],
+   "color": "crust",
+   "hitzone": "leg",
+   "tris": 330,
+   "shape": "ellipsoid",
+   "pos": [
+    5.8,
+    7.25,
+    4.5
+   ],
+   "size": [
+    0.7,
+    0.75,
+    14.5814
+   ],
+   "rot": [
+    80.744,
+    9.952,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "UpperLegBL",
+   "attach": "Body",
+   "joint": "HipBL",
+   "jointAt": [
+    -1.7,
+    10.3,
+    1.4
+   ],
+   "color": "ash",
+   "hitzone": "leg",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.15,
+    12.15,
+    2.4
+   ],
+   "size": [
+    1.1,
+    1.1,
+    5.7219
+   ],
+   "rot": [
+    -61.607,
+    -34.586,
+    -0.0
+   ]
+  },
+  {
+   "name": "LowerLegBL",
+   "attach": "UpperLegBL",
+   "joint": "KneeBL",
+   "jointAt": [
+    -4.6,
+    14.0,
+    3.4
+   ],
+   "color": "crust",
+   "hitzone": "leg",
+   "tris": 330,
+   "shape": "ellipsoid",
+   "pos": [
+    -5.8,
+    7.25,
+    4.5
+   ],
+   "size": [
+    0.7,
+    0.75,
+    14.5814
+   ],
+   "rot": [
+    80.744,
+    -9.952,
+    -0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "Tail",
+   "attach": "Body",
+   "joint": "Tail",
+   "jointAt": [
+    0,
+    10.6,
+    2.8
+   ],
+   "color": "ash",
+   "hitzone": "tail",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.8,
+    4.6
+   ],
+   "size": [
+    1.7,
+    1.5,
+    4.6819
+   ],
+   "rot": [
+    19.983,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "tail"
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.7,
+    0.0
+   ],
+   "size": [
+    3.0,
+    1.8,
+    4.0447
+   ],
+   "rot": [
+    -171.469,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.8,
+    1.8,
+    1.8
+   ],
+   "pos": [
+    1.6,
+    10.4,
+    -1.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.8,
+    1.8,
+    1.8
+   ],
+   "pos": [
+    1.6,
+    10.3,
+    1.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.8,
+    1.8,
+    1.8
+   ],
+   "pos": [
+    -1.6,
+    10.4,
+    -1.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.8,
+    1.8,
+    1.8
+   ],
+   "pos": [
+    -1.6,
+    10.3,
+    1.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.3,
+    -2.0
+   ],
+   "size": [
+    1.4,
+    0.6,
+    4.3909
+   ],
+   "rot": [
+    -59.931,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    12.2,
+    -2.0
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    35.13,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    12.4,
+    -1.45
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    75.237,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    12.2,
+    -2.0
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    -35.13,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    12.4,
+    -1.45
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    -75.237,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.05,
+    -0.4
+   ],
+   "size": [
+    1.4,
+    0.6,
+    4.0497
+   ],
+   "rot": [
+    -57.095,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    11.95,
+    -0.4
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    35.13,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    12.15,
+    0.15
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    75.237,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    11.95,
+    -0.4
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    -35.13,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    12.15,
+    0.15
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    -75.237,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    11.8,
+    1.2
+   ],
+   "size": [
+    1.4,
+    0.6,
+    3.7202
+   ],
+   "rot": [
+    -53.746,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    11.7,
+    1.2
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    35.13,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    11.9,
+    1.75
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    75.237,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    11.7,
+    1.2
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    -35.13,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    11.9,
+    1.75
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    -75.237,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    11.55,
+    2.6
+   ],
+   "size": [
+    1.4,
+    0.6,
+    3.4059
+   ],
+   "rot": [
+    -49.764,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    11.45,
+    2.6
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    35.13,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    11.65,
+    3.15
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    75.237,
+    0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    11.45,
+    2.6
+   ],
+   "size": [
+    1.0,
+    0.5,
+    3.4756
+   ],
+   "rot": [
+    -50.711,
+    -35.13,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Crust",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    11.65,
+    3.15
+   ],
+   "size": [
+    0.22,
+    0.25,
+    1.241
+   ],
+   "rot": [
+    71.565,
+    -75.237,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "sac",
+   "shape": "ellipsoid",
+   "size": [
+    2.1,
+    2.6,
+    2.8
+   ],
+   "pos": [
+    0,
+    12.0,
+    -3.8
+   ],
+   "rot": [
+    20,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.5,
+    2.0
+   ],
+   "pos": [
+    0,
+    13.0,
+    -3.6
+   ],
+   "rot": [
+    20,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    12.2,
+    -2.0
+   ],
+   "size": [
+    0.4,
+    0.6,
+    1.9799
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    13.0,
+    -2.6667
+   ],
+   "size": [
+    0.4,
+    0.6,
+    1.9799
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Neck",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    13.8,
+    -3.3333
+   ],
+   "size": [
+    0.4,
+    0.6,
+    1.9799
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "beak",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    14.7,
+    -6.6
+   ],
+   "size": [
+    0.85,
+    0.6,
+    6.4777
+   ],
+   "rot": [
+    171.119,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    0.36,
+    0.5
+   ],
+   "pos": [
+    0.7,
+    15.1,
+    -5.9
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.4,
+    15.5,
+    -4.8
+   ],
+   "size": [
+    0.5,
+    0.35,
+    5.173
+   ],
+   "rot": [
+    -26.565,
+    18.017,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.42,
+    0.36,
+    0.5
+   ],
+   "pos": [
+    -0.7,
+    15.1,
+    -5.9
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    15.5,
+    -4.8
+   ],
+   "size": [
+    0.5,
+    0.35,
+    5.173
+   ],
+   "rot": [
+    -26.565,
+    -18.017,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    15.7,
+    -5.0
+   ],
+   "size": [
+    0.6,
+    0.4,
+    5.3254
+   ],
+   "rot": [
+    -34.287,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "pos": [
+    4.6,
+    14.0,
+    -3.4
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    5.0,
+    12.0,
+    -3.4
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.4345
+   ],
+   "rot": [
+    -96.065,
+    20.451,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    0.5,
+    1.6
+   ],
+   "pos": [
+    7.0,
+    0.5,
+    -5.4
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    54.383,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    3.2388
+   ],
+   "rot": [
+    171.119,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    -54.383,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFR",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    5.7,
+    7.0,
+    -4.524
+   ],
+   "size": [
+    0.4,
+    0.4,
+    4.1411
+   ],
+   "rot": [
+    102.517,
+    8.331,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "pos": [
+    -4.6,
+    14.0,
+    -3.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.0,
+    12.0,
+    -3.4
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.4345
+   ],
+   "rot": [
+    -96.065,
+    -20.451,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    0.5,
+    1.6
+   ],
+   "pos": [
+    -7.0,
+    0.5,
+    -5.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    -54.383,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    3.2388
+   ],
+   "rot": [
+    171.119,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    -5.4
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    54.383,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegFL",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.7,
+    7.0,
+    -4.524
+   ],
+   "size": [
+    0.4,
+    0.4,
+    4.1411
+   ],
+   "rot": [
+    102.517,
+    -8.331,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "pos": [
+    4.6,
+    14.0,
+    3.4
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    5.0,
+    12.0,
+    3.4
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.4345
+   ],
+   "rot": [
+    -83.935,
+    20.451,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    0.5,
+    1.6
+   ],
+   "pos": [
+    7.0,
+    0.5,
+    5.6
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    54.383,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    3.2388
+   ],
+   "rot": [
+    171.119,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    -54.383,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBR",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    5.7,
+    7.0,
+    4.616
+   ],
+   "size": [
+    0.4,
+    0.4,
+    4.1844
+   ],
+   "rot": [
+    74.997,
+    8.244,
+    0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "ash",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "pos": [
+    -4.6,
+    14.0,
+    3.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.0,
+    12.0,
+    3.4
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.4345
+   ],
+   "rot": [
+    -83.935,
+    -20.451,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    0.5,
+    1.6
+   ],
+   "pos": [
+    -7.0,
+    0.5,
+    5.6
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    -54.383,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    3.2388
+   ],
+   "rot": [
+    171.119,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "toe",
+   "shape": "ellipsoid",
+   "pos": [
+    -7.0,
+    0.4,
+    5.6
+   ],
+   "size": [
+    0.45,
+    0.3,
+    2.8785
+   ],
+   "rot": [
+    162.646,
+    54.383,
+    -0.0
+   ]
+  },
+  {
+   "segment": "LowerLegBL",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.7,
+    7.0,
+    4.616
+   ],
+   "size": [
+    0.4,
+    0.4,
+    4.1844
+   ],
+   "rot": [
+    74.997,
+    -8.244,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "crust",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.6,
+    5.6
+   ],
+   "size": [
+    1.1,
+    0.5,
+    5.6851
+   ],
+   "rot": [
+    39.289,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "magma",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.85,
+    4.8
+   ],
+   "size": [
+    0.4,
+    0.3,
+    3.0871
+   ],
+   "rot": [
+    24.905,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "notes": "Emberdeep Caldera. Volcanic stilt-walker. Spits slag walls; water cracks its crust.",
+ "sky": [
+  0.62,
+  0.48,
+  0.42
+ ]
+}

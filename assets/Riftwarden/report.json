@@ -1,0 +1,67 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 1098,
+      "highTris": 185828
+    },
+    "Neck": {
+      "tris": 450,
+      "highTris": 164064
+    },
+    "Head": {
+      "tris": 649,
+      "highTris": 141856
+    },
+    "Jaw": {
+      "tris": 250,
+      "highTris": 40128
+    },
+    "Antlers": {
+      "tris": 700,
+      "highTris": 257660
+    },
+    "UpperFrontR": {
+      "tris": 250,
+      "highTris": 79092
+    },
+    "LowerFrontR": {
+      "tris": 250,
+      "highTris": 57180
+    },
+    "UpperFrontL": {
+      "tris": 250,
+      "highTris": 79092
+    },
+    "LowerFrontL": {
+      "tris": 250,
+      "highTris": 57180
+    },
+    "UpperBackR": {
+      "tris": 250,
+      "highTris": 88140
+    },
+    "LowerBackR": {
+      "tris": 250,
+      "highTris": 49224
+    },
+    "UpperBackL": {
+      "tris": 250,
+      "highTris": 88140
+    },
+    "LowerBackL": {
+      "tris": 250,
+      "highTris": 49224
+    },
+    "TailA": {
+      "tris": 348,
+      "highTris": 82952
+    },
+    "TailB": {
+      "tris": 348,
+      "highTris": 160216
+    }
+  },
+  "totalTris": 5843,
+  "highTris": 1579976,
+  "seconds": 240
+}

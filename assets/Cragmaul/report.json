@@ -1,0 +1,59 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 1098,
+      "highTris": 334968
+    },
+    "Boulders": {
+      "tris": 600,
+      "highTris": 113640
+    },
+    "Head": {
+      "tris": 700,
+      "highTris": 261480
+    },
+    "Jaw": {
+      "tris": 298,
+      "highTris": 87772
+    },
+    "ArmR": {
+      "tris": 350,
+      "highTris": 116480
+    },
+    "ForearmR": {
+      "tris": 550,
+      "highTris": 254200
+    },
+    "ArmL": {
+      "tris": 350,
+      "highTris": 116480
+    },
+    "ForearmL": {
+      "tris": 550,
+      "highTris": 254200
+    },
+    "LegR": {
+      "tris": 200,
+      "highTris": 104880
+    },
+    "ShinR": {
+      "tris": 250,
+      "highTris": 91292
+    },
+    "LegL": {
+      "tris": 200,
+      "highTris": 104880
+    },
+    "ShinL": {
+      "tris": 250,
+      "highTris": 91292
+    },
+    "Tail": {
+      "tris": 300,
+      "highTris": 149816
+    }
+  },
+  "totalTris": 5696,
+  "highTris": 2081380,
+  "seconds": 328
+}

@@ -1,0 +1,55 @@
+{
+  "segments": {
+    "Body": {
+      "tris": 1100,
+      "highTris": 108616
+    },
+    "Wings": {
+      "tris": 500,
+      "highTris": 187688
+    },
+    "Thorax": {
+      "tris": 400,
+      "highTris": 84008
+    },
+    "Head": {
+      "tris": 598,
+      "highTris": 89116
+    },
+    "ScytheArmR": {
+      "tris": 250,
+      "highTris": 33560
+    },
+    "BladeR": {
+      "tris": 500,
+      "highTris": 52504
+    },
+    "ScytheArmL": {
+      "tris": 250,
+      "highTris": 33560
+    },
+    "BladeL": {
+      "tris": 500,
+      "highTris": 52504
+    },
+    "LegMR": {
+      "tris": 300,
+      "highTris": 43364
+    },
+    "LegML": {
+      "tris": 300,
+      "highTris": 43364
+    },
+    "LegBR": {
+      "tris": 300,
+      "highTris": 44204
+    },
+    "LegBL": {
+      "tris": 300,
+      "highTris": 44204
+    }
+  },
+  "totalTris": 5298,
+  "highTris": 816692,
+  "seconds": 166
+}

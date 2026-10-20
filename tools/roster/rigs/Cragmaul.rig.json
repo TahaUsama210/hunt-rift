@@ -1,0 +1,1692 @@
+{
+ "name": "Cragmaul",
+ "displayName": "Cragmaul",
+ "colors": {
+  "hide": [
+   74,
+   70,
+   72
+  ],
+  "dark": [
+   40,
+   36,
+   38
+  ],
+  "rock": [
+   134,
+   118,
+   98
+  ],
+  "belly": [
+   120,
+   104,
+   96
+  ],
+  "horn": [
+   228,
+   214,
+   186
+  ],
+  "vein": [
+   255,
+   70,
+   50
+  ],
+  "eye": [
+   255,
+   90,
+   60
+  ]
+ },
+ "glow": {
+  "vein": true,
+  "eye": true
+ },
+ "displace": {
+  "hide": 1.0,
+  "dark": 1.0,
+  "rock": 1.0,
+  "belly": 0.6,
+  "horn": 0.15
+ },
+ "skin": {
+  "cell": 0.5,
+  "depth": 0.1,
+  "noise": 0.08,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 6.0,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    6.0,
+    0
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 1100,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    7.5,
+    0.5
+   ],
+   "size": [
+    7.0,
+    6.2,
+    5.9933
+   ],
+   "rot": [
+    -154.29,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Boulders",
+   "attach": "Body",
+   "joint": "Ridge",
+   "jointAt": [
+    0,
+    10.6,
+    0
+   ],
+   "color": "dark",
+   "hitzone": "back",
+   "tris": 600,
+   "shape": "ellipsoid",
+   "size": [
+    4.6,
+    1.8,
+    7.4
+   ],
+   "pos": [
+    0,
+    10.4,
+    0.2
+   ],
+   "rot": [
+    8,
+    0,
+    0
+   ],
+   "breaksWith": "back"
+  },
+  {
+   "name": "Head",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    8.2,
+    -3.4
+   ],
+   "color": "hide",
+   "hitzone": "head",
+   "tris": 700,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    7.6,
+    -5.0
+   ],
+   "size": [
+    3.8,
+    3.3,
+    4.0792
+   ],
+   "rot": [
+    168.69,
+    0.0,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "head"
+  },
+  {
+   "name": "Jaw",
+   "attach": "Head",
+   "joint": "Jaw",
+   "jointAt": [
+    0,
+    6.8,
+    -3.6
+   ],
+   "color": "belly",
+   "hitzone": "head",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    6.3,
+    -5.2
+   ],
+   "size": [
+    3.2,
+    1.6,
+    3.2558
+   ],
+   "rot": [
+    169.38,
+    0.0,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "ArmR",
+   "attach": "Body",
+   "joint": "ShoulderR",
+   "jointAt": [
+    3.4,
+    9.2,
+    -1.6
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 350,
+   "shape": "ellipsoid",
+   "pos": [
+    4.55,
+    7.5,
+    -2.3
+   ],
+   "size": [
+    3.3,
+    3.5,
+    5.4436
+   ],
+   "rot": [
+    113.199,
+    22.578,
+    0.0
+   ]
+  },
+  {
+   "name": "ForearmR",
+   "attach": "ArmR",
+   "joint": "ElbowR",
+   "jointAt": [
+    5.5,
+    5.4,
+    -3.2
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 550,
+   "shape": "ellipsoid",
+   "pos": [
+    5.6,
+    3.7,
+    -3.5
+   ],
+   "size": [
+    3.0,
+    3.1,
+    4.4942
+   ],
+   "rot": [
+    100.784,
+    2.678,
+    0.0
+   ],
+   "breaksWith": "arm"
+  },
+  {
+   "name": "ArmL",
+   "attach": "Body",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -3.4,
+    9.2,
+    -1.6
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 350,
+   "shape": "ellipsoid",
+   "pos": [
+    -4.55,
+    7.5,
+    -2.3
+   ],
+   "size": [
+    3.3,
+    3.5,
+    5.4436
+   ],
+   "rot": [
+    113.199,
+    -22.578,
+    -0.0
+   ]
+  },
+  {
+   "name": "ForearmL",
+   "attach": "ArmL",
+   "joint": "ElbowL",
+   "jointAt": [
+    -5.5,
+    5.4,
+    -3.2
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 550,
+   "shape": "ellipsoid",
+   "pos": [
+    -5.6,
+    3.7,
+    -3.5
+   ],
+   "size": [
+    3.0,
+    3.1,
+    4.4942
+   ],
+   "rot": [
+    100.784,
+    -2.678,
+    -0.0
+   ],
+   "breaksWith": "arm"
+  },
+  {
+   "name": "LegR",
+   "attach": "Body",
+   "joint": "HipR",
+   "jointAt": [
+    2.6,
+    5.4,
+    3.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 200,
+   "shape": "ellipsoid",
+   "pos": [
+    2.95,
+    4.2,
+    3.9
+   ],
+   "size": [
+    2.8,
+    3.0,
+    3.7674
+   ],
+   "rot": [
+    72.646,
+    11.794,
+    0.0
+   ]
+  },
+  {
+   "name": "ShinR",
+   "attach": "LegR",
+   "joint": "KneeR",
+   "jointAt": [
+    3.3,
+    2.6,
+    4.4
+   ],
+   "color": "dark",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    3.2,
+    1.7,
+    3.9
+   ],
+   "size": [
+    2.0,
+    2.0,
+    2.6674
+   ],
+   "rot": [
+    114.444,
+    -4.731,
+    0.0
+   ]
+  },
+  {
+   "name": "LegL",
+   "attach": "Body",
+   "joint": "HipL",
+   "jointAt": [
+    -2.6,
+    5.4,
+    3.6
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 200,
+   "shape": "ellipsoid",
+   "pos": [
+    -2.95,
+    4.2,
+    3.9
+   ],
+   "size": [
+    2.8,
+    3.0,
+    3.7674
+   ],
+   "rot": [
+    72.646,
+    -11.794,
+    -0.0
+   ]
+  },
+  {
+   "name": "ShinL",
+   "attach": "LegL",
+   "joint": "KneeL",
+   "jointAt": [
+    -3.3,
+    2.6,
+    4.4
+   ],
+   "color": "dark",
+   "hitzone": "leg",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.2,
+    1.7,
+    3.9
+   ],
+   "size": [
+    2.0,
+    2.0,
+    2.6674
+   ],
+   "rot": [
+    114.444,
+    4.731,
+    -0.0
+   ]
+  },
+  {
+   "name": "Tail",
+   "attach": "Body",
+   "joint": "Tail",
+   "jointAt": [
+    0,
+    6.2,
+    4.8
+   ],
+   "color": "hide",
+   "hitzone": "tail",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    5.4,
+    6.7
+   ],
+   "size": [
+    2.2,
+    2.0,
+    4.4944
+   ],
+   "rot": [
+    20.854,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "tail"
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    5.6,
+    4.4,
+    4.6
+   ],
+   "pos": [
+    0,
+    5.8,
+    3.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    6.0,
+    -0.1
+   ],
+   "size": [
+    5.2,
+    3.6,
+    5.142
+   ],
+   "rot": [
+    -166.504,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    4.4,
+    4.8,
+    4.8
+   ],
+   "pos": [
+    2.6,
+    9.2,
+    -1.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    3.1,
+    9.0,
+    -2.4
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    5.711,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    2.9,
+    7.8,
+    -0.2
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    5.711,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    2.7,
+    7.0,
+    2.2
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    5.711,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    4.4,
+    4.8,
+    4.8
+   ],
+   "pos": [
+    -2.6,
+    9.2,
+    -1.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.1,
+    9.0,
+    -2.4
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    -5.711,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.9,
+    7.8,
+    -0.2
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    -5.711,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.7,
+    7.0,
+    2.2
+   ],
+   "size": [
+    0.5,
+    0.3,
+    2.01
+   ],
+   "rot": [
+    36.87,
+    -5.711,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    2.8,
+    2.2,
+    2.5
+   ],
+   "pos": [
+    0,
+    11.7,
+    -1.6
+   ],
+   "rot": [
+    10,
+    20,
+    8
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    2.072,
+    1.6280000000000001,
+    1.85
+   ],
+   "pos": [
+    0,
+    11.7,
+    -1.6
+   ],
+   "rot": [
+    35,
+    60,
+    23
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    2.6599999999999997,
+    0.396,
+    0.5
+   ],
+   "pos": [
+    0,
+    11.876,
+    -1.6
+   ],
+   "rot": [
+    10,
+    55,
+    8
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    2.5,
+    2.1,
+    2.6
+   ],
+   "pos": [
+    0.4,
+    11.4,
+    1.3
+   ],
+   "rot": [
+    -6,
+    -30,
+    -10
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.85,
+    1.554,
+    1.924
+   ],
+   "pos": [
+    0.4,
+    11.4,
+    1.3
+   ],
+   "rot": [
+    19,
+    10,
+    5
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    2.375,
+    0.378,
+    0.52
+   ],
+   "pos": [
+    0.4,
+    11.568,
+    1.3
+   ],
+   "rot": [
+    -6,
+    5,
+    -10
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    2.0,
+    1.7,
+    2.0
+   ],
+   "pos": [
+    -0.2,
+    10.9,
+    3.6
+   ],
+   "rot": [
+    20,
+    45,
+    0
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.48,
+    1.258,
+    1.48
+   ],
+   "pos": [
+    -0.2,
+    10.9,
+    3.6
+   ],
+   "rot": [
+    45,
+    85,
+    15
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    1.9,
+    0.306,
+    0.4
+   ],
+   "pos": [
+    -0.2,
+    11.036,
+    3.6
+   ],
+   "rot": [
+    20,
+    80,
+    0
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    1.4,
+    1.8
+   ],
+   "pos": [
+    1.8,
+    10.8,
+    -0.2
+   ],
+   "rot": [
+    0,
+    15,
+    25
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.184,
+    1.036,
+    1.332
+   ],
+   "pos": [
+    1.8,
+    10.8,
+    -0.2
+   ],
+   "rot": [
+    25,
+    55,
+    40
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.6,
+    1.4,
+    1.8
+   ],
+   "pos": [
+    -1.8,
+    10.8,
+    -0.2
+   ],
+   "rot": [
+    0,
+    -15,
+    -25
+   ]
+  },
+  {
+   "segment": "Boulders",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.184,
+    1.036,
+    1.332
+   ],
+   "pos": [
+    -1.8,
+    10.8,
+    -0.2
+   ],
+   "rot": [
+    25,
+    -55,
+    -40
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    4.2,
+    1.4,
+    2.4
+   ],
+   "pos": [
+    0,
+    8.9,
+    -4.8
+   ],
+   "rot": [
+    -10,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    7.8,
+    -6.4
+   ],
+   "size": [
+    2.1,
+    1.7,
+    7.4404
+   ],
+   "rot": [
+    -143.746,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.6,
+    -8.8
+   ],
+   "size": [
+    1.1,
+    1.1,
+    4.005
+   ],
+   "rot": [
+    -92.862,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.8,
+    -5.8
+   ],
+   "size": [
+    0.9,
+    0.9,
+    3.7736
+   ],
+   "rot": [
+    -122.005,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.55,
+    0.4,
+    0.4
+   ],
+   "pos": [
+    1.25,
+    8.3,
+    -5.6
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    1.6,
+    7.0,
+    -5.8
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.9598
+   ],
+   "rot": [
+    -159.444,
+    30.336,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    0.3,
+    0.4
+   ],
+   "pos": [
+    0.6,
+    7.3,
+    -7.3
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.55,
+    0.4,
+    0.4
+   ],
+   "pos": [
+    -1.25,
+    8.3,
+    -5.6
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.6,
+    7.0,
+    -5.8
+   ],
+   "size": [
+    0.6,
+    0.6,
+    3.9598
+   ],
+   "rot": [
+    -159.444,
+    -30.336,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    0.4,
+    0.3,
+    0.4
+   ],
+   "pos": [
+    -0.6,
+    7.3,
+    -7.3
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Jaw",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    1.0,
+    6.2,
+    -6.2
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.3226
+   ],
+   "rot": [
+    -119.745,
+    13.932,
+    0.0
+   ]
+  },
+  {
+   "segment": "Jaw",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.0,
+    6.2,
+    -6.2
+   ],
+   "size": [
+    0.5,
+    0.5,
+    3.3226
+   ],
+   "rot": [
+    -119.745,
+    -13.932,
+    -0.0
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    2.8,
+    2.8,
+    2.8
+   ],
+   "pos": [
+    5.5,
+    5.4,
+    -3.2
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.3,
+    3.2
+   ],
+   "pos": [
+    5.8,
+    1.15,
+    -4.1
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    5.9,
+    0.6,
+    -5.319999999999999
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    5.9,
+    0.6,
+    -4.659999999999999
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    5.9,
+    0.6,
+    -3.9999999999999996
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    3.6,
+    2.6
+   ],
+   "pos": [
+    6.9,
+    4.0,
+    -3.4
+   ],
+   "rot": [
+    -10,
+    0,
+    -8
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.036,
+    2.664,
+    1.924
+   ],
+   "pos": [
+    6.9,
+    4.0,
+    -3.4
+   ],
+   "rot": [
+    15,
+    40,
+    7
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    1.3299999999999998,
+    0.648,
+    0.52
+   ],
+   "pos": [
+    6.9,
+    4.288,
+    -3.4
+   ],
+   "rot": [
+    -10,
+    35,
+    -8
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.8,
+    2.2
+   ],
+   "pos": [
+    6.8,
+    2.2,
+    -3.8
+   ],
+   "rot": [
+    0,
+    0,
+    10
+   ]
+  },
+  {
+   "segment": "ForearmR",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    0.888,
+    1.332,
+    1.6280000000000001
+   ],
+   "pos": [
+    6.8,
+    2.2,
+    -3.8
+   ],
+   "rot": [
+    25,
+    40,
+    25
+   ]
+  },
+  {
+   "segment": "ForearmL",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    2.8,
+    2.8,
+    2.8
+   ],
+   "pos": [
+    -5.5,
+    5.4,
+    -3.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ForearmL",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    3.4,
+    2.3,
+    3.2
+   ],
+   "pos": [
+    -5.8,
+    1.15,
+    -4.1
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    -5.9,
+    0.6,
+    -5.319999999999999
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    -5.9,
+    0.6,
+    -4.659999999999999
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    -5.9,
+    0.6,
+    -3.9999999999999996
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.4,
+    3.6,
+    2.6
+   ],
+   "pos": [
+    -6.9,
+    4.0,
+    -3.4
+   ],
+   "rot": [
+    -10,
+    0,
+    8
+   ]
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    1.036,
+    2.664,
+    1.924
+   ],
+   "pos": [
+    -6.9,
+    4.0,
+    -3.4
+   ],
+   "rot": [
+    15,
+    -40,
+    -7
+   ]
+  },
+  {
+   "segment": "ForearmL",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    1.3299999999999998,
+    0.648,
+    0.52
+   ],
+   "pos": [
+    -6.9,
+    4.288,
+    -3.4
+   ],
+   "rot": [
+    -10,
+    -35,
+    8
+   ]
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.8,
+    2.2
+   ],
+   "pos": [
+    -6.8,
+    2.2,
+    -3.8
+   ],
+   "rot": [
+    0,
+    0,
+    -10
+   ]
+  },
+  {
+   "segment": "ForearmL",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    0.888,
+    1.332,
+    1.6280000000000001
+   ],
+   "pos": [
+    -6.8,
+    2.2,
+    -3.8
+   ],
+   "rot": [
+    25,
+    -40,
+    -25
+   ]
+  },
+  {
+   "segment": "ShinR",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    2.4,
+    1.1,
+    3.2
+   ],
+   "pos": [
+    3.1,
+    0.5,
+    2.8
+   ]
+  },
+  {
+   "segment": "ShinR",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    2.4,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5487
+   ],
+   "rot": [
+    156.801,
+    -10.416,
+    0.0
+   ]
+  },
+  {
+   "segment": "ShinR",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    3.1,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5232
+   ],
+   "rot": [
+    156.801,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "ShinR",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    3.8,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5487
+   ],
+   "rot": [
+    156.801,
+    10.416,
+    0.0
+   ]
+  },
+  {
+   "segment": "ShinL",
+   "color": "dark",
+   "shape": "ellipsoid",
+   "size": [
+    2.4,
+    1.1,
+    3.2
+   ],
+   "pos": [
+    -3.1,
+    0.5,
+    2.8
+   ],
+   "rot": null
+  },
+  {
+   "segment": "ShinL",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.4,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5487
+   ],
+   "rot": [
+    156.801,
+    10.416,
+    -0.0
+   ]
+  },
+  {
+   "segment": "ShinL",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.1,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5232
+   ],
+   "rot": [
+    156.801,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "segment": "ShinL",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.8,
+    0.5,
+    1.6
+   ],
+   "size": [
+    0.45,
+    0.45,
+    1.5487
+   ],
+   "rot": [
+    156.801,
+    -10.416,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "rock",
+   "shape": "ellipsoid",
+   "size": [
+    2.8,
+    2.4,
+    2.8
+   ],
+   "pos": [
+    0,
+    4.4,
+    9.2
+   ],
+   "rot": [
+    15,
+    30,
+    5
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "rock",
+   "shape": "block",
+   "size": [
+    2.072,
+    1.776,
+    2.072
+   ],
+   "pos": [
+    0,
+    4.4,
+    9.2
+   ],
+   "rot": [
+    40,
+    70,
+    20
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "vein",
+   "shape": "ellipsoid",
+   "size": [
+    2.6599999999999997,
+    0.432,
+    0.5599999999999999
+   ],
+   "pos": [
+    0,
+    4.5920000000000005,
+    9.2
+   ],
+   "rot": [
+    15,
+    65,
+    5
+   ]
+  }
+ ],
+ "notes": "Shattered Badlands. Aggressive. Throws boulders off its back; rage veins glow; chains charges.",
+ "sky": [
+  0.8,
+  0.66,
+  0.56
+ ]
+}

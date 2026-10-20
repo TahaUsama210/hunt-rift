@@ -1,0 +1,1007 @@
+{
+ "name": "Mossback",
+ "displayName": "Mossback",
+ "colors": {
+  "hide": [
+   128,
+   116,
+   96
+  ],
+  "moss": [
+   92,
+   128,
+   60
+  ],
+  "leaf": [
+   64,
+   104,
+   50
+  ],
+  "flower": [
+   236,
+   132,
+   160
+  ],
+  "pollen": [
+   250,
+   214,
+   90
+  ],
+  "belly": [
+   204,
+   192,
+   162
+  ],
+  "horn": [
+   214,
+   204,
+   182
+  ],
+  "eye": [
+   30,
+   28,
+   26
+  ]
+ },
+ "glow": {},
+ "displace": {
+  "hide": 1.0,
+  "moss": 1.0,
+  "leaf": 0.5,
+  "flower": 0.2,
+  "pollen": 0.0,
+  "belly": 0.5,
+  "horn": 0.2,
+  "eye": 0.0
+ },
+ "skin": {
+  "cell": 0.3,
+  "depth": 0.06,
+  "noise": 0.05,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 4.2,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    4.2,
+    0
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 800,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    4.4,
+    0.2
+   ],
+   "size": [
+    4.2,
+    3.6,
+    6.8118
+   ],
+   "rot": [
+    -176.634,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    4.4,
+    -3.4
+   ],
+   "color": "hide",
+   "hitzone": "head",
+   "tris": 500,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    4.05,
+    -4.3
+   ],
+   "size": [
+    2.0,
+    1.8,
+    2.7514
+   ],
+   "rot": [
+    160.907,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "head"
+  },
+  {
+   "name": "LegFR",
+   "attach": "Body",
+   "joint": "HipFR",
+   "jointAt": [
+    1.5,
+    3.8,
+    -2.0
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 280,
+   "shape": "ellipsoid",
+   "pos": [
+    1.55,
+    2.1,
+    -2.1
+   ],
+   "size": [
+    1.5,
+    1.6,
+    3.7481
+   ],
+   "rot": [
+    93.366,
+    1.682,
+    0.0
+   ]
+  },
+  {
+   "name": "LegFL",
+   "attach": "Body",
+   "joint": "HipFL",
+   "jointAt": [
+    -1.5,
+    3.8,
+    -2.0
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 280,
+   "shape": "ellipsoid",
+   "pos": [
+    -1.55,
+    2.1,
+    -2.1
+   ],
+   "size": [
+    1.5,
+    1.6,
+    3.7481
+   ],
+   "rot": [
+    93.366,
+    -1.682,
+    -0.0
+   ]
+  },
+  {
+   "name": "LegBR",
+   "attach": "Body",
+   "joint": "HipBR",
+   "jointAt": [
+    1.5,
+    3.8,
+    2.4
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 280,
+   "shape": "ellipsoid",
+   "pos": [
+    1.55,
+    2.1,
+    2.5
+   ],
+   "size": [
+    1.5,
+    1.6,
+    3.7481
+   ],
+   "rot": [
+    86.634,
+    1.682,
+    0.0
+   ]
+  },
+  {
+   "name": "LegBL",
+   "attach": "Body",
+   "joint": "HipBL",
+   "jointAt": [
+    -1.5,
+    3.8,
+    2.4
+   ],
+   "color": "hide",
+   "hitzone": "leg",
+   "tris": 280,
+   "shape": "ellipsoid",
+   "pos": [
+    -1.55,
+    2.1,
+    2.5
+   ],
+   "size": [
+    1.5,
+    1.6,
+    3.7481
+   ],
+   "rot": [
+    86.634,
+    -1.682,
+    -0.0
+   ]
+  },
+  {
+   "name": "Tail",
+   "attach": "Body",
+   "joint": "Tail",
+   "jointAt": [
+    0,
+    4.6,
+    3.8
+   ],
+   "color": "hide",
+   "hitzone": "tail",
+   "tris": 200,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    4.0,
+    4.5
+   ],
+   "size": [
+    0.9,
+    0.9,
+    2.1633
+   ],
+   "rot": [
+    33.69,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.3,
+    0.2
+   ],
+   "size": [
+    3.2,
+    2.0,
+    5.6036
+   ],
+   "rot": [
+    -177.955,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "moss",
+   "shape": "ellipsoid",
+   "size": [
+    4.4,
+    3.0,
+    7.6
+   ],
+   "pos": [
+    0,
+    5.4,
+    0.4
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.0,
+    6.5421,
+    -2.0
+   ],
+   "size": [
+    0.18,
+    0.18,
+    1.1
+   ],
+   "rot": [
+    -90.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "flower",
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    0.3,
+    0.8
+   ],
+   "pos": [
+    -1.0,
+    7.142134301325662,
+    -2.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pollen",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.25,
+    0.3
+   ],
+   "pos": [
+    -1.0,
+    7.272134301325662,
+    -2.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    6.5476,
+    -1.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -73.339,
+    38.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    6.5476,
+    -1.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -60.645,
+    -30.294,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    6.5476,
+    -1.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -130.752,
+    -6.566,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    6.7229,
+    0.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -60.645,
+    30.294,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    6.7229,
+    0.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -73.339,
+    -38.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4,
+    6.7229,
+    0.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -130.752,
+    6.566,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    1.1,
+    6.8894,
+    0.8
+   ],
+   "size": [
+    0.18,
+    0.18,
+    1.1
+   ],
+   "rot": [
+    -90.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "flower",
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    0.3,
+    0.8
+   ],
+   "pos": [
+    1.1,
+    7.489406550346927,
+    0.8
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pollen",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.25,
+    0.3
+   ],
+   "pos": [
+    1.1,
+    7.619406550346927,
+    0.8
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.2,
+    6.3792,
+    1.8
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -49.248,
+    6.566,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.2,
+    6.3792,
+    1.8
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -106.661,
+    -38.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.2,
+    6.3792,
+    1.8
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -119.355,
+    30.294,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.3,
+    6.5089,
+    2.4
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -49.248,
+    -6.566,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.3,
+    6.5089,
+    2.4
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -119.355,
+    -30.294,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.3,
+    6.5089,
+    2.4
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -106.661,
+    38.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    6.2864,
+    -2.6
+   ],
+   "size": [
+    0.18,
+    0.18,
+    1.1
+   ],
+   "rot": [
+    -90.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "flower",
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    0.3,
+    0.8
+   ],
+   "pos": [
+    0.9,
+    6.886364220065427,
+    -2.6
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pollen",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.25,
+    0.3
+   ],
+   "pos": [
+    0.9,
+    7.016364220065427,
+    -2.6
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    6.1779,
+    3.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -60.645,
+    -30.294,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    6.1779,
+    3.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -130.752,
+    -6.566,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "leaf",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    6.1779,
+    3.2
+   ],
+   "size": [
+    0.4,
+    0.12,
+    2.126
+   ],
+   "rot": [
+    -73.339,
+    38.228,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.55,
+    -5.4
+   ],
+   "size": [
+    1.4,
+    1.2,
+    1.6763
+   ],
+   "rot": [
+    162.646,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.32,
+    0.3,
+    0.3
+   ],
+   "pos": [
+    0.85,
+    4.35,
+    -4.6
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    0.6,
+    4.9,
+    -3.8
+   ],
+   "size": [
+    0.45,
+    0.45,
+    2.6608
+   ],
+   "rot": [
+    -41.186,
+    36.964,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "pos": [
+    0.9,
+    4.4,
+    -3.4
+   ],
+   "size": [
+    0.5,
+    0.2,
+    2.1633
+   ],
+   "rot": [
+    -14.036,
+    40.327,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.25,
+    0.2,
+    0.25
+   ],
+   "pos": [
+    0.35,
+    3.5,
+    -6.15
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.32,
+    0.3,
+    0.3
+   ],
+   "pos": [
+    -0.85,
+    4.35,
+    -4.6
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.6,
+    4.9,
+    -3.8
+   ],
+   "size": [
+    0.45,
+    0.45,
+    2.6608
+   ],
+   "rot": [
+    -41.186,
+    -36.964,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.9,
+    4.4,
+    -3.4
+   ],
+   "size": [
+    0.5,
+    0.2,
+    2.1633
+   ],
+   "rot": [
+    -14.036,
+    -40.327,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.25,
+    0.2,
+    0.25
+   ],
+   "pos": [
+    -0.35,
+    3.5,
+    -6.15
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LegFR",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    0.8,
+    1.6
+   ],
+   "pos": [
+    1.6,
+    0.4,
+    -2.3000000000000003
+   ]
+  },
+  {
+   "segment": "LegFL",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    0.8,
+    1.6
+   ],
+   "pos": [
+    -1.6,
+    0.4,
+    -2.3000000000000003
+   ],
+   "rot": null
+  },
+  {
+   "segment": "LegBR",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    0.8,
+    1.6
+   ],
+   "pos": [
+    1.6,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "segment": "LegBL",
+   "color": "horn",
+   "shape": "ellipsoid",
+   "size": [
+    1.5,
+    0.8,
+    1.6
+   ],
+   "pos": [
+    -1.6,
+    0.4,
+    2.5
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Tail",
+   "color": "moss",
+   "shape": "ellipsoid",
+   "size": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "pos": [
+    0,
+    3.3,
+    5.5
+   ]
+  }
+ ],
+ "notes": "Passive grazer: escort and rescue encounters, herb gathering point, pet.",
+ "sky": [
+  0.62,
+  0.72,
+  0.6
+ ]
+}

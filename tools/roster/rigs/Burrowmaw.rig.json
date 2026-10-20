@@ -1,0 +1,1602 @@
+{
+ "name": "Burrowmaw",
+ "displayName": "Burrowmaw",
+ "colors": {
+  "hide": [
+   176,
+   146,
+   112
+  ],
+  "plate": [
+   128,
+   100,
+   80
+  ],
+  "band": [
+   96,
+   64,
+   46
+  ],
+  "belly": [
+   222,
+   196,
+   150
+  ],
+  "claw": [
+   236,
+   226,
+   204
+  ],
+  "mouth": [
+   120,
+   36,
+   40
+  ],
+  "pit": [
+   255,
+   170,
+   60
+  ]
+ },
+ "glow": {
+  "pit": true
+ },
+ "displace": {
+  "hide": 1.0,
+  "plate": 1.0,
+  "band": 0.7,
+  "belly": 0.5,
+  "claw": 0.15,
+  "mouth": 0.3
+ },
+ "skin": {
+  "cell": 0.45,
+  "depth": 0.09,
+  "noise": 0.07,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 4.0,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    4.0,
+    0
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 900,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    5.0,
+    0.0
+   ],
+   "size": [
+    6.0,
+    5.2,
+    6.8
+   ],
+   "rot": [
+    -151.928,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    7.2,
+    -3.4
+   ],
+   "color": "hide",
+   "hitzone": "head",
+   "tris": 900,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    7.7,
+    -4.9
+   ],
+   "size": [
+    4.6,
+    4.2,
+    4.0497
+   ],
+   "rot": [
+    -159.775,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "head"
+  },
+  {
+   "name": "PetalTop",
+   "attach": "Head",
+   "joint": "PetalTop",
+   "jointAt": [
+    0.0,
+    9.799999999999999,
+    -6.8
+   ],
+   "color": "plate",
+   "hitzone": "head",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    9.3,
+    -8.0
+   ],
+   "size": [
+    2.6,
+    1.5,
+    4.5122
+   ],
+   "rot": [
+    167.196,
+    0.0,
+    0
+   ],
+   "fine": true
+  },
+  {
+   "name": "PetalR",
+   "attach": "Head",
+   "joint": "PetalR",
+   "jointAt": [
+    1.1745,
+    7.7749999999999995,
+    -6.8
+   ],
+   "color": "plate",
+   "hitzone": "head",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    0.7395,
+    8.025,
+    -8.0
+   ],
+   "size": [
+    2.6,
+    1.5,
+    4.513
+   ],
+   "rot": [
+    -173.517,
+    -11.115,
+    -120
+   ],
+   "fine": true
+  },
+  {
+   "name": "PetalL",
+   "attach": "Head",
+   "joint": "PetalL",
+   "jointAt": [
+    -1.1745,
+    7.7749999999999995,
+    -6.8
+   ],
+   "color": "plate",
+   "hitzone": "head",
+   "tris": 220,
+   "shape": "ellipsoid",
+   "pos": [
+    -0.7395,
+    8.025,
+    -8.0
+   ],
+   "size": [
+    2.6,
+    1.5,
+    4.513
+   ],
+   "rot": [
+    -173.517,
+    11.115,
+    120
+   ],
+   "fine": true
+  },
+  {
+   "name": "ArmR",
+   "attach": "Body",
+   "joint": "ShoulderR",
+   "jointAt": [
+    2.6,
+    5.6,
+    -2.6
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    3.6,
+    4.85,
+    -3.3
+   ],
+   "size": [
+    2.2,
+    2.4,
+    4.0837
+   ],
+   "rot": [
+    133.452,
+    42.521,
+    0.0
+   ]
+  },
+  {
+   "name": "SpadeR",
+   "attach": "ArmR",
+   "joint": "ElbowR",
+   "jointAt": [
+    4.8,
+    3.9,
+    -4.2
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "pos": [
+    5.0,
+    2.7,
+    -4.75
+   ],
+   "size": [
+    2.0,
+    2.0,
+    3.2277
+   ],
+   "rot": [
+    116.565,
+    7.835,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "arm"
+  },
+  {
+   "name": "ArmL",
+   "attach": "Body",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -2.6,
+    5.6,
+    -2.6
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 250,
+   "shape": "ellipsoid",
+   "pos": [
+    -3.6,
+    4.85,
+    -3.3
+   ],
+   "size": [
+    2.2,
+    2.4,
+    4.0837
+   ],
+   "rot": [
+    133.452,
+    -42.521,
+    -0.0
+   ]
+  },
+  {
+   "name": "SpadeL",
+   "attach": "ArmL",
+   "joint": "ElbowL",
+   "jointAt": [
+    -4.8,
+    3.9,
+    -4.2
+   ],
+   "color": "hide",
+   "hitzone": "arm",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "pos": [
+    -5.0,
+    2.7,
+    -4.75
+   ],
+   "size": [
+    2.0,
+    2.0,
+    3.2277
+   ],
+   "rot": [
+    116.565,
+    -7.835,
+    -0.0
+   ],
+   "fine": true,
+   "breaksWith": "arm"
+  },
+  {
+   "name": "SegA",
+   "attach": "Body",
+   "joint": "SegA",
+   "jointAt": [
+    0,
+    3.6,
+    2.6
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 700,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.1,
+    5.2
+   ],
+   "size": [
+    5.4,
+    4.4,
+    5.2953
+   ],
+   "rot": [
+    10.886,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "SegB",
+   "attach": "SegA",
+   "joint": "SegB",
+   "jointAt": [
+    0,
+    2.7,
+    7.4
+   ],
+   "color": "hide",
+   "hitzone": "body",
+   "tris": 500,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.45,
+    10.0
+   ],
+   "size": [
+    4.6,
+    3.8,
+    5.224
+   ],
+   "rot": [
+    5.492,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "SegC",
+   "attach": "SegB",
+   "joint": "SegC",
+   "jointAt": [
+    0,
+    2.2,
+    12.2
+   ],
+   "color": "hide",
+   "hitzone": "tail",
+   "tris": 400,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.0,
+    14.3
+   ],
+   "size": [
+    3.6,
+    3.0,
+    4.219
+   ],
+   "rot": [
+    5.44,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Tail",
+   "attach": "SegC",
+   "joint": "Tail",
+   "jointAt": [
+    0,
+    1.8,
+    16.0
+   ],
+   "color": "hide",
+   "hitzone": "tail",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.65,
+    17.9
+   ],
+   "size": [
+    2.3,
+    1.9,
+    3.8118
+   ],
+   "rot": [
+    4.514,
+    0.0,
+    0.0
+   ],
+   "breaksWith": "tail"
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    5.832,
+    0.0
+   ],
+   "size": [
+    6.18,
+    4.888,
+    6.528
+   ],
+   "rot": [
+    -151.928,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    1.2000000000000002,
+    7.586,
+    1.2000000000000002
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -1.2000000000000002,
+    7.586,
+    1.2000000000000002
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    1.2000000000000002,
+    9.026,
+    -1.5
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -1.2000000000000002,
+    9.026,
+    -1.5
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Body",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.44,
+    0.0
+   ],
+   "size": [
+    4.32,
+    2.6,
+    6.8
+   ],
+   "rot": [
+    -151.928,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "pos": [
+    2.4,
+    5.5,
+    -2.5
+   ],
+   "size": [
+    2.6,
+    2.6,
+    1.0954
+   ],
+   "rot": [
+    168.69,
+    21.417,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "pos": [
+    -2.4,
+    5.5,
+    -2.5
+   ],
+   "size": [
+    2.6,
+    2.6,
+    1.0954
+   ],
+   "rot": [
+    168.69,
+    -21.417,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    4.0,
+    4.0,
+    1.2
+   ],
+   "pos": [
+    0,
+    8.4,
+    -6.6
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "mouth",
+   "shape": "ellipsoid",
+   "size": [
+    3.0,
+    3.0,
+    0.8
+   ],
+   "pos": [
+    0,
+    8.45,
+    -7.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.35,
+    -4.7
+   ],
+   "size": [
+    4.7,
+    3.8,
+    3.8275
+   ],
+   "rot": [
+    -160.145,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    0.7,
+    10.45,
+    -4.4
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    1.2,
+    10.27,
+    -4.95
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    1.7,
+    10.09,
+    -5.5
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    1.4,
+    10.0,
+    -4.2
+   ],
+   "size": [
+    0.7,
+    0.7,
+    4.4721
+   ],
+   "rot": [
+    -36.87,
+    26.565,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    -0.7,
+    10.45,
+    -4.4
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    -1.2,
+    10.27,
+    -4.95
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.42,
+    0.5
+   ],
+   "pos": [
+    -1.7,
+    10.09,
+    -5.5
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.4,
+    10.0,
+    -4.2
+   ],
+   "size": [
+    0.7,
+    0.7,
+    4.4721
+   ],
+   "rot": [
+    -36.87,
+    -26.565,
+    -0.0
+   ]
+  },
+  {
+   "segment": "PetalTop",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    0.45,
+    9.15,
+    -7.99
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalTop",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    8.97,
+    -8.602
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalTop",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.45,
+    8.79,
+    -9.214
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.456
+   ],
+   "rot": [
+    105.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    0.384,
+    7.7085,
+    -7.99
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    -56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    0.4524,
+    8.19,
+    -8.602
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    -56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    0.5208,
+    8.6715,
+    -9.214
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    -56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.834,
+    8.4915,
+    -7.99
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.4524,
+    8.19,
+    -8.602
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "PetalL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.0708,
+    7.8885,
+    -9.214
+   ],
+   "size": [
+    0.3,
+    0.3,
+    1.4607
+   ],
+   "rot": [
+    -119.745,
+    56.498,
+    0.0
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "pos": [
+    4.8,
+    3.9,
+    -4.2
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.6,
+    1.1,
+    3.2
+   ],
+   "pos": [
+    5.4,
+    1.0,
+    -6.0
+   ],
+   "rot": [
+    -12,
+    10,
+    14
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "size": [
+    3.0,
+    0.7,
+    2.4
+   ],
+   "pos": [
+    5.4,
+    1.45,
+    -5.8
+   ],
+   "rot": [
+    -12,
+    10,
+    14
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    4.3,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.3878
+   ],
+   "rot": [
+    158.962,
+    -9.343,
+    0.0
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    5.05,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.9127
+   ],
+   "rot": [
+    162.121,
+    -2.563,
+    0.0
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    5.8,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.8759
+   ],
+   "rot": [
+    161.94,
+    2.958,
+    0.0
+   ]
+  },
+  {
+   "segment": "SpadeR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    6.55,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.3551
+   ],
+   "rot": [
+    158.714,
+    9.868,
+    0.0
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "pos": [
+    -4.8,
+    3.9,
+    -4.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SpadeL",
+   "color": "hide",
+   "shape": "ellipsoid",
+   "size": [
+    3.6,
+    1.1,
+    3.2
+   ],
+   "pos": [
+    -5.4,
+    1.0,
+    -6.0
+   ],
+   "rot": [
+    -12,
+    -10,
+    -14
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "size": [
+    3.0,
+    0.7,
+    2.4
+   ],
+   "pos": [
+    -5.4,
+    1.45,
+    -5.8
+   ],
+   "rot": [
+    -12,
+    -10,
+    -14
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -4.3,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.3878
+   ],
+   "rot": [
+    158.962,
+    9.343,
+    -0.0
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.05,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.9127
+   ],
+   "rot": [
+    162.121,
+    2.563,
+    -0.0
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -5.8,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.8759
+   ],
+   "rot": [
+    161.94,
+    -2.958,
+    -0.0
+   ]
+  },
+  {
+   "segment": "SpadeL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -6.55,
+    0.85,
+    -7.0
+   ],
+   "size": [
+    0.75,
+    0.55,
+    3.3551
+   ],
+   "rot": [
+    158.714,
+    -9.868,
+    -0.0
+   ]
+  },
+  {
+   "segment": "SegA",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.804,
+    5.2
+   ],
+   "size": [
+    5.562,
+    4.136,
+    5.0835
+   ],
+   "rot": [
+    10.886,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "SegA",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    1.08,
+    6.022000000000001,
+    4.16
+   ]
+  },
+  {
+   "segment": "SegA",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -1.08,
+    6.022000000000001,
+    4.16
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegA",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    1.08,
+    5.572,
+    6.5
+   ]
+  },
+  {
+   "segment": "SegA",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -1.08,
+    5.572,
+    6.5
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegA",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.78,
+    5.2
+   ],
+   "size": [
+    3.888,
+    2.2,
+    5.2953
+   ],
+   "rot": [
+    10.886,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "SegB",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    3.058,
+    10.0
+   ],
+   "size": [
+    4.7379999999999995,
+    3.5719999999999996,
+    5.015
+   ],
+   "rot": [
+    5.492,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "SegB",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    0.9199999999999999,
+    4.894,
+    8.96
+   ]
+  },
+  {
+   "segment": "SegB",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -0.9199999999999999,
+    4.894,
+    8.96
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegB",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    0.9199999999999999,
+    4.6690000000000005,
+    11.3
+   ]
+  },
+  {
+   "segment": "SegB",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -0.9199999999999999,
+    4.6690000000000005,
+    11.3
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegB",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.31,
+    10.0
+   ],
+   "size": [
+    3.312,
+    1.9,
+    5.224
+   ],
+   "rot": [
+    5.492,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "SegC",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.48,
+    14.3
+   ],
+   "size": [
+    3.708,
+    2.82,
+    4.0502
+   ],
+   "rot": [
+    5.44,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "SegC",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    0.7200000000000001,
+    3.92,
+    13.459999999999999
+   ]
+  },
+  {
+   "segment": "SegC",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -0.7200000000000001,
+    3.92,
+    13.459999999999999
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegC",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    0.7200000000000001,
+    3.74,
+    15.349999999999998
+   ]
+  },
+  {
+   "segment": "SegC",
+   "color": "pit",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.4,
+    0.5
+   ],
+   "pos": [
+    -0.7200000000000001,
+    3.74,
+    15.349999999999998
+   ],
+   "rot": null
+  },
+  {
+   "segment": "SegC",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.1,
+    14.3
+   ],
+   "size": [
+    2.592,
+    1.5,
+    4.219
+   ],
+   "rot": [
+    5.44,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.954,
+    17.9
+   ],
+   "size": [
+    2.3689999999999998,
+    1.7859999999999998,
+    3.6594
+   ],
+   "rot": [
+    4.514,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.08,
+    17.9
+   ],
+   "size": [
+    1.656,
+    0.95,
+    3.8118
+   ],
+   "rot": [
+    4.514,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "plate",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    1.6,
+    19.2
+   ],
+   "size": [
+    2.4,
+    0.7,
+    5.6321
+   ],
+   "rot": [
+    6.116,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "notes": "Sunscar Dune Sea. Underground. Blind, senses footsteps through glowing pits; plates break.",
+ "sky": [
+  0.86,
+  0.74,
+  0.55
+ ]
+}

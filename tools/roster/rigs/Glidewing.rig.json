@@ -1,0 +1,896 @@
+{
+ "name": "Glidewing",
+ "displayName": "Glidewing",
+ "colors": {
+  "skin": [
+   70,
+   110,
+   120
+  ],
+  "sail": [
+   232,
+   120,
+   48
+  ],
+  "band": [
+   60,
+   40,
+   40
+  ],
+  "belly": [
+   210,
+   200,
+   170
+  ],
+  "fan": [
+   255,
+   200,
+   60
+  ],
+  "eye": [
+   255,
+   230,
+   80
+  ],
+  "claw": [
+   40,
+   36,
+   34
+  ]
+ },
+ "glow": {
+  "eye": true,
+  "fan": true
+ },
+ "displace": {
+  "skin": 1.0,
+  "sail": 0.35,
+  "band": 0.35,
+  "belly": 0.5,
+  "claw": 0.0
+ },
+ "skin": {
+  "cell": 0.12,
+  "depth": 0.025,
+  "noise": 0.02,
+  "pattern": "VORONOI"
+ },
+ "hipHeight": 2.4,
+ "rootSize": [
+  2,
+  2,
+  2
+ ],
+ "segments": [
+  {
+   "name": "Body",
+   "attach": "Root",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    2.4,
+    0
+   ],
+   "color": "skin",
+   "hitzone": "body",
+   "tris": 350,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.5,
+    0.05
+   ],
+   "size": [
+    1.1,
+    0.8,
+    2.508
+   ],
+   "rot": [
+    -175.426,
+    0.0,
+    0.0
+   ],
+   "fine": true
+  },
+  {
+   "name": "Head",
+   "attach": "Body",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    2.65,
+    -1.1
+   ],
+   "color": "skin",
+   "hitzone": "head",
+   "tris": 400,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.675,
+    -1.75
+   ],
+   "size": [
+    0.85,
+    0.6,
+    1.5075
+   ],
+   "rot": [
+    174.289,
+    0.0,
+    0.0
+   ],
+   "fine": true,
+   "breaksWith": "head"
+  },
+  {
+   "name": "WingR",
+   "attach": "Body",
+   "joint": "ShoulderR",
+   "jointAt": [
+    0.45,
+    2.5,
+    -0.3
+   ],
+   "color": "sail",
+   "hitzone": "wing",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "size": [
+    3.6,
+    0.16,
+    2.6
+   ],
+   "pos": [
+    2.0,
+    2.45,
+    0.15
+   ],
+   "fine": true,
+   "breaksWith": "wing"
+  },
+  {
+   "name": "WingL",
+   "attach": "Body",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -0.45,
+    2.5,
+    -0.3
+   ],
+   "color": "sail",
+   "hitzone": "wing",
+   "tris": 450,
+   "shape": "ellipsoid",
+   "size": [
+    3.6,
+    0.16,
+    2.6
+   ],
+   "pos": [
+    -2.0,
+    2.45,
+    0.15
+   ],
+   "fine": true,
+   "breaksWith": "wing"
+  },
+  {
+   "name": "Tail",
+   "attach": "Body",
+   "joint": "Tail",
+   "jointAt": [
+    0,
+    2.4,
+    1.2
+   ],
+   "color": "skin",
+   "hitzone": "tail",
+   "tris": 300,
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.35,
+    3.0
+   ],
+   "size": [
+    0.45,
+    0.4,
+    4.005
+   ],
+   "rot": [
+    2.862,
+    0.0,
+    0.0
+   ],
+   "fine": true
+  }
+ ],
+ "details": [
+  {
+   "segment": "Body",
+   "color": "belly",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.275,
+    0.05
+   ],
+   "size": [
+    0.8,
+    0.45,
+    2.1054
+   ],
+   "rot": [
+    -175.914,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.8,
+    -0.9
+   ],
+   "size": [
+    0.15,
+    0.12,
+    0.8485
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.8,
+    -0.4
+   ],
+   "size": [
+    0.15,
+    0.12,
+    0.8485
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.8,
+    0.1
+   ],
+   "size": [
+    0.15,
+    0.12,
+    0.8485
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.8,
+    0.6
+   ],
+   "size": [
+    0.15,
+    0.12,
+    0.8485
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Body",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    2.8,
+    1.1
+   ],
+   "size": [
+    0.15,
+    0.12,
+    0.8485
+   ],
+   "rot": [
+    -45.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "fan",
+   "shape": "ellipsoid",
+   "size": [
+    0.14,
+    0.8,
+    0.9
+   ],
+   "pos": [
+    0,
+    2.15,
+    -1.55
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.26,
+    0.24,
+    0.28
+   ],
+   "pos": [
+    0.33,
+    2.85,
+    -1.85
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    0.25,
+    2.95,
+    -1.3
+   ],
+   "size": [
+    0.14,
+    0.14,
+    1.3601
+   ],
+   "rot": [
+    -34.992,
+    26.176,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "eye",
+   "shape": "ellipsoid",
+   "size": [
+    0.26,
+    0.24,
+    0.28
+   ],
+   "pos": [
+    -0.33,
+    2.85,
+    -1.85
+   ],
+   "rot": null
+  },
+  {
+   "segment": "Head",
+   "color": "band",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.25,
+    2.95,
+    -1.3
+   ],
+   "size": [
+    0.14,
+    0.14,
+    1.3601
+   ],
+   "rot": [
+    -34.992,
+    -26.176,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "skin",
+   "shape": "ellipsoid",
+   "pos": [
+    1.95,
+    2.525,
+    -0.75
+   ],
+   "size": [
+    0.24,
+    0.24,
+    3.102
+   ],
+   "rot": [
+    -26.565,
+    87.934,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "skin",
+   "shape": "ellipsoid",
+   "pos": [
+    1.85,
+    2.41,
+    1.05
+   ],
+   "size": [
+    0.24,
+    0.24,
+    2.9155
+   ],
+   "rot": [
+    -3.814,
+    84.081,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    2.2
+   ],
+   "pos": [
+    1.2,
+    2.46,
+    0.2
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    1.84
+   ],
+   "pos": [
+    2.1,
+    2.46,
+    0.2
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    1.48
+   ],
+   "pos": [
+    3.0,
+    2.46,
+    0.2
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    165.964,
+    62.734,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.8062
+   ],
+   "rot": [
+    90.0,
+    82.875,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    14.036,
+    62.734,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    165.964,
+    62.734,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.8062
+   ],
+   "rot": [
+    90.0,
+    82.875,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingR",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    14.036,
+    62.734,
+    0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "skin",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.95,
+    2.525,
+    -0.75
+   ],
+   "size": [
+    0.24,
+    0.24,
+    3.102
+   ],
+   "rot": [
+    -26.565,
+    -87.934,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "skin",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.85,
+    2.41,
+    1.05
+   ],
+   "size": [
+    0.24,
+    0.24,
+    2.9155
+   ],
+   "rot": [
+    -3.814,
+    -84.081,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    2.2
+   ],
+   "pos": [
+    -1.2,
+    2.46,
+    0.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "WingL",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    1.84
+   ],
+   "pos": [
+    -2.1,
+    2.46,
+    0.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "WingL",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.3,
+    0.2,
+    1.48
+   ],
+   "pos": [
+    -3.0,
+    2.46,
+    0.2
+   ],
+   "rot": null
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    165.964,
+    -62.734,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.8062
+   ],
+   "rot": [
+    90.0,
+    -82.875,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.6,
+    2.55,
+    -0.7
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    14.036,
+    -62.734,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    165.964,
+    -62.734,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.8062
+   ],
+   "rot": [
+    90.0,
+    -82.875,
+    -0.0
+   ]
+  },
+  {
+   "segment": "WingL",
+   "color": "claw",
+   "shape": "ellipsoid",
+   "pos": [
+    -3.4,
+    2.42,
+    1.2
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.9
+   ],
+   "rot": [
+    14.036,
+    -62.734,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "sail",
+   "shape": "ellipsoid",
+   "size": [
+    1.1,
+    0.1,
+    1.0
+   ],
+   "pos": [
+    0,
+    2.25,
+    4.8
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.48,
+    0.44,
+    0.25
+   ],
+   "pos": [
+    0,
+    2.34,
+    2.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.48,
+    0.44,
+    0.25
+   ],
+   "pos": [
+    0,
+    2.3,
+    3.0
+   ]
+  },
+  {
+   "segment": "Tail",
+   "color": "band",
+   "shape": "ellipsoid",
+   "size": [
+    0.48,
+    0.44,
+    0.25
+   ],
+   "pos": [
+    0,
+    2.26,
+    4.0
+   ]
+  }
+ ],
+ "notes": "Small gliding thief: steals dropped materials and part breaks; chase it to get them back.",
+ "sky": [
+  0.6,
+  0.72,
+  0.86
+ ]
+}
