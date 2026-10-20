@@ -69,6 +69,11 @@ end
 local function livingCharacters(): { { humanoid: Humanoid, root: BasePart } }
 	local list = {}
 	for _, player in Players:GetPlayers() do
+		-- Hunters in camp float right above the hunting ground; distances here are flat, so
+		-- they must be skipped or the monster would chase and hit them through the sky.
+		if player:GetAttribute("Location") == "Camp" then
+			continue
+		end
 		local character = player.Character
 		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 		local root = character and character:FindFirstChild("HumanoidRootPart")

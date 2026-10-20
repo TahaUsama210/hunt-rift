@@ -103,6 +103,10 @@ local function watchMonsters(fill: Frame, label: TextLabel)
 				end
 			end
 		end
+		-- No monster bar while you are in camp, high above the hunting ground.
+		if player:GetAttribute("Location") == "Camp" then
+			best = nil
+		end
 		frame.Visible = best ~= nil
 		if best then
 			local monster = Monsters[best:GetAttribute("MonsterId")]
@@ -182,10 +186,11 @@ function Hud.start(controls: { string })
 	hurtFlash.BorderSizePixel = 0
 	hurtFlash.Parent = gui
 
+	-- Top-left, under Roblox's own buttons: the bottom-left belongs to the camp wallet.
 	local playerFill, playerLabel = bar(
 		"PlayerHealth",
-		UDim2.new(0, 20, 1, -60),
-		Vector2.new(0, 1),
+		UDim2.new(0, 20, 0, 66),
+		Vector2.new(0, 0),
 		280,
 		Color3.fromRGB(70, 190, 90)
 	)
