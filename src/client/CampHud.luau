@@ -11,6 +11,7 @@ local Workspace = game:GetService("Workspace")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
 local Hub = require(Shared:WaitForChild("Config"):WaitForChild("Hub"))
+local Icons = require(Shared:WaitForChild("Config"):WaitForChild("Icons"))
 local NestRotation = require(Shared:WaitForChild("Rules"):WaitForChild("NestRotation"))
 local Remotes = require(Shared:WaitForChild("Remotes"))
 local Ui = require(script.Parent:WaitForChild("Ui"))
@@ -24,7 +25,8 @@ for _, portal in Hub.portals do
 	portalById[portal.id] = portal
 end
 
--- Pills over the profile card, bottom-left. onPlus opens the way to earn more.
+-- Pills over the profile card, bottom-left (top-right on phones). onPlus opens the way to earn
+-- more.
 local function walletAndProfile(gui: ScreenGui, onPlus: () -> ()): Frame
 	local block = Ui.frame(gui, UDim2.fromOffset(300, 140))
 	block.AnchorPoint = Vector2.new(0, 1)
@@ -32,8 +34,8 @@ local function walletAndProfile(gui: ScreenGui, onPlus: () -> ()): Frame
 
 	local pills = Ui.frame(block, UDim2.new(1, 0, 0, 40))
 	Ui.stack(pills, 8, true)
-	local shards = Ui.pill(pills, Ui.colors.shard, onPlus)
-	local gold = Ui.pill(pills, Ui.colors.gold, onPlus)
+	local shards = Ui.pill(pills, Ui.colors.shard, Icons.Shard, onPlus)
+	local gold = Ui.pill(pills, Ui.colors.gold, Icons.Gold, onPlus)
 
 	local card = Ui.frame(block, UDim2.new(1, 0, 0, 88), Ui.colors.night)
 	card.Position = UDim2.fromOffset(0, 52)
@@ -81,9 +83,22 @@ local function walletAndProfile(gui: ScreenGui, onPlus: () -> ()): Frame
 	Ui.corner(rank, 12)
 	Ui.ink(rank)
 
+	if Ui.touchOnly() then
+		-- Phones: the thumbstick lives bottom-left, so the pills go top-right and the profile
+		-- card stays hidden (the Profile tile shows it).
+		block.AnchorPoint = Vector2.new(1, 0)
+		block.Position = UDim2.new(1, -16, 0, 66)
+		block.Size = UDim2.fromOffset(300, 40)
+		card.Visible = false
+	end
+	Ui.fit(block)
+
+	Ui.target("shards", shards.Parent :: GuiObject)
+	Ui.target("gold", gold.Parent :: GuiObject)
+	-- Numbers roll up to the new amount instead of jumping.
 	local function showWallet()
-		shards.Text = Ui.number(PlayerData.shards)
-		gold.Text = Ui.number(PlayerData.gold)
+		Ui.count(shards, PlayerData.shards)
+		Ui.count(gold, PlayerData.gold)
 	end
 	PlayerData.changed:Connect(showWallet)
 	showWallet()
@@ -102,6 +117,7 @@ local function nestWidget(gui: ScreenGui): Frame
 	box.BackgroundTransparency = 0.1
 	Ui.corner(box, 12)
 	Ui.stroke(box, Ui.colors.rift, 3)
+	Ui.fit(box)
 	-- The egg's silhouette: you know which monster, not what the egg looks like.
 	local egg = Ui.frame(box, UDim2.fromOffset(28, 36), Color3.fromRGB(5, 7, 10))
 	egg.Position = UDim2.fromOffset(14, 13)
@@ -135,7 +151,7 @@ local function nestWidget(gui: ScreenGui): Frame
 		local spire = hub and hub:FindFirstChild("Stations")
 		spire = spire and spire:FindFirstChild("NestSpire")
 		local hunter = spire and spire:FindFirstChild("Hunter")
-		local body = hunter and hunter:FindFirstChild("Body")
+		local body = hunter and hunter:FindFirstChild("Root")
 		local signGui = body and body:FindFirstChild("Sign")
 		local sub = signGui and signGui:FindFirstChild("Subtitle")
 		if sub and sub:IsA("TextLabel") then
@@ -151,6 +167,7 @@ local function partyCard(gui: ScreenGui)
 	card.Position = UDim2.new(0.5, 0, 1, -24)
 	card.BackgroundTransparency = 0.04
 	card.Visible = false
+	Ui.fit(card)
 	Ui.corner(card, 16)
 	local stroke = Ui.stroke(card, Ui.colors.line, 3)
 	Ui.padding(card, 18)

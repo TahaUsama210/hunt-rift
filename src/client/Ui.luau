@@ -3,8 +3,15 @@
 -- chunky look (see the UI kit board on the Hunt Rift hub and UI design canvas): near-black
 -- panels with a glowing colored border, white caps titles, a red X, bright buttons with
 -- outlined text, menu tiles with a colored name strip, and currency pills.
+-- Everything you can press is springy (grows under the mouse, squishes when pressed, bounces
+-- back), panels pop in, and only things that want a tap pulse or shine (research/vfx.md).
+-- With the player's Reduce Motion setting on, tweens finish at once and nothing loops.
 
+local GuiService = game:GetService("GuiService")
 local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
 
 local Ui = {}
 
@@ -55,6 +62,319 @@ local nextLayout = 0
 local function nextOrder(): number
 	nextLayout += 1
 	return nextLayout
+end
+
+-- The player's Reduce Motion setting.
+function Ui.reducedMotion(): boolean
+	return GuiService.ReducedMotionEnabled
+end
+
+function Ui.tween(
+	item: Instance,
+	seconds: number,
+	props: { [string]: any },
+	style: Enum.EasingStyle?,
+	direction: Enum.EasingDirection?
+): Tween
+	local tween = TweenService:Create(
+		item,
+		TweenInfo.new(
+			if Ui.reducedMotion() then 0 else seconds,
+			style or Enum.EasingStyle.Quad,
+			direction or Enum.EasingDirection.Out
+		),
+		props
+	)
+	tween:Play()
+	return tween
+end
+
+local function isPress(input: InputObject): boolean
+	return input.UserInputType == Enum.UserInputType.MouseButton1
+		or input.UserInputType == Enum.UserInputType.Touch
+end
+
+-- Every looping animation (pulses, shimmering borders, shines) runs off one Heartbeat.
+type Loop = { item: Instance, step: (now: number) -> () }
+local loops: { Loop } = {}
+local looping = false
+local function loop(item: Instance, step: (now: number) -> ())
+	table.insert(loops, { item = item, step = step })
+	if looping then
+		return
+	end
+	looping = true
+	RunService.Heartbeat:Connect(function()
+		local now = os.clock()
+		local still = Ui.reducedMotion()
+		for i = #loops, 1, -1 do
+			local entry = loops[i]
+			if entry.item.Parent == nil then
+				table.remove(loops, i)
+			elseif not still then
+				entry.step(now)
+			end
+		end
+	end)
+end
+
+-- Makes something pressable springy. `holder` is what grows and shrinks (it must be centered:
+-- AnchorPoint 0.5, 0.5); `face` dips onto its lip while pressed. A press answers at once (a
+-- quick squish), the release bounces back past where it was.
+local function spring(button: GuiButton, holder: GuiObject, face: GuiObject?, hover: number?)
+	local scale = Instance.new("UIScale")
+	scale.Parent = holder
+	local over, down = false, false
+	local function settle()
+		if down then
+			Ui.tween(scale, 0.08, { Scale = 0.95 })
+		else
+			Ui.tween(
+				scale,
+				0.22,
+				{ Scale = if over then hover or 1.05 else 1 },
+				Enum.EasingStyle.Back
+			)
+		end
+		if face then
+			Ui.tween(face, 0.08, { Position = UDim2.fromOffset(0, if down then 3 else 0) })
+		end
+	end
+	button.MouseEnter:Connect(function()
+		over = true
+		settle()
+	end)
+	button.MouseLeave:Connect(function()
+		over = false
+		down = false
+		settle()
+	end)
+	button.InputBegan:Connect(function(input)
+		if isPress(input) then
+			down = true
+			settle()
+		end
+	end)
+	button.InputEnded:Connect(function(input)
+		if isPress(input) then
+			down = false
+			settle()
+		end
+	end)
+end
+Ui.spring = spring
+
+-- A slow breathing pulse (for things that want a tap: a Claim button, a badge).
+function Ui.pulse(item: GuiObject, amount: number?, speed: number?)
+	local scale = item:FindFirstChildOfClass("UIScale") or Instance.new("UIScale")
+	scale.Parent = item
+	local phase = math.random() * 3
+	loop(item, function(now)
+		scale.Scale = 1 + (amount or 0.05) * (0.5 + 0.5 * math.sin((now + phase) * (speed or 4)))
+	end)
+end
+
+-- A bright band that runs around a border (UIStroke) for things that are ready to claim.
+function Ui.shimmer(stroke: UIStroke, color: Color3)
+	local gradient = Instance.new("UIGradient")
+	gradient.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0, color),
+		ColorSequenceKeypoint.new(0.45, color),
+		ColorSequenceKeypoint.new(0.5, Color3.new(1, 1, 1)),
+		ColorSequenceKeypoint.new(0.55, color),
+		ColorSequenceKeypoint.new(1, color),
+	})
+	gradient.Parent = stroke
+	loop(stroke, function(now)
+		gradient.Rotation = (now * 120) % 360
+	end)
+end
+
+-- Every few seconds a soft white band sweeps across `face` (it must clip its descendants).
+-- Only for things with something to collect; hide the returned band when there is nothing.
+function Ui.shine(face: GuiObject, every: number?): Frame
+	local band = Instance.new("Frame")
+	band.Name = "Shine"
+	band.AnchorPoint = Vector2.new(0.5, 0.5)
+	band.Size = UDim2.new(0.35, 0, 2, 0)
+	band.Rotation = 20
+	band.BackgroundColor3 = Color3.new(1, 1, 1)
+	band.BorderSizePixel = 0
+	band.ZIndex = 4
+	local fade = Instance.new("UIGradient")
+	fade.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 1),
+		NumberSequenceKeypoint.new(0.5, 0.65),
+		NumberSequenceKeypoint.new(1, 1),
+	})
+	fade.Parent = band
+	band.Position = UDim2.fromScale(-0.6, 0.5)
+	band.Parent = face
+	local period = every or 5
+	local offset = math.random() * period
+	loop(band, function(now)
+		local k = ((now + offset) % period) / 0.7
+		band.Position = UDim2.fromScale(if k < 1 then -0.6 + 2.2 * k else -0.6, 0.5)
+	end)
+	return band
+end
+
+-- Little coins (or shards) fly from `from` into the counter registered as `target`, then the
+-- counter bounces. Pure show: the server already decided the reward.
+local targets: { [string]: GuiObject } = {}
+function Ui.target(name: string, item: GuiObject)
+	targets[name] = item
+end
+function Ui.flyTo(gui: ScreenGui, from: GuiObject, target: string, color: Color3, count: number?)
+	local goal = targets[target]
+	if not goal then
+		return
+	end
+	local inset = gui.AbsolutePosition
+	local start = from.AbsolutePosition + from.AbsoluteSize / 2 - inset
+	local finish = goal.AbsolutePosition + Vector2.new(22, goal.AbsoluteSize.Y / 2) - inset
+	for i = 1, count or 8 do
+		local coin = Instance.new("Frame")
+		coin.AnchorPoint = Vector2.new(0.5, 0.5)
+		coin.Size = UDim2.fromOffset(18, 18)
+		coin.BackgroundColor3 = color
+		coin.ZIndex = 50
+		Ui.corner(coin, 9)
+		Ui.stroke(coin, color:Lerp(Color3.new(1, 1, 1), 0.6), 2)
+		local spread = Vector2.new(math.random(-60, 60), math.random(-70, -10))
+		coin.Position = UDim2.fromOffset(start.X, start.Y)
+		coin.Parent = gui
+		task.delay((i - 1) * 0.04, function()
+			local burst = start + spread
+			Ui.tween(coin, 0.22, { Position = UDim2.fromOffset(burst.X, burst.Y) })
+			task.delay(0.22, function()
+				local fly = Ui.tween(coin, 0.45, {
+					Position = UDim2.fromOffset(finish.X, finish.Y),
+					Size = UDim2.fromOffset(12, 12),
+				}, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+				fly.Completed:Connect(function()
+					coin:Destroy()
+					Ui.bump(goal)
+				end)
+			end)
+		end)
+	end
+end
+
+-- A reward pop, the moment players like most (research/vfx.md): sparkles burst out of `from`
+-- (the screen's middle when nil) and the reward lines pop up, hang a moment and float off.
+-- Pure show, like flyTo.
+export type RewardLine = { text: string, color: Color3 }
+function Ui.celebrate(gui: ScreenGui, from: GuiObject?, lines: { RewardLine })
+	local center = if from
+		then from.AbsolutePosition + from.AbsoluteSize / 2 - gui.AbsolutePosition
+		else gui.AbsoluteSize / 2
+	if not Ui.reducedMotion() then
+		local count = 12
+		for i = 1, count do
+			local angle = (i / count) * math.pi * 2 + math.random() * 0.3
+			local star = Instance.new("Frame")
+			star.AnchorPoint = Vector2.new(0.5, 0.5)
+			star.Size = UDim2.fromOffset(12, 12)
+			star.Rotation = 45
+			star.BackgroundColor3 = lines[i % #lines + 1].color:Lerp(Color3.new(1, 1, 1), 0.35)
+			star.BorderSizePixel = 0
+			star.ZIndex = 60
+			star.Position = UDim2.fromOffset(center.X, center.Y)
+			star.Parent = gui
+			local to = center
+				+ Vector2.new(math.cos(angle), math.sin(angle)) * (70 + math.random() * 50)
+			Ui.tween(star, 0.55, {
+				Position = UDim2.fromOffset(to.X, to.Y),
+				Size = UDim2.fromOffset(4, 4),
+				BackgroundTransparency = 1,
+				Rotation = 225,
+			}, Enum.EasingStyle.Quart)
+			task.delay(0.6, function()
+				star:Destroy()
+			end)
+		end
+	end
+	local stack = Instance.new("Frame")
+	stack.BackgroundTransparency = 1
+	stack.AnchorPoint = Vector2.new(0.5, 1)
+	stack.Position = UDim2.fromOffset(center.X, center.Y - 16)
+	stack.Size = UDim2.fromOffset(360, #lines * 36)
+	stack.ZIndex = 61
+	for i, line in lines do
+		local label = Instance.new("TextLabel")
+		label.BackgroundTransparency = 1
+		label.Size = UDim2.new(1, 0, 0, 34)
+		label.Position = UDim2.fromOffset(0, (i - 1) * 36)
+		label.Font = Ui.fonts.button
+		label.TextSize = 30
+		label.TextColor3 = line.color
+		label.Text = line.text
+		label.ZIndex = 61
+		Ui.ink(label, 3)
+		label.Parent = stack
+	end
+	local pop = Instance.new("UIScale")
+	pop.Scale = 0.6
+	pop.Parent = stack
+	stack.Parent = gui
+	Ui.tween(pop, 0.18, { Scale = 1.15 }).Completed:Connect(function()
+		Ui.tween(pop, 0.2, { Scale = 1 }, Enum.EasingStyle.Back)
+	end)
+	task.delay(1.4, function()
+		Ui.tween(stack, 0.5, { Position = UDim2.fromOffset(center.X, center.Y - 70) })
+		for _, label in stack:GetChildren() do
+			if label:IsA("TextLabel") then
+				Ui.tween(label, 0.5, { TextTransparency = 1 })
+				local stroke = label:FindFirstChildOfClass("UIStroke")
+				if stroke then
+					Ui.tween(stroke, 0.5, { Transparency = 1 })
+				end
+			end
+		end
+		task.delay(0.55, function()
+			stack:Destroy()
+		end)
+	end)
+end
+
+-- A quick pop, for a counter that just went up.
+function Ui.bump(target: GuiObject)
+	local holder = target:FindFirstChild("Holder")
+	local item = if holder and holder:IsA("GuiObject") then holder else target
+	local scale = item:FindFirstChild("Bump") :: UIScale?
+	if not scale then
+		local new = Instance.new("UIScale")
+		new.Name = "Bump"
+		new.Parent = item
+		scale = new
+	end
+	local s = scale :: UIScale
+	s.Scale = 1.15
+	Ui.tween(s, 0.3, { Scale = 1 }, Enum.EasingStyle.Back)
+end
+
+-- Shrinks a screen widget on short screens (phones held sideways), so the kit's chunky fixed
+-- sizes still fit. It scales around the widget's AnchorPoint, so corner widgets stay put.
+local FIT_HEIGHT = 720
+function Ui.fit(item: GuiObject)
+	local gui = item:FindFirstAncestorOfClass("ScreenGui")
+	if not gui then
+		return
+	end
+	local scale = Instance.new("UIScale")
+	scale.Name = "Fit"
+	scale.Parent = item
+	local function update()
+		scale.Scale = math.clamp(gui.AbsoluteSize.Y / FIT_HEIGHT, 0.6, 1)
+	end
+	gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(update)
+	update()
+end
+
+-- Phones and tablets: no keyboard, so the thumbstick and jump button own the bottom corners.
+function Ui.touchOnly(): boolean
+	return UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
 end
 
 function Ui.screen(name: string, order: number?): ScreenGui
@@ -155,32 +475,87 @@ function Ui.text(
 	return label
 end
 
+-- The chunky raised look shared by buttons and tiles: inside the (invisible) button sits a
+-- centered holder that springs, a darker lip under it, and the face on top with a glossy
+-- gradient and a light top half. Returns the face to put content on.
+local function raised(button: TextButton, fill: Color3, radius: number, lift: number): Frame
+	button.BackgroundTransparency = 1
+	button.Text = ""
+	button.AutoButtonColor = false
+	local holder = Instance.new("Frame")
+	holder.Name = "Holder"
+	holder.AnchorPoint = Vector2.new(0.5, 0.5)
+	holder.Position = UDim2.fromScale(0.5, 0.5)
+	holder.Size = UDim2.fromScale(1, 1)
+	holder.BackgroundTransparency = 1
+	holder.Parent = button
+	local lip = Instance.new("Frame")
+	lip.Name = "Lip"
+	lip.Size = UDim2.new(1, 0, 1, 0)
+	lip.Position = UDim2.fromOffset(0, lift)
+	lip.BackgroundColor3 = fill:Lerp(Color3.new(0, 0, 0), 0.45)
+	lip.BorderSizePixel = 0
+	Ui.corner(lip, radius)
+	lip.Parent = holder
+	local face = Instance.new("Frame")
+	face.Name = "Face"
+	face.Size = UDim2.new(1, 0, 1, 0)
+	face.BackgroundColor3 = fill
+	face.BorderSizePixel = 0
+	face.ClipsDescendants = true
+	Ui.corner(face, radius)
+	local gloss = Instance.new("UIGradient")
+	gloss.Rotation = 90
+	gloss.Color = ColorSequence.new(Color3.new(1, 1, 1), Color3.new(0.78, 0.78, 0.78))
+	gloss.Parent = face
+	local shine = Instance.new("Frame")
+	shine.Name = "Gloss"
+	shine.Size = UDim2.new(1, -8, 0.45, 0)
+	shine.Position = UDim2.fromOffset(4, 3)
+	shine.BackgroundColor3 = Color3.new(1, 1, 1)
+	shine.BackgroundTransparency = 0.82
+	shine.BorderSizePixel = 0
+	Ui.corner(shine, math.max(2, radius - 3))
+	shine.Parent = face
+	face.Parent = holder
+	spring(button, holder, face)
+	return face
+end
+Ui.raised = raised
+
 -- A bright button with outlined Fredoka text. kind: claim, primary, social, status, close,
--- secondary or disabled (says what is missing). 48 px tall so it works with a thumb.
+-- secondary or disabled (says what is missing). 48 px tall so it works with a thumb. Claim
+-- buttons breathe and their border shimmers, because they are good news.
 function Ui.button(parent: Instance, text: string, kind: string, onClick: (() -> ())?): TextButton
 	local fill = buttonColors[kind] or buttonColors.secondary
 	local button = Instance.new("TextButton")
-	button.AutoButtonColor = kind ~= "disabled"
 	button.Size = UDim2.fromOffset(math.max(140, #text * 11 + 48), 48)
-	button.BackgroundColor3 = fill
 	button.BorderSizePixel = 0
-	button.Text = ""
 	button.LayoutOrder = nextOrder()
-	Ui.corner(button)
+	local face = raised(button, fill, 10, if kind == "disabled" then 0 else 4)
 	if kind ~= "disabled" then
-		Ui.stroke(button, fill:Lerp(Color3.new(1, 1, 1), 0.5), 2)
+		local stroke = Ui.stroke(face, fill:Lerp(Color3.new(1, 1, 1), 0.5), 2)
+		if kind == "claim" then
+			Ui.shimmer(stroke, fill:Lerp(Color3.new(1, 1, 1), 0.5))
+		end
 	end
 	local label = Instance.new("TextLabel")
 	label.Name = "Label"
 	label.BackgroundTransparency = 1
+	label.AnchorPoint = Vector2.new(0.5, 0.5)
+	label.Position = UDim2.fromScale(0.5, 0.5)
 	label.Size = UDim2.fromScale(1, 1)
 	label.Font = Ui.fonts.button
 	label.TextSize = 20
 	label.Text = text
+	label.ZIndex = 3
 	label.TextColor3 = if kind == "disabled" then Ui.colors.disabledText else Ui.colors.text
-	label.Parent = button
+	label.Parent = face
 	if kind ~= "disabled" then
 		Ui.ink(label)
+	end
+	if kind == "claim" then
+		Ui.pulse(label, 0.08, 4)
 	end
 	if onClick and kind ~= "disabled" then
 		button.Activated:Connect(onClick)
@@ -196,7 +571,7 @@ function Ui.closeButton(parent: Instance, onClose: () -> ()): TextButton
 	close.Size = UDim2.fromOffset(48, 48)
 	close.AnchorPoint = Vector2.new(1, 0)
 	close.Position = UDim2.fromScale(1, 0)
-	local label = close:FindFirstChild("Label") :: TextLabel
+	local label = close:FindFirstChild("Label", true) :: TextLabel
 	label.TextSize = 24
 	return close
 end
@@ -222,12 +597,13 @@ function Ui.clear(container: Instance)
 end
 
 -- Only one panel is open at a time: opening one closes the last.
-local current: { root: Frame, onClosed: (() -> ())? }? = nil
+local current: { root: Frame, dim: TextButton, onClosed: (() -> ())? }? = nil
 function Ui.closeOpen()
 	local open = current
 	current = nil
 	if open then
 		open.root:Destroy()
+		open.dim:Destroy()
 		if open.onClosed then
 			open.onClosed()
 		end
@@ -250,6 +626,19 @@ function Ui.modal(
 	maxSize: Vector2?
 ): Modal
 	Ui.closeOpen()
+	-- The world behind dims while a panel is open; tapping it closes the panel.
+	local dim = Instance.new("TextButton")
+	dim.Name = "Dim"
+	dim.Text = ""
+	dim.AutoButtonColor = false
+	dim.Size = UDim2.fromScale(1, 1)
+	dim.BackgroundColor3 = Color3.new(0, 0, 0)
+	dim.BackgroundTransparency = 1
+	dim.BorderSizePixel = 0
+	dim.ZIndex = 9
+	dim.Parent = gui
+	dim.Activated:Connect(Ui.closeOpen)
+	Ui.tween(dim, 0.25, { BackgroundTransparency = 0.55 })
 	local root = Ui.frame(gui, UDim2.fromScale(0.82, 0.82), Ui.colors.panel)
 	root.Name = "Panel"
 	root.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -278,7 +667,12 @@ function Ui.modal(
 
 	local body = Ui.frame(root, UDim2.new(1, 0, 1, -68))
 	body.Position = UDim2.fromOffset(0, 68)
-	current = { root = root, onClosed = onClosed }
+	-- Pops in: a little small and see-through, then a springy settle.
+	local pop = Instance.new("UIScale")
+	pop.Scale = 0.85
+	pop.Parent = root
+	Ui.tween(pop, 0.22, { Scale = 1 }, Enum.EasingStyle.Back)
+	current = { root = root, dim = dim, onClosed = onClosed }
 	return { root = root, body = body, header = header }
 end
 
@@ -441,81 +835,93 @@ function Ui.costRow(parent: Instance, name: string, have: number, need: number):
 	return row
 end
 
--- A menu tile: a dark tint of its color, a light border, a big glyph (or an uploaded icon
--- image) and the name in a solid color strip. badge() shows or hides the red "!".
+-- An icon from Config/Icons: the uploaded image when there is one, its emoji until then.
+export type Icon = { image: string, emoji: string }
+function Ui.icon(parent: Instance, icon: Icon): GuiObject
+	local art: GuiObject
+	if icon.image ~= "" then
+		local image = Instance.new("ImageLabel")
+		image.Image = icon.image
+		image.ScaleType = Enum.ScaleType.Fit
+		art = image
+	else
+		local glyph = Instance.new("TextLabel")
+		glyph.Font = Ui.fonts.button
+		glyph.TextScaled = true
+		glyph.TextColor3 = Ui.colors.text
+		glyph.Text = icon.emoji
+		art = glyph
+	end
+	art.Name = "Icon"
+	art.BackgroundTransparency = 1
+	art.Parent = parent
+	return art
+end
+
+-- A menu tile: a raised dark tint of its color with a light border, a big icon (Ui.icon) and
+-- the name in a solid color strip. The icon pops and tilts under the mouse, and badge() shows or hides the bouncing red
+-- "!" and a shine that sweeps across now and then (only while there is something to collect).
 export type Tile = { button: TextButton, badge: (boolean) -> () }
-function Ui.tile(
-	parent: Instance,
-	name: string,
-	color: Color3,
-	glyph: string,
-	icon: string?,
-	onClick: () -> ()
-): Tile
+function Ui.tile(parent: Instance, name: string, color: Color3, icon: Icon, onClick: () -> ()): Tile
 	local button = Instance.new("TextButton")
 	button.Name = name
-	button.Text = ""
-	button.AutoButtonColor = true
 	button.LayoutOrder = nextOrder()
-	button.BackgroundColor3 = color:Lerp(Color3.new(0, 0, 0), 0.72)
 	button.BorderSizePixel = 0
-	Ui.corner(button, 10)
-	Ui.stroke(button, color:Lerp(Color3.new(1, 1, 1), 0.55), 3)
-	if icon and icon ~= "" then
-		local image = Instance.new("ImageLabel")
-		image.BackgroundTransparency = 1
-		image.AnchorPoint = Vector2.new(0.5, 0)
-		image.Position = UDim2.new(0.5, 0, 0, 10)
-		image.Size = UDim2.new(0.55, 0, 0.55, 0)
-		image.SizeConstraint = Enum.SizeConstraint.RelativeXX
-		image.Image = icon
-		image.Parent = button
-	else
-		local mark = Instance.new("TextLabel")
-		mark.BackgroundTransparency = 1
-		mark.Size = UDim2.new(1, 0, 1, -26)
-		mark.Font = Ui.fonts.button
-		mark.TextScaled = true
-		mark.Text = glyph
-		mark.TextColor3 = color:Lerp(Color3.new(1, 1, 1), 0.6)
-		mark.Parent = button
-		local fit = Instance.new("UIPadding")
-		fit.PaddingTop = UDim.new(0, 12)
-		fit.PaddingBottom = UDim.new(0, 4)
-		fit.Parent = mark
-	end
-	local band = Ui.frame(button, UDim2.new(1, 0, 0, 24), color)
+	local face = raised(button, color:Lerp(Color3.new(0, 0, 0), 0.62), 12, 5)
+	Ui.stroke(face, color:Lerp(Color3.new(1, 1, 1), 0.55), 3)
+	local art = Ui.icon(face, icon)
+	art.AnchorPoint = Vector2.new(0.5, 0.5)
+	art.Position = UDim2.new(0.5, 0, 0.5, -11)
+	art.Size = UDim2.new(0.72, 0, 1, -34)
+	art.ZIndex = 2
+	local pop = Instance.new("UIScale")
+	pop.Parent = art
+	button.MouseEnter:Connect(function()
+		Ui.tween(pop, 0.25, { Scale = 1.14 }, Enum.EasingStyle.Back)
+		Ui.tween(art, 0.25, { Rotation = -8 }, Enum.EasingStyle.Back)
+	end)
+	button.MouseLeave:Connect(function()
+		Ui.tween(pop, 0.2, { Scale = 1 })
+		Ui.tween(art, 0.2, { Rotation = 0 })
+	end)
+
+	local band = Ui.frame(face, UDim2.new(1, 0, 0, 24), color)
 	band.AnchorPoint = Vector2.new(0, 1)
 	band.Position = UDim2.fromScale(0, 1)
-	Ui.corner(band, 8)
-	local flat = Ui.frame(band, UDim2.new(1, 0, 0, 8), color)
+	band.ZIndex = 3
 	local label = Instance.new("TextLabel")
 	label.BackgroundTransparency = 1
 	label.Size = UDim2.fromScale(1, 1)
 	label.Font = Ui.fonts.button
-	label.TextSize = 14
+	label.TextSize = 15
 	label.TextColor3 = Ui.colors.text
 	label.Text = name
-	label.ZIndex = 2
+	label.ZIndex = 4
 	label.Parent = band
 	Ui.ink(label)
-	flat.Position = UDim2.fromOffset(0, 0)
+	local shine = Ui.shine(face, 4 + math.random() * 2)
+	shine.Visible = false
 
+	-- The badge sits on the holder, outside the face, so the face's clipping cannot cut it.
 	local dot = Instance.new("TextLabel")
 	dot.Name = "Badge"
 	dot.Visible = false
 	dot.AnchorPoint = Vector2.new(0.5, 0.5)
-	dot.Position = UDim2.new(1, -2, 0, 2)
-	dot.Size = UDim2.fromOffset(22, 22)
+	dot.Position = UDim2.new(1, -4, 0, 4)
+	dot.Size = UDim2.fromOffset(26, 26)
 	dot.BackgroundColor3 = Ui.colors.red
-	dot.Font = Ui.fonts.heading
-	dot.TextSize = 13
+	dot.Font = Ui.fonts.button
+	dot.TextSize = 17
 	dot.TextColor3 = Ui.colors.text
 	dot.Text = "!"
-	dot.ZIndex = 5
-	Ui.corner(dot, 11)
+	dot.ZIndex = 6
+	Ui.corner(dot, 13)
 	Ui.stroke(dot, Ui.colors.text, 2)
-	dot.Parent = button
+	dot.Parent = face.Parent
+	Ui.pulse(dot, 0.18, 6)
+	loop(dot, function(now)
+		dot.Rotation = 12 * math.sin(now * 9) * math.max(0, math.sin(now * 1.6))
+	end)
 
 	button.Activated:Connect(onClick)
 	button.Parent = parent
@@ -523,41 +929,87 @@ function Ui.tile(
 		button = button,
 		badge = function(on: boolean)
 			dot.Visible = on
+			shine.Visible = on
 		end,
 	}
 end
 
--- A currency pill: a colored coin, the amount and a round + button in the same color.
--- Returns the label to update.
-function Ui.pill(parent: Instance, color: Color3, onPlus: (() -> ())?): TextLabel
-	local pill = Ui.frame(parent, UDim2.new(0.5, -4, 0, 40), Ui.colors.night)
-	pill.BackgroundTransparency = 0.1
-	Ui.corner(pill, 20)
-	Ui.stroke(pill, Color3.fromRGB(43, 46, 58), 2)
-	local coin = Ui.frame(pill, UDim2.fromOffset(22, 22), color)
-	coin.Position = UDim2.new(0, 10, 0.5, -11)
-	Ui.corner(coin, 11)
+-- A currency pill: its icon (a colored coin until the image is uploaded), the amount and a
+-- round + button in the same color. Returns the label to update; Ui.count rolls it to a new
+-- number. Register the pill with Ui.target so rewards can fly into it.
+function Ui.pill(parent: Instance, color: Color3, icon: Icon, onPlus: (() -> ())?): TextLabel
+	local pill = Ui.frame(parent, UDim2.new(0.5, -4, 0, 40))
+	local holder = Ui.frame(pill, UDim2.fromScale(1, 1), Ui.colors.night)
+	holder.Name = "Holder"
+	holder.AnchorPoint = Vector2.new(0.5, 0.5)
+	holder.Position = UDim2.fromScale(0.5, 0.5)
+	holder.BackgroundTransparency = 0.1
+	Ui.corner(holder, 20)
+	Ui.stroke(holder, Color3.fromRGB(43, 46, 58), 2)
+	local coin = Ui.frame(holder, UDim2.fromOffset(24, 24), color)
+	coin.Name = "Coin"
+	coin.Position = UDim2.new(0, 9, 0.5, -12)
+	Ui.corner(coin, 12)
 	Ui.stroke(coin, color:Lerp(Color3.new(1, 1, 1), 0.5), 2)
-	local amount = Ui.text(pill, "0", 16, Ui.colors.text, Ui.fonts.heading, 40)
+	local glint = Ui.frame(coin, UDim2.fromOffset(8, 8), Color3.new(1, 1, 1))
+	glint.Position = UDim2.fromOffset(4, 4)
+	glint.BackgroundTransparency = 0.3
+	Ui.corner(glint, 4)
+	if icon.image ~= "" then
+		-- The rendered coin sits a little bigger than the pill, like a sticker.
+		coin.BackgroundTransparency = 1
+		glint.Visible = false
+		local stroke = coin:FindFirstChildOfClass("UIStroke")
+		if stroke then
+			stroke.Enabled = false
+		end
+		local art = Ui.icon(coin, icon)
+		art.AnchorPoint = Vector2.new(0.5, 0.5)
+		art.Position = UDim2.fromScale(0.5, 0.5)
+		art.Size = UDim2.fromOffset(34, 34)
+	end
+	local amount = Ui.text(holder, "0", 17, Ui.colors.text, Ui.fonts.button, 40)
 	amount.AutomaticSize = Enum.AutomaticSize.None
 	amount.Size = UDim2.new(1, -80, 1, 0)
 	amount.Position = UDim2.fromOffset(38, 0)
 	amount.TextXAlignment = Enum.TextXAlignment.Right
+	Ui.ink(amount)
 	local plus = Instance.new("TextButton")
 	plus.AnchorPoint = Vector2.new(1, 0.5)
 	plus.Position = UDim2.new(1, -5, 0.5, 0)
 	plus.Size = UDim2.fromOffset(30, 30)
 	plus.BackgroundColor3 = color
-	plus.Font = Ui.fonts.heading
-	plus.TextSize = 18
+	plus.Font = Ui.fonts.button
+	plus.TextSize = 22
 	plus.TextColor3 = Ui.colors.text
 	plus.Text = "+"
 	Ui.corner(plus, 15)
-	plus.Parent = pill
+	Ui.stroke(plus, color:Lerp(Color3.new(1, 1, 1), 0.5), 2)
+	plus.Parent = holder
+	spring(plus, plus, nil, 1.15)
 	if onPlus then
 		plus.Activated:Connect(onPlus)
 	end
 	return amount
+end
+
+-- Rolls a number label from what it shows now up (or down) to `value`.
+function Ui.count(label: TextLabel, value: number)
+	local from = tonumber((string.gsub(label.Text, ",", ""))) or 0
+	if from == value then
+		label.Text = Ui.number(value)
+		return
+	end
+	local counter = Instance.new("NumberValue")
+	counter.Value = from
+	counter.Changed:Connect(function(v)
+		label.Text = Ui.number(v)
+	end)
+	local roll = Ui.tween(counter, if value > from then 0.8 else 0.3, { Value = value })
+	roll.Completed:Connect(function()
+		label.Text = Ui.number(value)
+		counter:Destroy()
+	end)
 end
 
 return Ui

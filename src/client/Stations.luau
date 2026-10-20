@@ -420,9 +420,14 @@ function Stations.start(
 		end
 	end)
 	Remotes.get("CraftResult").OnClientEvent:Connect(function(recipeId, ok)
-		toast(
-			if ok then `Crafted {Ui.pretty(recipeId)}!` else `Can't craft {Ui.pretty(recipeId)} yet`
-		)
+		if ok then
+			Ui.celebrate(gui, nil, {
+				{ text = "CRAFTED!", color = Ui.colors.gold },
+				{ text = Ui.pretty(recipeId), color = Ui.colors.text },
+			})
+		else
+			toast(`Can't craft {Ui.pretty(recipeId)} yet`)
+		end
 	end)
 	watchDistance()
 end

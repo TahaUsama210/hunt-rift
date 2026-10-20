@@ -15,6 +15,18 @@ export type Portal = {
 	arrival: { number },
 }
 
+export type Station = {
+	id: string,
+	kind: string, -- which menu the client opens
+	npc: string,
+	title: string,
+	position: { number },
+	color: { number }, -- the NPC's signature color: awning, sign, glow and menu border
+	rig: string, -- the NPC's body plan in Shared/Rigs
+	marker: string?, -- a bouncing mark over the head ("!" for the quest giver)
+	lines: { string }, -- what they say when you walk up
+}
+
 return {
 	-- The camp floats above the hunting ground, so the two never see each other.
 	origin = { 0, 400, 0 },
@@ -102,7 +114,7 @@ return {
 	-- Distance from the plaza's middle to the portal arc.
 	portalArcRadius = 62,
 
-	-- Stations and the hunters who run them. kind picks the menu the client opens.
+	-- Stations and the hunters who run them.
 	stations = {
 		{
 			id = "Blacksmith",
@@ -110,7 +122,13 @@ return {
 			npc = "Brannoc",
 			title = "Blacksmith",
 			position = { -45, 0, 8 },
-			color = { 242, 169, 59 },
+			color = { 255, 138, 61 },
+			rig = "Brannoc",
+			lines = {
+				"Bring me scales and I'll make 'em sing.",
+				"Hot iron waits for no one!",
+				"That blade of yours looks thirsty.",
+			},
 		},
 		{
 			id = "UpgradeTable",
@@ -118,7 +136,13 @@ return {
 			npc = "Wren",
 			title = "Upgrade Table",
 			position = { -45, 0, 30 },
-			color = { 242, 169, 59 },
+			color = { 79, 214, 255 },
+			rig = "Wren",
+			lines = {
+				"Ooh, is that a Thornjaw fang? Gimme!",
+				"One more stone and this thing glows. Probably.",
+				"My upgrade bench is almost ready. Almost!",
+			},
 		},
 		{
 			id = "HuntingBoard",
@@ -126,7 +150,15 @@ return {
 			npc = "Hunt Master Odra",
 			title = "Hunting Board",
 			position = { 45, 0, 8 },
-			color = { 60, 198, 184 },
+			color = { 122, 214, 92 },
+			rig = "Odra",
+			-- The quest giver: a bouncing "!" over the hat draws new hunters over.
+			marker = "!",
+			lines = {
+				"Got a hunt for you, if you're brave enough.",
+				"A Thornjaw's prowling Elderbough. Interested?",
+				"Pick a contract. The board doesn't bite. Much.",
+			},
 		},
 		{
 			id = "Quartermaster",
@@ -134,7 +166,13 @@ return {
 			npc = "Pell",
 			title = "Quartermaster",
 			position = { 45, 0, 30 },
-			color = { 60, 198, 184 },
+			color = { 160, 107, 255 },
+			rig = "Pell",
+			lines = {
+				"Gold for goods, goods for gold!",
+				"My shop opens soon. Save up that gold!",
+				"Heard you like shiny things. Me too.",
+			},
 		},
 		{
 			id = "NestSpire",
@@ -143,9 +181,24 @@ return {
 			title = "Nest Spire",
 			position = { 0, 0, 0 },
 			color = { 224, 91, 208 },
+			rig = "Ama",
+			lines = {
+				"The nest stirs. A new egg is coming...",
+				"Patience, hunter. Every egg hatches in time.",
+				"Can you feel the rift humming?",
+			},
 		},
-	},
+	} :: { Station },
 	spawn = { 0, 0, 55 },
+
+	-- Decoration. Braziers stand at these spots; each lantern string hangs between two poles
+	-- (the ends are the tops of the poles).
+	braziers = { { -18, 0, 46 }, { 18, 0, 46 }, { -30, 0, -24 }, { 30, 0, -24 } },
+	lanternStrings = {
+		{ { -14, 11, 38 }, { 14, 11, 38 } }, -- over the way in from the spawn
+		{ { -36, 10, 2 }, { -36, 10, 36 } }, -- along the blacksmith and the upgrade table
+		{ { 36, 10, 2 }, { 36, 10, 36 } }, -- along the hunting board and the quartermaster
+	},
 
 	-- Nest raids rotate through one featured egg at a time. Each cycle is periodSeconds long and
 	-- the raid is open for the first raidSeconds of it; the rest is the countdown to the next egg.

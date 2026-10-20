@@ -17,6 +17,7 @@ local Stations = require(script:WaitForChild("Stations"))
 local Menus = require(script:WaitForChild("Menus"))
 local PlayerData = require(script:WaitForChild("PlayerData"))
 local Ui = require(script:WaitForChild("Ui"))
+local CampLife = require(script:WaitForChild("CampLife"))
 
 Hud.start(PlayerCombat.controls(Hunt.startingWeapon))
 MonsterAnimator.start()
@@ -26,6 +27,7 @@ Menus.start(camp)
 CampHud.start(camp, Menus.openRewards)
 Stations.start(camp, CampHud.pin, Hud.toast)
 PlayerData.start()
+CampLife.start()
 
 local function displayName(monsterId: string): string
 	local monster = Monsters[monsterId]

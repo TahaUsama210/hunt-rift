@@ -14,6 +14,7 @@ local Monsters = require(Config:WaitForChild("Monsters"))
 local Loot = require(Config:WaitForChild("Loot"))
 local Recipes = require(Config:WaitForChild("Recipes"))
 local DailyConfig = require(Config:WaitForChild("DailyRewards"))
+local Icons = require(Config:WaitForChild("Icons"))
 local PortalParty = require(Shared:WaitForChild("Rules"):WaitForChild("PortalParty"))
 local NestRotation = require(Shared:WaitForChild("Rules"):WaitForChild("NestRotation"))
 local Remotes = require(Shared:WaitForChild("Remotes"))
@@ -386,8 +387,15 @@ local function rewardsMenu()
 			Ui.text(lines, `+ {reward.shards} Rift Shards`, 14, Ui.colors.shard, Ui.fonts.bold, 18)
 			Ui.text(lines, `+ {Ui.number(reward.gold)} Gold`, 14, Ui.colors.gold, Ui.fonts.bold, 18)
 			if today and daily.canClaim then
-				local claim = Ui.button(card, "Claim", "claim", function()
+				local claim: TextButton
+				claim = Ui.button(card, "Claim", "claim", function()
 					Remotes.get("DailyClaim"):FireServer()
+					Ui.celebrate(gui, claim, {
+						{ text = `+{reward.shards} Rift Shards`, color = Ui.colors.shard },
+						{ text = `+{Ui.number(reward.gold)} Gold`, color = Ui.colors.gold },
+					})
+					Ui.flyTo(gui, claim, "gold", Ui.colors.gold, 8)
+					Ui.flyTo(gui, claim, "shards", Ui.colors.shard, 5)
 				end)
 				claim.AnchorPoint = Vector2.new(0, 1)
 				claim.Position = UDim2.fromScale(0, 1)
@@ -453,30 +461,38 @@ local function profileMenu()
 	end)
 end
 
--- A wide dark button under a tile column (Store, Rift Pass).
+-- A wide dark button under a tile column (Store, Rift Pass), springy like the tiles.
 local function wideButton(
 	parent: Instance,
 	name: string,
 	accent: Color3,
+	icon: Ui.Icon,
 	tag: string?,
 	onClick: () -> ()
 )
 	local button = Instance.new("TextButton")
 	button.Text = ""
 	button.Size = UDim2.new(1, 0, 0, 52)
-	button.BackgroundColor3 = Color3.fromRGB(21, 22, 30)
-	button.BorderSizePixel = 0
-	Ui.corner(button, 10)
-	Ui.stroke(button, Color3.fromRGB(217, 220, 230), 3)
-	local mark = Ui.frame(button, UDim2.fromOffset(20, 20), accent)
-	mark.Position = UDim2.new(0, 12, 0.5, -10)
-	Ui.corner(mark, 5)
-	local label = Ui.text(button, name, 20, Ui.colors.text, Ui.fonts.button, 52)
+	button.BackgroundTransparency = 1
+	button.AutoButtonColor = false
+	local holder = Ui.frame(button, UDim2.fromScale(1, 1), Color3.fromRGB(21, 22, 30))
+	holder.Name = "Holder"
+	holder.AnchorPoint = Vector2.new(0.5, 0.5)
+	holder.Position = UDim2.fromScale(0.5, 0.5)
+	Ui.corner(holder, 10)
+	Ui.stroke(holder, accent:Lerp(Color3.new(1, 1, 1), 0.6), 3)
+	Ui.spring(button, holder)
+	local art = Ui.icon(holder, icon)
+	art.AnchorPoint = Vector2.new(0.5, 0.5)
+	art.Position = UDim2.new(0, 26, 0.5, 0)
+	art.Size = UDim2.fromOffset(38, 38)
+	local label = Ui.text(holder, name, 20, Ui.colors.text, Ui.fonts.button, 52)
 	label.AutomaticSize = Enum.AutomaticSize.None
-	label.Position = UDim2.fromOffset(42, 0)
-	label.Size = UDim2.new(1, -50, 1, 0)
+	label.Position = UDim2.fromOffset(52, 0)
+	label.Size = UDim2.new(1, -60, 1, 0)
+	Ui.ink(label)
 	if tag then
-		local chip = Ui.text(button, tag, 10, Ui.colors.text, Ui.fonts.heading, 18)
+		local chip = Ui.text(holder, tag, 10, Ui.colors.text, Ui.fonts.heading, 18)
 		chip.AutomaticSize = Enum.AutomaticSize.None
 		chip.Size = UDim2.fromOffset(50, 18)
 		chip.AnchorPoint = Vector2.new(1, 0.5)
@@ -498,6 +514,7 @@ local function column(anchorRight: boolean, top: number): (Frame, Frame)
 	tiles.AutomaticSize = Enum.AutomaticSize.Y
 	Ui.grid(tiles, UDim2.fromOffset(87, 96), 10)
 	Ui.stack(holder, 10)
+	Ui.fit(holder)
 	return holder, tiles
 end
 
@@ -509,25 +526,25 @@ end
 function Menus.start(screen: ScreenGui)
 	gui = screen
 	local left, leftTiles = column(false, 110)
-	Ui.tile(leftTiles, "Gear", tint.gear, "G", nil, gearMenu)
-	Ui.tile(leftTiles, "Quests", tint.quests, "Q", nil, function()
+	Ui.tile(leftTiles, "Gear", tint.gear, Icons.Gear, gearMenu)
+	Ui.tile(leftTiles, "Quests", tint.quests, Icons.Quests, function()
 		comingSoon(
 			"Quests",
 			tint.quests,
 			"Daily and weekly tasks on your hunts (break 3 parts, hunt 2 Thornjaws) that pay XP, gold and Rift Shards. Coming with the contract update."
 		)
 	end)
-	Ui.tile(leftTiles, "Codex", tint.codex, "C", nil, codexMenu)
-	Ui.tile(leftTiles, "Eggs", tint.eggs, "E", nil, eggsMenu)
-	Ui.tile(leftTiles, "Areas", tint.areas, "A", nil, areasMenu)
-	Ui.tile(leftTiles, "Skills", tint.skills, "S", nil, function()
+	Ui.tile(leftTiles, "Codex", tint.codex, Icons.Codex, codexMenu)
+	Ui.tile(leftTiles, "Eggs", tint.eggs, Icons.Eggs, eggsMenu)
+	Ui.tile(leftTiles, "Areas", tint.areas, Icons.Areas, areasMenu)
+	Ui.tile(leftTiles, "Skills", tint.skills, Icons.Skills, function()
 		comingSoon(
 			"Skills",
 			tint.skills,
 			"Wren's weapon upgrade tree: Attack, Affinity, Element and Break branches, one Upgrade Stone per node. Coming in the gear update."
 		)
 	end)
-	wideButton(left, "Store", Color3.fromRGB(201, 184, 255), "DEALS", function()
+	wideButton(left, "Store", Color3.fromRGB(201, 184, 255), Icons.Store, "DEALS", function()
 		comingSoon(
 			"Store",
 			Ui.colors.purple,
@@ -536,19 +553,19 @@ function Menus.start(screen: ScreenGui)
 	end)
 
 	local right, rightTiles = column(true, 130)
-	Ui.tile(rightTiles, "Profile", tint.profile, "P", nil, profileMenu)
-	Ui.tile(rightTiles, "Codes", tint.codes, "#", nil, function()
+	Ui.tile(rightTiles, "Profile", tint.profile, Icons.Profile, profileMenu)
+	Ui.tile(rightTiles, "Codes", tint.codes, Icons.Codes, function()
 		comingSoon("Codes", tint.codes, "Type in codes from updates and socials for free rewards.")
 	end)
-	local rewards = Ui.tile(rightTiles, "Rewards", tint.rewards, "R", nil, rewardsMenu)
-	Ui.tile(rightTiles, "Lodge", tint.lodge, "L", nil, function()
+	local rewards = Ui.tile(rightTiles, "Rewards", tint.rewards, Icons.Rewards, rewardsMenu)
+	Ui.tile(rightTiles, "Lodge", tint.lodge, Icons.Lodge, function()
 		comingSoon(
 			"Lodge",
 			tint.lodge,
 			"Hunter lodges (guilds): find a group to hunt with, or start your own."
 		)
 	end)
-	wideButton(right, "Rift Pass", Ui.colors.gold, nil, function()
+	wideButton(right, "Rift Pass", Ui.colors.gold, Icons.RiftPass, nil, function()
 		comingSoon("Rift Pass", Ui.colors.gold, "A season track of rewards you unlock by playing.")
 	end)
 
