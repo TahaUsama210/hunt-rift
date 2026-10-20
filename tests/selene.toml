@@ -1,0 +1,2 @@
+# Tests run in Lune, not Roblox, so they use plain Luau rules (string requires are fine here).
+std = "luau"

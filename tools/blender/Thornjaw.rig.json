@@ -1,0 +1,2054 @@
+{
+  "animations": {
+    "bite": {
+      "strike": {
+        "Head": {
+          "pitch": -14
+        },
+        "Jaw": {
+          "pitch": -3
+        },
+        "Neck": {
+          "pitch": -22
+        },
+        "Spine": {
+          "pitch": -6,
+          "z": -1.4
+        }
+      },
+      "windup": {
+        "Head": {
+          "pitch": 18
+        },
+        "Jaw": {
+          "pitch": -42
+        },
+        "Neck": {
+          "pitch": 28
+        },
+        "Spine": {
+          "pitch": 8,
+          "z": 1.2
+        }
+      }
+    },
+    "death": {
+      "hold": true,
+      "strike": {
+        "Head": {
+          "pitch": -15
+        },
+        "HipBL": {
+          "pitch": -20
+        },
+        "HipBR": {
+          "pitch": 10
+        },
+        "HipFL": {
+          "pitch": 25
+        },
+        "HipFR": {
+          "pitch": -15
+        },
+        "Jaw": {
+          "pitch": -25
+        },
+        "Neck": {
+          "pitch": -10,
+          "yaw": 20
+        },
+        "Spine": {
+          "roll": 85,
+          "y": -2.4
+        },
+        "TailA": {
+          "yaw": 15
+        },
+        "TailB": {
+          "yaw": 15
+        }
+      },
+      "timing": {
+        "active": 1.1,
+        "recovery": 0,
+        "windup": 0.5
+      },
+      "windup": {
+        "Head": {
+          "pitch": 20
+        },
+        "Jaw": {
+          "pitch": -45
+        },
+        "Neck": {
+          "pitch": 35
+        }
+      }
+    },
+    "flinch": {
+      "strike": {
+        "Head": {
+          "pitch": 15
+        },
+        "Jaw": {
+          "pitch": -25
+        },
+        "Neck": {
+          "pitch": 25,
+          "yaw": -12
+        },
+        "Spine": {
+          "roll": 8,
+          "z": 0.5
+        }
+      },
+      "timing": {
+        "active": 0.1,
+        "recovery": 0.6,
+        "windup": 0.12
+      },
+      "windup": {
+        "Head": {
+          "pitch": 20
+        },
+        "Jaw": {
+          "pitch": -35
+        },
+        "Neck": {
+          "pitch": 30,
+          "yaw": -15
+        },
+        "Spine": {
+          "roll": 10,
+          "z": 0.6
+        }
+      }
+    },
+    "tailSpin": {
+      "recoverFrom": {
+        "Spine": {
+          "y": -0.3,
+          "yaw": 40
+        },
+        "TailA": {
+          "yaw": 20
+        },
+        "TailB": {
+          "yaw": 25
+        },
+        "TailC": {
+          "yaw": 25
+        }
+      },
+      "strike": {
+        "Spine": {
+          "y": -0.3,
+          "yaw": -320
+        },
+        "TailA": {
+          "yaw": 20
+        },
+        "TailB": {
+          "yaw": 25
+        },
+        "TailC": {
+          "yaw": 25
+        }
+      },
+      "windup": {
+        "Neck": {
+          "yaw": 15
+        },
+        "Spine": {
+          "y": -0.6,
+          "yaw": 40
+        },
+        "TailA": {
+          "yaw": -25
+        },
+        "TailB": {
+          "yaw": -25
+        },
+        "TailC": {
+          "yaw": -20
+        }
+      }
+    }
+  },
+  "colors": {
+    "belly": [
+      222,
+      208,
+      168
+    ],
+    "bone": [
+      240,
+      234,
+      218
+    ],
+    "crest": [
+      232,
+      142,
+      38
+    ],
+    "eye": [
+      255,
+      196,
+      48
+    ],
+    "pupil": [
+      18,
+      18,
+      20
+    ],
+    "skin": [
+      46,
+      110,
+      98
+    ],
+    "stripe": [
+      26,
+      60,
+      56
+    ]
+  },
+  "details": [
+    {
+      "color": "belly",
+      "pos": [
+        0,
+        4.3,
+        0.2
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        4.6,
+        3,
+        7.8
+      ]
+    },
+    {
+      "color": "skin",
+      "pos": [
+        -2,
+        5,
+        -2.8
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        2.4,
+        3.4,
+        3
+      ]
+    },
+    {
+      "color": "skin",
+      "pos": [
+        -2,
+        5.2,
+        2.7
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        2.8,
+        3.8,
+        3.8
+      ]
+    },
+    {
+      "color": "skin",
+      "pos": [
+        2,
+        5,
+        -2.8
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        2.4,
+        3.4,
+        3
+      ]
+    },
+    {
+      "color": "skin",
+      "pos": [
+        2,
+        5.2,
+        2.7
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        2.8,
+        3.8,
+        3.8
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -1.45,
+        6.592043139584644,
+        -2.8
+      ],
+      "rot": [
+        0,
+        0,
+        28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        1.45,
+        6.592043139584644,
+        -2.8
+      ],
+      "rot": [
+        0,
+        0,
+        -28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -1.45,
+        7.0857476161683985,
+        -1
+      ],
+      "rot": [
+        0,
+        0,
+        28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        1.45,
+        7.0857476161683985,
+        -1
+      ],
+      "rot": [
+        0,
+        0,
+        -28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -1.45,
+        7.108233629961597,
+        0.8
+      ],
+      "rot": [
+        0,
+        0,
+        28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        1.45,
+        7.108233629961597,
+        0.8
+      ],
+      "rot": [
+        0,
+        0,
+        -28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -1.45,
+        6.680832666754719,
+        2.6
+      ],
+      "rot": [
+        0,
+        0,
+        28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        1.45,
+        6.680832666754719,
+        2.6
+      ],
+      "rot": [
+        0,
+        0,
+        -28
+      ],
+      "segment": "Body",
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        0.5,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.081976838342651,
+        -3.4
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.088,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.685187617896055,
+        -2.05
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.331,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        8.011347667134569,
+        -0.6999999999999997
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.574,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        8.01939856339068,
+        0.6500000000000008
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.5829999999999997,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.7013698609240215,
+        2.0000000000000004
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.3399999999999999,
+        1.3
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.111724475885827,
+        3.35
+      ],
+      "rot": [
+        -12,
+        0,
+        0
+      ],
+      "segment": "Body",
+      "shape": "wedge",
+      "size": [
+        0.35,
+        1.097,
+        1.3
+      ]
+    },
+    {
+      "color": "belly",
+      "pos": [
+        0,
+        6.25,
+        -6
+      ],
+      "rot": [
+        22,
+        0,
+        0
+      ],
+      "segment": "Neck",
+      "shape": "ellipsoid",
+      "size": [
+        2,
+        1.4,
+        3.6
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        8.25,
+        -4.9
+      ],
+      "rot": [
+        -10,
+        0,
+        0
+      ],
+      "segment": "Neck",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        8.6,
+        -5.800000000000001
+      ],
+      "rot": [
+        -10,
+        0,
+        0
+      ],
+      "segment": "Neck",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        8.95,
+        -6.7
+      ],
+      "rot": [
+        -10,
+        0,
+        0
+      ],
+      "segment": "Neck",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "color": "skin",
+      "pos": [
+        0,
+        7.5,
+        -11.2
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        2.6,
+        1.7,
+        3.4
+      ]
+    },
+    {
+      "color": "eye",
+      "pos": [
+        -1.3,
+        8.35,
+        -9.9
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "color": "pupil",
+      "pos": [
+        -1.6,
+        8.38,
+        -10
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.2,
+        0.6,
+        0.28
+      ]
+    },
+    {
+      "color": "pupil",
+      "pos": [
+        -0.55,
+        7.9,
+        -12.2
+      ],
+      "rot": [
+        10,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.25,
+        0.2,
+        0.45
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -1.05,
+        8.75,
+        -9.6
+      ],
+      "rot": [
+        0,
+        0,
+        15
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.8,
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.8799999999999999,
+        6.85,
+        -10.1
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.45,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.8099999999999999,
+        6.85,
+        -10.8
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.4,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.74,
+        6.85,
+        -11.5
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.35,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.6699999999999999,
+        6.85,
+        -12.1
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.3,
+        0.28
+      ]
+    },
+    {
+      "color": "eye",
+      "pos": [
+        1.3,
+        8.35,
+        -9.9
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "color": "pupil",
+      "pos": [
+        1.6,
+        8.38,
+        -10
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.2,
+        0.6,
+        0.28
+      ]
+    },
+    {
+      "color": "pupil",
+      "pos": [
+        0.55,
+        7.9,
+        -12.2
+      ],
+      "rot": [
+        10,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.25,
+        0.2,
+        0.45
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        1.05,
+        8.75,
+        -9.6
+      ],
+      "rot": [
+        0,
+        0,
+        -15
+      ],
+      "segment": "Head",
+      "shape": "ellipsoid",
+      "size": [
+        0.8,
+        0.45,
+        1.5
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.8799999999999999,
+        6.85,
+        -10.1
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.45,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.8099999999999999,
+        6.85,
+        -10.8
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.4,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.74,
+        6.85,
+        -11.5
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.35,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.6699999999999999,
+        6.85,
+        -12.1
+      ],
+      "rot": [
+        180,
+        0,
+        0
+      ],
+      "segment": "Head",
+      "shape": "wedge",
+      "size": [
+        0.2,
+        0.3,
+        0.28
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.7200000000000001,
+        7.25,
+        -10.4
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.64,
+        7.25,
+        -11.1
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -0.56,
+        7.25,
+        -11.7
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.7200000000000001,
+        7.25,
+        -10.4
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.64,
+        7.25,
+        -11.1
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        0.56,
+        7.25,
+        -11.7
+      ],
+      "segment": "Jaw",
+      "shape": "wedge",
+      "size": [
+        0.18,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        9.05,
+        -9.2
+      ],
+      "rot": [
+        -15,
+        0,
+        0
+      ],
+      "segment": "Crest",
+      "shape": "wedge",
+      "size": [
+        0.45,
+        1.2,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        9,
+        -9.799999999999999
+      ],
+      "rot": [
+        -15,
+        0,
+        0
+      ],
+      "segment": "Crest",
+      "shape": "wedge",
+      "size": [
+        0.45,
+        0.95,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        8.950000000000001,
+        -10.399999999999999
+      ],
+      "rot": [
+        -15,
+        0,
+        0
+      ],
+      "segment": "Crest",
+      "shape": "wedge",
+      "size": [
+        0.45,
+        0.7,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        -1.25,
+        9.25,
+        -7.9
+      ],
+      "rot": [
+        -35,
+        0,
+        25
+      ],
+      "segment": "Crest",
+      "shape": "wedge",
+      "size": [
+        0.45,
+        1.7,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        1.25,
+        9.25,
+        -7.9
+      ],
+      "rot": [
+        -35,
+        0,
+        -25
+      ],
+      "segment": "Crest",
+      "shape": "wedge",
+      "size": [
+        0.45,
+        1.7,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -2.625,
+        0.3,
+        -3.3
+      ],
+      "segment": "LowerLegFL",
+      "shape": "ellipsoid",
+      "size": [
+        1.5,
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -3.075,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -2.625,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -2.175,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        2.625,
+        0.3,
+        -3.3
+      ],
+      "segment": "LowerLegFR",
+      "shape": "ellipsoid",
+      "size": [
+        1.5,
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        2.175,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        2.625,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        3.075,
+        0.22,
+        -4.55
+      ],
+      "segment": "LowerLegFR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        -2.7825,
+        0.3,
+        2.3
+      ],
+      "segment": "LowerLegBL",
+      "shape": "ellipsoid",
+      "size": [
+        1.5,
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -3.2325000000000004,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -2.7825,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        -2.3325,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBL",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        2.7825,
+        0.3,
+        2.3
+      ],
+      "segment": "LowerLegBR",
+      "shape": "ellipsoid",
+      "size": [
+        1.5,
+        0.6,
+        2.2
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        2.3325,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        2.7825,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "bone",
+      "pos": [
+        3.2325000000000004,
+        0.22,
+        1.0499999999999998
+      ],
+      "segment": "LowerLegBR",
+      "shape": "wedge",
+      "size": [
+        0.24,
+        0.4,
+        0.7
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.672000000000001,
+        5.3
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailA",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        1.344,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        7.672000000000001,
+        7.1
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailA",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        1.344,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        6.916,
+        6.2
+      ],
+      "segment": "TailA",
+      "shape": "ellipsoid",
+      "size": [
+        3.672,
+        1.1199999999999999,
+        1.92
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        6.662,
+        9.8
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailB",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        0.924,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        6.662,
+        11.6
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailB",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        0.924,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        6.236,
+        10.7
+      ],
+      "segment": "TailB",
+      "shape": "ellipsoid",
+      "size": [
+        2.448,
+        0.77,
+        1.7999999999999998
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        5.773000000000001,
+        14.200000000000001
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailC",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        0.546,
+        1
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        5.773000000000001,
+        16
+      ],
+      "rot": [
+        -18,
+        0,
+        0
+      ],
+      "segment": "TailC",
+      "shape": "wedge",
+      "size": [
+        0.3,
+        0.546,
+        1
+      ]
+    },
+    {
+      "color": "stripe",
+      "pos": [
+        0,
+        5.644000000000001,
+        15.1
+      ],
+      "segment": "TailC",
+      "shape": "ellipsoid",
+      "size": [
+        1.428,
+        0.45499999999999996,
+        1.62
+      ]
+    },
+    {
+      "color": "crest",
+      "pos": [
+        0,
+        5.2,
+        18.2
+      ],
+      "rot": [
+        90,
+        0,
+        0
+      ],
+      "segment": "TailC",
+      "shape": "wedge",
+      "size": [
+        0.5,
+        0.8,
+        1.6
+      ]
+    }
+  ],
+  "gait": {
+    "bob": 0.25,
+    "knee": 30,
+    "stepLength": 7,
+    "stride": 26,
+    "tailSway": 7
+  },
+  "glow": {
+    "eye": true
+  },
+  "hipHeight": 5,
+  "rootSize": [
+    2,
+    2,
+    2
+  ],
+  "segments": [
+    {
+      "attach": "Root",
+      "color": "skin",
+      "hitzone": "body",
+      "joint": "Spine",
+      "jointAt": [
+        0,
+        5,
+        0
+      ],
+      "name": "Body",
+      "pos": [
+        0,
+        5.3,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        5.6,
+        4.6,
+        9.4
+      ],
+      "tris": 1150
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "body",
+      "joint": "Neck",
+      "jointAt": [
+        0,
+        6.2,
+        -4
+      ],
+      "name": "Neck",
+      "pos": [
+        0,
+        6.9,
+        -5.8
+      ],
+      "rot": [
+        22,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        3,
+        3,
+        5
+      ],
+      "tris": 400
+    },
+    {
+      "attach": "Neck",
+      "color": "skin",
+      "hitzone": "head",
+      "joint": "Head",
+      "jointAt": [
+        0,
+        7.5,
+        -7.6
+      ],
+      "name": "Head",
+      "pos": [
+        0,
+        7.9,
+        -9.2
+      ],
+      "rot": [
+        8,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        3.4,
+        2.7,
+        4.6
+      ],
+      "tris": 1100
+    },
+    {
+      "attach": "Head",
+      "color": "belly",
+      "hitzone": "head",
+      "joint": "Jaw",
+      "jointAt": [
+        0,
+        7,
+        -8.4
+      ],
+      "name": "Jaw",
+      "pos": [
+        0,
+        6.75,
+        -10.3
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.3,
+        0.9,
+        4.2
+      ],
+      "tris": 450
+    },
+    {
+      "attach": "Head",
+      "breaksWith": "head",
+      "color": "crest",
+      "hitzone": "head",
+      "jointAt": [
+        0,
+        9,
+        -8.6
+      ],
+      "name": "Crest",
+      "pos": [
+        0,
+        9.6,
+        -7.9
+      ],
+      "rot": [
+        -20,
+        0,
+        0
+      ],
+      "shape": "wedge",
+      "size": [
+        0.5,
+        1.9,
+        1.4
+      ],
+      "tris": 400
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "HipFL",
+      "jointAt": [
+        -2.5,
+        5,
+        -2.8
+      ],
+      "name": "UpperLegFL",
+      "pos": [
+        -2.625,
+        3.9,
+        -2.8
+      ],
+      "rot": [
+        -10,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.7,
+        3.8,
+        2.1
+      ],
+      "tris": 180
+    },
+    {
+      "attach": "UpperLegFL",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "KneeFL",
+      "jointAt": [
+        -2.625,
+        2.3,
+        -2.8
+      ],
+      "name": "LowerLegFL",
+      "pos": [
+        -2.625,
+        1.45,
+        -3
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.1,
+        2.9,
+        1.2
+      ],
+      "tris": 250
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "HipFR",
+      "jointAt": [
+        2.5,
+        5,
+        -2.8
+      ],
+      "name": "UpperLegFR",
+      "pos": [
+        2.625,
+        3.9,
+        -2.8
+      ],
+      "rot": [
+        -10,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.7,
+        3.8,
+        2.1
+      ],
+      "tris": 180
+    },
+    {
+      "attach": "UpperLegFR",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "KneeFR",
+      "jointAt": [
+        2.625,
+        2.3,
+        -2.8
+      ],
+      "name": "LowerLegFR",
+      "pos": [
+        2.625,
+        1.45,
+        -3
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.1,
+        2.9,
+        1.2
+      ],
+      "tris": 250
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "HipBL",
+      "jointAt": [
+        -2.65,
+        5,
+        2.8
+      ],
+      "name": "UpperLegBL",
+      "pos": [
+        -2.7825,
+        3.9,
+        2.8
+      ],
+      "rot": [
+        15,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.3,
+        4.2,
+        3
+      ],
+      "tris": 180
+    },
+    {
+      "attach": "UpperLegBL",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "KneeBL",
+      "jointAt": [
+        -2.7825,
+        2.3,
+        2.8
+      ],
+      "name": "LowerLegBL",
+      "pos": [
+        -2.7825,
+        1.45,
+        3.0999999999999996
+      ],
+      "rot": [
+        -15,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.3,
+        2.9,
+        1.4
+      ],
+      "tris": 250
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "HipBR",
+      "jointAt": [
+        2.65,
+        5,
+        2.8
+      ],
+      "name": "UpperLegBR",
+      "pos": [
+        2.7825,
+        3.9,
+        2.8
+      ],
+      "rot": [
+        15,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.3,
+        4.2,
+        3
+      ],
+      "tris": 180
+    },
+    {
+      "attach": "UpperLegBR",
+      "color": "skin",
+      "hitzone": "leg",
+      "joint": "KneeBR",
+      "jointAt": [
+        2.7825,
+        2.3,
+        2.8
+      ],
+      "name": "LowerLegBR",
+      "pos": [
+        2.7825,
+        1.45,
+        3.0999999999999996
+      ],
+      "rot": [
+        -15,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.3,
+        2.9,
+        1.4
+      ],
+      "tris": 250
+    },
+    {
+      "attach": "Body",
+      "color": "skin",
+      "hitzone": "tail",
+      "joint": "TailA",
+      "jointAt": [
+        0,
+        5.7,
+        4
+      ],
+      "name": "TailA",
+      "pos": [
+        0,
+        5.7,
+        6.5
+      ],
+      "rot": [
+        -4,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        3.6,
+        3.2,
+        6.4
+      ],
+      "tris": 350
+    },
+    {
+      "attach": "TailA",
+      "color": "skin",
+      "hitzone": "tail",
+      "joint": "TailB",
+      "jointAt": [
+        0,
+        5.5,
+        8.8
+      ],
+      "name": "TailB",
+      "pos": [
+        0,
+        5.4,
+        11
+      ],
+      "rot": [
+        -4,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        2.4,
+        2.2,
+        6
+      ],
+      "tris": 250
+    },
+    {
+      "attach": "TailB",
+      "color": "skin",
+      "hitzone": "tail",
+      "joint": "TailC",
+      "jointAt": [
+        0,
+        5.3,
+        13.4
+      ],
+      "name": "TailC",
+      "pos": [
+        0,
+        5.15,
+        15.4
+      ],
+      "rot": [
+        -4,
+        0,
+        0
+      ],
+      "shape": "ellipsoid",
+      "size": [
+        1.4,
+        1.3,
+        5.4
+      ],
+      "tris": 200
+    }
+  ]
+}

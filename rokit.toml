@@ -1,0 +1,6 @@
+# Pinned tool versions. Run `rokit install` in this folder to get them.
+[tools]
+rojo = "rojo-rbx/rojo@7.4.4"
+selene = "Kampfkarren/selene@0.27.1"
+stylua = "JohnnyMorganz/StyLua@2.0.2"
+lune = "lune-org/lune@0.8.9"
