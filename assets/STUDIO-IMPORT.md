@@ -42,9 +42,8 @@ each one and choose **Copy Asset ID**.
 
 ## 3. Look at it
 - Anchor the whole model (the snippet does this), press **Play** and walk around it.
-- The `Root` cube is 2 studs wide. If it isn't, the importer changed the scale. That's fine for the
-  game, which rescales from the Root cube, but for eyeballing you can scale the model until
-  the Root is 2 studs.
+- The files import at the right size: the `Root` cube comes in exactly 2 studs wide (checked in
+  Studio on 2026-10-20). Big monsters are meant to be big, about 2 to 5 times a player's height.
 - Expected heights next to a 5-stud player: Shardkite 13, Burrowmaw 11, Puffgourd 11,
   Cragmaul 12, Vexmantis 13, Slagstrider 17, Riftwarden 26, Gnasher 5.5, Mossback 7.5,
   Glidewing 2.5 (it hovers).
