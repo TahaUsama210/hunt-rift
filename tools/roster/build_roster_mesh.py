@@ -503,6 +503,9 @@ def main():
         filepath=os.path.join(out_dir, f"{name}.fbx"),
         use_selection=True,
         object_types={"MESH"},
+        # Studio reads the raw numbers as studs and ignores the FBX unit, so write studs, not
+        # Blender's centimetres (1 stud would import as 100).
+        global_scale=0.01,
         axis_forward="-Z",
         axis_up="Y",
         apply_unit_scale=True,

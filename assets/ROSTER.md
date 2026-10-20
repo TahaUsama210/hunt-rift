@@ -112,6 +112,8 @@ Bestiary page with renders: https://claude.ai/artifact/3CZMQMScTZwEiMb6eSwKBy
 - `tools/roster/build_roster_mesh.py <Name>`: sculpt, decimate to budget, bake, export to
   `assets/<Name>/`. `--quick` gives a fast shapes-only render while designing.
 - `assets/STUDIO-IMPORT.md`: how to bring a monster into Studio.
+- `tools/roster/rescale_fbx.py <Name>`: rewrites an FBX in studs without rebuilding (used once to
+  fix the first exports, which were in centimetres and imported 100 times too big).
 
 ## Wiring notes for the game thread
 Rigs use the same format as `Rigs/GreatJagras.luau` (segments with joint, jointAt, hitzone,
