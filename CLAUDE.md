@@ -55,4 +55,7 @@ monster always works without the import. Triangle budgets per segment live in th
 
 ## Traps
 Write each mistake that cost real time here, with the reason, so it is not repeated.
-- (none yet)
+- FBX exports must use `global_scale=0.01`. Studio ignores the FBX unit and reads the raw
+  numbers as studs, and Blender's default export adds a 100x (centimetre) node scale, so
+  monsters imported 100 times too big (a 2-stud Root came in at 200).
+  `tools/roster/rescale_fbx.py <Name>` fixes an old FBX in place without rebaking.
