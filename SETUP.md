@@ -76,6 +76,19 @@ The game builds the Thornjaw from plain parts until the mesh is imported.
 
 To remake the mesh after changing the body plan, see "Monster meshes" in CLAUDE.md.
 
+The camp hunters (Brannoc, Wren, Odra, Pell and Ama) import the same way: pick
+`assets/<Name>/<Name>.fbx`, rename the model to that name and drag it into `ServerStorage/Assets`.
+Each one replaces its plain-part stand-in the next time you press Play.
+
+## 8. Upload the menu icons (optional, emoji show until then)
+The camp tiles use 3D-rendered icons from `assets/ui/icons/`. Roblox only shows uploaded images.
+1. In Studio: **View > Asset Manager**, then **Bulk Import** and pick all the PNGs in
+   `assets/ui/icons/`.
+2. In the Asset Manager's Images folder, right-click each one > **Copy Asset ID**.
+3. Paste it into `src/shared/Config/Icons.luau` as `image = "rbxassetid://<id>"` for the icon
+   with the same name. Rojo syncs it; the tile swaps its emoji for the icon.
+Claude Code with the Studio MCP can do steps 2 and 3 for you once the images are imported.
+
 ## What to build first
 1. One monster you can hit, with hitzones and part breaks (rules are already here and tested).
 2. Weapon input and hit detection on the client, sent through the `AttackHit` remote.

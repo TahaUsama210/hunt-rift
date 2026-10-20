@@ -17,6 +17,10 @@ or with the bpy module:  python tools/roster/build_roster_mesh.py Shardkite [--q
 
 Writes assets/<Name>/<Name>.fbx, <Name>_color.png, <Name>_normal.png, <Name>_glow.png,
        preview_*.png, report.json
+
+The camp NPCs go through the same script: tools/roster/designs/npcs.py turns their body plans
+(src/shared/Rigs, exported by tools/export_rig.luau) into rigs here, adding sculpt-only detail
+and per-color surface styles (hair strands, fur, cloth, leather, wood, hammered metal).
 """
 
 import json
@@ -32,6 +36,35 @@ from mathutils import Matrix, Vector
 QUICK = False  # --quick: shapes and colors only, a fast look while designing
 TEXTURE_SIZE = 1024  # Roblox downsizes anything bigger to 1024.
 PREVIEW_SAMPLES = int(os.environ.get("PREVIEW_SAMPLES", "48"))
+
+
+# Surface styles (rig "styles": color -> style). Each layer is (texture, settings, strength,
+# strands): strands is the spacing in studs of a pattern that runs downwards like hair or wood
+# grain, or None for a pattern that goes every way.
+STYLES = {
+    "hair": [
+        ("WOOD", {"wood_type": "BANDNOISE", "noise_basis_2": "SIN", "turbulence": 5.0, "noise_scale": 0.35}, 0.06, 0.17),
+        ("CLOUDS", {"noise_scale": 0.45}, 0.05, None),
+    ],
+    "fur": [
+        ("VORONOI", {"noise_scale": 0.16}, -0.1, None),
+        ("CLOUDS", {"noise_scale": 0.3}, 0.07, None),
+    ],
+    "cloth": [
+        ("CLOUDS", {"noise_scale": 0.8, "noise_depth": 1}, 0.08, None),
+        ("STUCCI", {"noise_scale": 0.06}, 0.012, None),
+    ],
+    "leather": [
+        ("STUCCI", {"noise_scale": 0.09, "turbulence": 3.0}, 0.018, None),
+        ("CLOUDS", {"noise_scale": 0.5}, 0.035, None),
+    ],
+    "wood": [
+        ("WOOD", {"wood_type": "BANDNOISE", "noise_basis_2": "SIN", "turbulence": 8.0, "noise_scale": 0.25}, 0.035, 0.3),
+    ],
+    "metal": [
+        ("CLOUDS", {"noise_scale": 0.22, "noise_type": "HARD_NOISE"}, 0.014, None),
+    ],
+}
 
 
 def args():
@@ -141,9 +174,10 @@ def build_base(seg, prims):
 def paint(base, prims, rig):
     """Colors each vertex by the shape it sits on; later shapes (details) win over the body."""
     colors, glow, displace = rig["colors"], rig.get("glow", {}), rig.get("displace", {})
+    styles = rig.get("styles", {})
     mats = [roblox_matrix(p["pos"], p.get("rot"), p["size"]).inverted() for p in prims]
     mesh = base.data
-    cols, glows, weights = [], [], []
+    cols, glows, weights, styled = [], [], [], {}
     for v in mesh.vertices:
         best, best_f = 0, 1e9
         for i, (p, m) in enumerate(zip(prims, mats)):
@@ -158,6 +192,8 @@ def paint(base, prims, rig):
         lit = 1.0 if glow.get(key) else 0.0
         glows += (lit, lit, lit, 1)
         weights.append(displace.get(key, 0.0 if glow.get(key) else 1.0))
+        if key in styles:
+            styled.setdefault(styles[key], []).append(v.index)
     # Write everything after the loop: adding attributes or groups moves mesh data in memory.
     mesh.color_attributes.new("Col", "FLOAT_COLOR", "POINT").data.foreach_set("color", cols)
     mesh.color_attributes.new("Glow", "FLOAT_COLOR", "POINT").data.foreach_set("color", glows)
@@ -167,6 +203,8 @@ def paint(base, prims, rig):
         by_weight.setdefault(w, []).append(i)
     for w, idx in by_weight.items():
         group.add(idx, w, "REPLACE")
+    for style, idx in styled.items():
+        base.vertex_groups.new(name="style_" + style).add(idx, 1.0, "REPLACE")
 
 
 def srgb(c):
@@ -174,12 +212,51 @@ def srgb(c):
     return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
 
 
-def make_high(base, skin):
+def strands_object(spacing):
+    """An empty whose space stretches the texture along z, so bands run downwards."""
+    name = f"strands_{spacing}"
+    empty = bpy.data.objects.get(name)
+    if not empty:
+        empty = bpy.data.objects.new(name, None)
+        bpy.context.collection.objects.link(empty)
+        # Wood bands repeat every 2*pi/10 texture units; scale that to the spacing in studs.
+        s = spacing / (2 * math.pi / 10)
+        empty.scale = (s, s, 40)
+    return empty
+
+
+def add_styles(high):
+    """Hair strands, fur, cloth folds, leather grain, wood grain and hammered metal."""
+    for group in high.vertex_groups:
+        if not group.name.startswith("style_"):
+            continue
+        style = group.name[len("style_"):]
+        for i, (kind, settings, strength, strands) in enumerate(STYLES[style]):
+            name = f"{style}_{i}"
+            tex = bpy.data.textures.get(name)
+            if not tex:
+                tex = bpy.data.textures.new(name, kind)
+                for key, value in settings.items():
+                    setattr(tex, key, value)
+            disp = high.modifiers.new(name, "DISPLACE")
+            disp.texture = tex
+            disp.strength = strength
+            disp.vertex_group = group.name
+            if strands:
+                disp.texture_coords = "OBJECT"
+                disp.texture_coords_object = strands_object(strands)
+            else:
+                disp.texture_coords = "GLOBAL"
+
+
+def make_high(base, skin, rig=None):
     """The detailed sculpt: scales or plates and skin noise pushed into the surface."""
     high = base.copy()
     high.data = base.data.copy()
     high.name = base.name.replace("_base", "_high")
     bpy.context.collection.objects.link(high)
+    if rig and rig.get("styles"):
+        add_styles(high)
 
     scales = bpy.data.textures.get("scales")
     if not scales:
@@ -203,11 +280,11 @@ def make_high(base, skin):
     disp2.strength = skin["noise"]
     disp2.vertex_group = "displace"
 
-    high.data.materials.append(high_material())
+    high.data.materials.append(high_material(rig or {}))
     return high
 
 
-def high_material():
+def high_material(rig):
     mat = bpy.data.materials.get("HighBake")
     if mat:
         return mat
@@ -230,7 +307,41 @@ def high_material():
     mul.inputs["Factor"].default_value = 1
     links.new(col.outputs["Color"], mul.inputs["A"])
     links.new(ramp.outputs["Result"], mul.inputs["B"])
-    links.new(mul.outputs["Result"], bsdf.inputs["Base Color"])
+    shaded = mul.outputs["Result"]
+    if rig.get("paintLight"):
+        # Painted-on light for the stylised characters: tops a little brighter, undersides a
+        # little darker, and raised edges catch a highlight, so they read well from any side.
+        geo = nodes.new("ShaderNodeNewGeometry")
+        sep = nodes.new("ShaderNodeSeparateXYZ")
+        links.new(geo.outputs["Normal"], sep.inputs["Vector"])
+        top = nodes.new("ShaderNodeMapRange")
+        top.inputs["From Min"].default_value = -1
+        top.inputs["To Min"].default_value = 0.8
+        top.inputs["To Max"].default_value = 1.1
+        links.new(sep.outputs["Z"], top.inputs["Value"])
+        edge = nodes.new("ShaderNodeMapRange")
+        edge.inputs["From Min"].default_value = 0.5
+        edge.inputs["From Max"].default_value = 0.6
+        edge.inputs["To Min"].default_value = 1.0
+        edge.inputs["To Max"].default_value = 1.18
+        links.new(geo.outputs["Pointiness"], edge.inputs["Value"])
+        for factor in (top, edge):
+            m = nodes.new("ShaderNodeMix")
+            m.data_type = "RGBA"
+            m.blend_type = "MULTIPLY"
+            m.inputs["Factor"].default_value = 1
+            links.new(shaded, m.inputs["A"])
+            links.new(factor.outputs["Result"], m.inputs["B"])
+            shaded = m.outputs["Result"]
+    # Glowing parts keep their full color: no crevice shading, so bloom picks them up.
+    glow = nodes.new("ShaderNodeVertexColor")
+    glow.layer_name = "Glow"
+    keep = nodes.new("ShaderNodeMix")
+    keep.data_type = "RGBA"
+    links.new(glow.outputs["Color"], keep.inputs["Factor"])
+    links.new(shaded, keep.inputs["A"])
+    links.new(col.outputs["Color"], keep.inputs["B"])
+    links.new(keep.outputs["Result"], bsdf.inputs["Base Color"])
     return mat
 
 
@@ -255,7 +366,7 @@ def is_centered(obj):
     return abs(min(xs) + max(xs)) < 0.2
 
 
-def make_low(base, target_tris):
+def make_low(base, target_tris, smooth_angle=50):
     low = base.copy()
     low.data = base.data.copy()
     low.name = base.name.replace("_base", "")
@@ -271,17 +382,32 @@ def make_low(base, target_tris):
     apply_modifiers(low)
     for attr_name in [a.name for a in low.data.color_attributes]:
         low.data.color_attributes.remove(low.data.color_attributes[attr_name])
-    # Smooth skin, but crisp edges on spikes, teeth and claws.
+    # Smooth skin, but crisp edges on spikes, teeth and claws (and on blocky parts, where a
+    # lower rig "smoothAngle" keeps flat faces flat so the bake rays go straight).
     select_only(low)
-    bpy.ops.object.shade_smooth_by_angle(angle=math.radians(50))
+    bpy.ops.object.shade_smooth_by_angle(angle=math.radians(smooth_angle))
     return low
 
 
-def unwrap(lows):
+def unwrap(lows, boost=None):
     select_only(*lows)
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.select_all(action="SELECT")
     bpy.ops.uv.smart_project(angle_limit=math.radians(60), island_margin=0.006, area_weight=0.0)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    if not boost:
+        return
+    # Give faces more of the atlas (rig "uvBoost": segment -> scale), then pack again.
+    for low in lows:
+        factor = boost.get(low.name)
+        if factor:
+            for loop_uv in low.data.uv_layers.active.data:
+                loop_uv.uv = loop_uv.uv * factor
+    select_only(*lows)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.uv.select_all(action="SELECT")
+    bpy.ops.uv.pack_islands(rotate=True, margin=0.006)
     bpy.ops.object.mode_set(mode="OBJECT")
 
 
@@ -454,8 +580,8 @@ def main():
         prims = [seg] + [d for d in rig["details"] if d["segment"] == seg["name"]]
         base = build_base(seg, prims)
         paint(base, prims, rig)
-        high = make_high(base, rig["skin"])
-        low = make_low(base, seg["tris"])
+        high = make_high(base, rig["skin"], rig)
+        low = make_low(base, seg["tris"], seg.get("smoothAngle", rig.get("smoothAngle", 50)))
         bpy.data.objects.remove(base)
         pairs.append((high, low))
         lows.append(low)
@@ -464,7 +590,7 @@ def main():
         print(f"{seg['name']}: high {tri_count(high)} -> low {tri_count(low)} tris", flush=True)
     report["highTris"] = sum(v["highTris"] for v in report["segments"].values())
 
-    unwrap(lows)
+    unwrap(lows, rig.get("uvBoost"))
     base_rgb = [srgb(c) for c in rig["colors"][rig["segments"][0]["color"]]]
     color_img = new_image(f"{name}_color", (*base_rgb, 1), False)
     normal_img = new_image(f"{name}_normal", (0.5, 0.5, 1, 1), True)

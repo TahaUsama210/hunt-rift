@@ -36,7 +36,8 @@ All four must pass before anything is tested in Studio:
   entry per move (button, arm style, timings, reach).
 - New rule: put it in `Rules/`, add a `tests/<Name>.spec.luau`, then call it from the server.
 - New biome portal or station: add it to `Config/Hub.luau`. A portal opens once its `monsterId`
-  can spawn (the tests check this); until then it shows as coming soon.
+  can spawn (the tests check this); until then it shows as coming soon. A station also needs
+  its hunter's body plan in `src/shared/Rigs/` (the tests check it holds together).
 
 ## Monster meshes
 Roblox caps a mesh at 20,000 triangles. Aim for about 6,000 for a whole monster, and keep the
@@ -78,6 +79,26 @@ monster always works without the import. Triangle budgets per segment live in th
   `HuntRiftProfiles_v1`). A profile that failed to load is never saved, so a DataStore outage
   cannot wipe anyone. Daily rewards are `Rules/DailyRewards` on UTC days, amounts in
   `Config/DailyRewards`. The Areas teleport (`Teleport`) only works while in camp.
+- Station hunters (Brannoc, Wren, Odra, Pell, Ama) are body plans in `src/shared/Rigs/` in the
+  monster format, so the Blender pipeline can mesh them. Each also has `points` (named spots
+  that become attachments for effects) and `idle` (breathing, wave arm, a `work` swing whose
+  `at` names the attachment that bursts on the strike, `float`, `orbit`). A station names its
+  rig, color, marker and lines in `Config/Hub`. Their meshes: export the rig with
+  `lune run tools/export_rig.luau <Name>`, then `python tools/roster/designs/npcs.py <Name>`
+  (adds sculpt-only detail and surface styles) and `python tools/roster/build_roster_mesh.py <Name>`.
+  Keep segment names and the props at `points`, since the camp animates and decorates by name.
+- Effects: every particle recipe, light, spin speed and the camp's dusk lighting are in
+  `Config/Fx` (built-in textures, nothing to upload). `server/HubWorld` builds and never moves
+  anything; `client/CampLife` animates it all on each screen (NPCs, portal rings, runes,
+  shards, crystals, flicker, egg pulse), sets the camp lighting while `Location == "Camp"`,
+  scales particles to the player's graphics quality (Roblox stopped doing it in Aug 2026) and
+  stops outside camp. Why these effects: `research/vfx.md` in the project files.
+- UI motion lives in `client/Ui`: springy presses, panel pop, reward pop (`Ui.celebrate`),
+  coins flying to the wallet (`Ui.flyTo`). Pulses and shines only on things you can claim,
+  nothing beats faster than about once a second, and Reduce Motion turns all of it off.
+  `Ui.fit` shrinks corner widgets on short (phone) screens.
+- Menu icons are in `Config/Icons`: the 3D renders in `assets/ui/icons/` once uploaded
+  (SETUP.md 8), emoji until then.
 
 ## Traps
 Write each mistake that cost real time here, with the reason, so it is not repeated.

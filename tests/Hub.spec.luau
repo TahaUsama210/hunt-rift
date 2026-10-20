@@ -3,6 +3,7 @@ local PortalParty = require("../src/shared/Rules/PortalParty")
 local NestRotation = require("../src/shared/Rules/NestRotation")
 local Hub = require("../src/shared/Config/Hub")
 local Monsters = require("../src/shared/Config/Monsters")
+local Icons = require("../src/shared/Config/Icons")
 
 local party = { maxSize = 2, countdownSeconds = 10 }
 
@@ -85,6 +86,64 @@ T.test("stations have a menu the client knows", function()
 	local kinds = { forge = true, upgrade = true, board = true, shop = true, nest = true }
 	for _, station in Hub.stations do
 		assert(kinds[station.kind], `{station.id}: unknown kind {station.kind}`)
+	end
+end)
+
+T.test("every station hunter has a body plan that holds together", function()
+	for _, station in Hub.stations do
+		local rig = require(`../src/shared/Rigs/{station.rig}`)
+		local names, joints, total = { Root = true }, {}, 0
+		for _, seg in rig.segments do
+			assert(names[seg.attach], `{station.rig}: {seg.name} attaches to missing {seg.attach}`)
+			names[seg.name] = true
+			if seg.joint then
+				assert(not joints[seg.joint], `{station.rig}: two joints called {seg.joint}`)
+				joints[seg.joint] = true
+			end
+			assert(rig.colors[seg.color], `{station.rig}: unknown color {seg.color}`)
+			total += seg.tris
+		end
+		assert(total <= 7000, `{station.rig} mesh budget is {total} triangles`)
+		for _, d in rig.details do
+			assert(names[d.segment], `{station.rig}: detail on missing segment {d.segment}`)
+			assert(rig.colors[d.color], `{station.rig}: unknown color {d.color}`)
+		end
+		for point, spot in rig.points or {} do
+			assert(names[spot.segment], `{station.rig}: point {point} on missing {spot.segment}`)
+		end
+		local idle = rig.idle
+		assert(idle, `{station.rig} needs an idle`)
+		assert(
+			not idle.waveWith or joints[idle.waveWith],
+			`{station.rig} waves with a missing joint`
+		)
+		assert(not idle.work or joints[idle.work.joint], `{station.rig} works with a missing joint`)
+		assert(not idle.float or joints.Float, `{station.rig} floats without a Float joint`)
+		assert(not idle.orbit or joints.Orbit, `{station.rig} orbits without an Orbit joint`)
+		assert(#station.lines > 0, `{station.id} has nothing to say`)
+	end
+end)
+
+T.test("camp decorations stand on the plaza", function()
+	local function onPlaza(p: { number }, what: string)
+		local flat = math.sqrt(p[1] * p[1] + p[3] * p[3])
+		assert(flat < Hub.plazaRadius - 4, `{what} at {p[1]}, {p[3]} is off the plaza`)
+	end
+	for _, p in Hub.braziers do
+		onPlaza(p, "a brazier")
+	end
+	for _, pair in Hub.lanternStrings do
+		onPlaza(pair[1], "a lantern pole")
+		onPlaza(pair[2], "a lantern pole")
+	end
+end)
+
+T.test("icons are uploaded ids or left empty", function()
+	for name, icon in Icons do
+		assert(
+			icon.image == "" or string.match(icon.image, "^rbxassetid://%d+$"),
+			`{name}: image should look like rbxassetid://123`
+		)
 	end
 end)
 

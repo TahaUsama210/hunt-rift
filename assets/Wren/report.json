@@ -1,0 +1,31 @@
+{
+  "segments": {
+    "Hips": {
+      "tris": 810,
+      "highTris": 59776
+    },
+    "Torso": {
+      "tris": 1450,
+      "highTris": 70296
+    },
+    "Head": {
+      "tris": 2179,
+      "highTris": 191556
+    },
+    "ArmR": {
+      "tris": 510,
+      "highTris": 23880
+    },
+    "ArmL": {
+      "tris": 510,
+      "highTris": 19320
+    },
+    "Stone": {
+      "tris": 290,
+      "highTris": 9232
+    }
+  },
+  "totalTris": 5749,
+  "highTris": 374060,
+  "seconds": 151
+}

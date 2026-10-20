@@ -1,0 +1,1389 @@
+{
+ "colors": {
+  "blush": [
+   240,
+   140,
+   140
+  ],
+  "boots": [
+   52,
+   44,
+   40
+  ],
+  "brass": [
+   214,
+   170,
+   80
+  ],
+  "hair": [
+   60,
+   198,
+   184
+  ],
+  "jacket": [
+   201,
+   140,
+   58
+  ],
+  "leather": [
+   96,
+   64,
+   44
+  ],
+  "lens": [
+   120,
+   230,
+   255
+  ],
+  "metal": [
+   120,
+   126,
+   136
+  ],
+  "pants": [
+   64,
+   70,
+   86
+  ],
+  "pupil": [
+   20,
+   18,
+   20
+  ],
+  "scarf": [
+   32,
+   120,
+   120
+  ],
+  "skin": [
+   236,
+   188,
+   150
+  ],
+  "stone": [
+   111,
+   211,
+   255
+  ],
+  "white": [
+   255,
+   255,
+   255
+  ],
+  "nose": [
+   240,
+   168,
+   140
+  ],
+  "freckle": [
+   196,
+   120,
+   88
+  ],
+  "mouth": [
+   122,
+   52,
+   56
+  ],
+  "jacketDark": [
+   160,
+   104,
+   40
+  ],
+  "sole": [
+   30,
+   26,
+   24
+  ]
+ },
+ "details": [
+  {
+   "color": "pants",
+   "pos": [
+    -0.48,
+    1,
+    0
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.8,
+    1.6,
+    0.9
+   ]
+  },
+  {
+   "color": "boots",
+   "pos": [
+    -0.48,
+    0.3,
+    -0.12
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.95,
+    0.6,
+    1.25
+   ]
+  },
+  {
+   "color": "pants",
+   "pos": [
+    0.48,
+    1,
+    0
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.8,
+    1.6,
+    0.9
+   ]
+  },
+  {
+   "color": "boots",
+   "pos": [
+    0.48,
+    0.3,
+    -0.12
+   ],
+   "segment": "Hips",
+   "shape": "block",
+   "size": [
+    0.95,
+    0.6,
+    1.25
+   ]
+  },
+  {
+   "color": "scarf",
+   "pos": [
+    0,
+    4.3,
+    -0.05
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    2.2,
+    0.8,
+    1.8
+   ]
+  },
+  {
+   "color": "scarf",
+   "pos": [
+    0.5,
+    3.7,
+    -0.9
+   ],
+   "rot": [
+    0,
+    0,
+    -10
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    0.5,
+    1.3,
+    0.2
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    0,
+    3.3,
+    -0.85
+   ],
+   "rot": [
+    0,
+    0,
+    40
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    0.25,
+    2.8,
+    0.2
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    -1.2,
+    2.6,
+    -0.1
+   ],
+   "segment": "Torso",
+   "shape": "block",
+   "size": [
+    0.9,
+    0.9,
+    0.5
+   ]
+  },
+  {
+   "color": "brass",
+   "pos": [
+    -1.2,
+    2.7,
+    -0.38
+   ],
+   "segment": "Torso",
+   "shape": "ellipsoid",
+   "size": [
+    0.35,
+    0.35,
+    0.15
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0,
+    6.8,
+    0.25
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    3,
+    1.8,
+    2.8
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0,
+    6.95,
+    -0.95
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    2.5,
+    0.8,
+    0.9
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0.3,
+    7.8,
+    0.2
+   ],
+   "rot": [
+    0,
+    0,
+    -20
+   ],
+   "segment": "Head",
+   "shape": "wedge",
+   "size": [
+    0.6,
+    1.3,
+    1.4
+   ]
+  },
+  {
+   "color": "hair",
+   "pos": [
+    0,
+    6.4,
+    1.2
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    1.2,
+    1.4,
+    1.2
+   ]
+  },
+  {
+   "color": "brass",
+   "pos": [
+    -0.55,
+    6.8,
+    -1.18
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.95,
+    0.95,
+    0.4
+   ]
+  },
+  {
+   "color": "lens",
+   "pos": [
+    -0.55,
+    6.8,
+    -1.3
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "color": "pupil",
+   "pos": [
+    -0.5,
+    5.85,
+    -1.22
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    0.6,
+    0.15
+   ]
+  },
+  {
+   "color": "white",
+   "pos": [
+    -0.44,
+    6,
+    -1.3
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.16,
+    0.16,
+    0.08
+   ]
+  },
+  {
+   "color": "blush",
+   "pos": [
+    -0.9,
+    5.45,
+    -1.08
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.28,
+    0.1
+   ]
+  },
+  {
+   "color": "brass",
+   "pos": [
+    0.55,
+    6.8,
+    -1.18
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.95,
+    0.95,
+    0.4
+   ]
+  },
+  {
+   "color": "lens",
+   "pos": [
+    0.55,
+    6.8,
+    -1.3
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "color": "pupil",
+   "pos": [
+    0.5,
+    5.85,
+    -1.22
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.45,
+    0.6,
+    0.15
+   ]
+  },
+  {
+   "color": "white",
+   "pos": [
+    0.44,
+    6,
+    -1.3
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.16,
+    0.16,
+    0.08
+   ]
+  },
+  {
+   "color": "blush",
+   "pos": [
+    0.9,
+    5.45,
+    -1.08
+   ],
+   "segment": "Head",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.28,
+    0.1
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    0,
+    6.8,
+    -1
+   ],
+   "segment": "Head",
+   "shape": "block",
+   "size": [
+    3,
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    1.5,
+    2.4,
+    -0.05
+   ],
+   "segment": "ArmR",
+   "shape": "ellipsoid",
+   "size": [
+    0.85,
+    0.8,
+    0.85
+   ]
+  },
+  {
+   "color": "leather",
+   "pos": [
+    -1.5,
+    2.4,
+    -0.05
+   ],
+   "segment": "ArmL",
+   "shape": "ellipsoid",
+   "size": [
+    0.85,
+    0.8,
+    0.85
+   ]
+  },
+  {
+   "color": "metal",
+   "pos": [
+    1.5,
+    2.3,
+    -0.45
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.3,
+    1.6,
+    0.3
+   ]
+  },
+  {
+   "color": "metal",
+   "pos": [
+    1.5,
+    3.05,
+    -0.45
+   ],
+   "segment": "ArmR",
+   "shape": "block",
+   "size": [
+    0.8,
+    0.35,
+    0.3
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    0.15,
+    7.5,
+    0.1
+   ],
+   "size": [
+    0.55,
+    0.45,
+    2.3022
+   ],
+   "rot": [
+    -103.392,
+    20.334,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    -0.25,
+    7.5,
+    0.35
+   ],
+   "size": [
+    0.45,
+    0.4,
+    1.7292
+   ],
+   "rot": [
+    -71.565,
+    -23.88,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    0.45,
+    7.4,
+    0.55
+   ],
+   "size": [
+    0.4,
+    0.35,
+    1.9416
+   ],
+   "rot": [
+    -58.392,
+    38.173,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    1.25,
+    6.6,
+    -0.5
+   ],
+   "size": [
+    0.55,
+    0.4,
+    2.1724
+   ],
+   "rot": [
+    101.834,
+    9.004,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    -1.25,
+    6.6,
+    -0.5
+   ],
+   "size": [
+    0.55,
+    0.4,
+    2.1724
+   ],
+   "rot": [
+    101.834,
+    -9.004,
+    -0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "hair",
+   "shape": "ellipsoid",
+   "pos": [
+    0.0,
+    5.75,
+    1.875
+   ],
+   "size": [
+    0.75,
+    0.62,
+    1.2298
+   ],
+   "rot": [
+    63.435,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "scarf",
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    0.32,
+    0.8
+   ],
+   "pos": [
+    0,
+    6.15,
+    1.6
+   ],
+   "rot": [
+    -30,
+    0,
+    0
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "nose",
+   "shape": "ellipsoid",
+   "size": [
+    0.28,
+    0.22,
+    0.2
+   ],
+   "pos": [
+    0,
+    5.5,
+    -1.2816248922737714
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    0.32,
+    5.52,
+    -1.2115297516710983
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    -0.32,
+    5.52,
+    -1.2115297516710983
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    0.45,
+    5.45,
+    -1.1522229082887943
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    -0.45,
+    5.45,
+    -1.1522229082887943
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    0.38,
+    5.36,
+    -1.1380210177034051
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    -0.38,
+    5.36,
+    -1.1380210177034051
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    0.55,
+    5.55,
+    -1.1469860304435453
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "freckle",
+   "shape": "ellipsoid",
+   "size": [
+    0.075,
+    0.075,
+    0.05
+   ],
+   "pos": [
+    -0.55,
+    5.55,
+    -1.1469860304435453
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "mouth",
+   "shape": "ellipsoid",
+   "size": [
+    0.36,
+    0.17,
+    0.07
+   ],
+   "pos": [
+    0,
+    5.17,
+    -1.0935460999438165
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "skin",
+   "shape": "ellipsoid",
+   "size": [
+    0.44,
+    0.14,
+    0.08
+   ],
+   "pos": [
+    0,
+    5.245,
+    -1.136734849456909
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "brass",
+   "shape": "block",
+   "size": [
+    0.35,
+    0.15,
+    0.15
+   ],
+   "pos": [
+    0,
+    6.8,
+    -1.38
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "white",
+   "shape": "ellipsoid",
+   "size": [
+    0.2,
+    0.13,
+    0.05
+   ],
+   "pos": [
+    0.42,
+    6.93,
+    -1.45
+   ]
+  },
+  {
+   "segment": "Head",
+   "color": "white",
+   "shape": "ellipsoid",
+   "size": [
+    0.2,
+    0.13,
+    0.05
+   ],
+   "pos": [
+    -0.42,
+    6.93,
+    -1.45
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "scarf",
+   "shape": "ellipsoid",
+   "size": [
+    0.5,
+    0.45,
+    0.4
+   ],
+   "pos": [
+    0.35,
+    4.05,
+    -0.9
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "jacketDark",
+   "shape": "block",
+   "size": [
+    0.5,
+    0.45,
+    0.1
+   ],
+   "pos": [
+    0.55,
+    3.72,
+    -0.6750100096401287
+   ]
+  },
+  {
+   "segment": "Torso",
+   "color": "jacketDark",
+   "shape": "block",
+   "size": [
+    0.56,
+    0.14,
+    0.12
+   ],
+   "pos": [
+    0.55,
+    3.97,
+    -0.6850100096401287
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "jacketDark",
+   "shape": "ellipsoid",
+   "size": [
+    0.92,
+    0.32,
+    0.92
+   ],
+   "pos": [
+    1.47,
+    2.85,
+    -0.03
+   ]
+  },
+  {
+   "segment": "ArmL",
+   "color": "jacketDark",
+   "shape": "ellipsoid",
+   "size": [
+    0.92,
+    0.32,
+    0.92
+   ],
+   "pos": [
+    -1.47,
+    2.85,
+    -0.03
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "metal",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.4,
+    0.3
+   ],
+   "pos": [
+    1.21,
+    3.35,
+    -0.45
+   ]
+  },
+  {
+   "segment": "ArmR",
+   "color": "metal",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.4,
+    0.3
+   ],
+   "pos": [
+    1.79,
+    3.35,
+    -0.45
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "leather",
+   "shape": "block",
+   "size": [
+    2.12,
+    0.28,
+    1.52
+   ],
+   "pos": [
+    0,
+    2.25,
+    0
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "brass",
+   "shape": "block",
+   "size": [
+    0.32,
+    0.26,
+    0.08
+   ],
+   "pos": [
+    0,
+    2.25,
+    -0.77
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "metal",
+   "shape": "block",
+   "size": [
+    0.12,
+    0.6,
+    0.12
+   ],
+   "pos": [
+    0.75,
+    1.85,
+    -0.8
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "scarf",
+   "shape": "block",
+   "size": [
+    0.22,
+    0.36,
+    0.22
+   ],
+   "pos": [
+    0.75,
+    2.22,
+    -0.8
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "sole",
+   "shape": "block",
+   "size": [
+    1.03,
+    0.17,
+    1.33
+   ],
+   "pos": [
+    0.48,
+    0.085,
+    -0.12
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "boots",
+   "shape": "ellipsoid",
+   "size": [
+    0.8999999999999999,
+    0.54,
+    0.7
+   ],
+   "pos": [
+    0.48,
+    0.3,
+    -0.645
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "sole",
+   "shape": "block",
+   "size": [
+    1.03,
+    0.17,
+    1.33
+   ],
+   "pos": [
+    -0.48,
+    0.085,
+    -0.12
+   ]
+  },
+  {
+   "segment": "Hips",
+   "color": "boots",
+   "shape": "ellipsoid",
+   "size": [
+    0.8999999999999999,
+    0.54,
+    0.7
+   ],
+   "pos": [
+    -0.48,
+    0.3,
+    -0.645
+   ]
+  },
+  {
+   "segment": "Stone",
+   "color": "stone",
+   "shape": "block",
+   "size": [
+    0.62,
+    0.7,
+    0.62
+   ],
+   "pos": [
+    1.9,
+    6.6,
+    -0.6
+   ],
+   "rot": [
+    0,
+    45,
+    0
+   ]
+  },
+  {
+   "segment": "Stone",
+   "color": "stone",
+   "shape": "ellipsoid",
+   "pos": [
+    1.9,
+    6.8,
+    -0.6
+   ],
+   "size": [
+    0.48,
+    0.48,
+    1.04
+   ],
+   "rot": [
+    -90.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "segment": "Stone",
+   "color": "stone",
+   "shape": "ellipsoid",
+   "pos": [
+    1.9,
+    6.4,
+    -0.6
+   ],
+   "size": [
+    0.48,
+    0.48,
+    0.92
+   ],
+   "rot": [
+    90.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "glow": {
+  "lens": true,
+  "stone": true
+ },
+ "hipHeight": 2,
+ "idle": {
+  "breathe": 0.06,
+  "orbit": 70,
+  "period": 2.6,
+  "waveWith": "ShoulderL",
+  "work": {
+   "every": 1.2,
+   "joint": "ShoulderR",
+   "raise": 55,
+   "strike": 40
+  }
+ },
+ "points": {
+  "Stone": {
+   "pos": [
+    1.9,
+    6.6,
+    -0.6
+   ],
+   "segment": "Stone"
+  },
+  "Wrench": {
+   "pos": [
+    1.5,
+    3.05,
+    -0.45
+   ],
+   "segment": "ArmR"
+  }
+ },
+ "rootSize": [
+  1,
+  1,
+  1
+ ],
+ "segments": [
+  {
+   "attach": "Root",
+   "color": "pants",
+   "jointAt": [
+    0,
+    2,
+    0
+   ],
+   "name": "Hips",
+   "pos": [
+    0,
+    2,
+    0
+   ],
+   "shape": "block",
+   "size": [
+    2,
+    0.8,
+    1.4
+   ],
+   "tris": 812
+  },
+  {
+   "attach": "Hips",
+   "color": "jacket",
+   "joint": "Spine",
+   "jointAt": [
+    0,
+    2.3,
+    0
+   ],
+   "name": "Torso",
+   "pos": [
+    0,
+    3.3,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.3,
+    2.4,
+    1.7
+   ],
+   "tris": 1450
+  },
+  {
+   "attach": "Torso",
+   "color": "skin",
+   "joint": "Neck",
+   "jointAt": [
+    0,
+    4.6,
+    0
+   ],
+   "name": "Head",
+   "pos": [
+    0,
+    5.9,
+    0
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    2.8,
+    2.7,
+    2.6
+   ],
+   "tris": 2180,
+   "voxel": 0.025,
+   "smoothAngle": 50
+  },
+  {
+   "attach": "Torso",
+   "color": "jacket",
+   "joint": "ShoulderR",
+   "jointAt": [
+    1.25,
+    4.2,
+    0
+   ],
+   "name": "ArmR",
+   "pos": [
+    1.45,
+    3.4,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    -6
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    1.9,
+    0.8
+   ],
+   "tris": 510
+  },
+  {
+   "attach": "Torso",
+   "color": "jacket",
+   "joint": "ShoulderL",
+   "jointAt": [
+    -1.25,
+    4.2,
+    0
+   ],
+   "name": "ArmL",
+   "pos": [
+    -1.45,
+    3.4,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    6
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.8,
+    1.9,
+    0.8
+   ],
+   "tris": 510
+  },
+  {
+   "attach": "Root",
+   "color": "stone",
+   "joint": "Orbit",
+   "jointAt": [
+    0,
+    6.6,
+    0
+   ],
+   "name": "Stone",
+   "pos": [
+    1.9,
+    6.6,
+    -0.6
+   ],
+   "shape": "ellipsoid",
+   "size": [
+    0.7,
+    0.9,
+    0.7
+   ],
+   "tris": 290
+  }
+ ],
+ "name": "Wren",
+ "paintLight": true,
+ "skin": {
+  "cell": 0.3,
+  "depth": 0,
+  "noise": 0
+ },
+ "displace": {},
+ "uvBoost": {
+  "Head": 1.7
+ },
+ "sky": [
+  0.42,
+  0.4,
+  0.55
+ ],
+ "smoothAngle": 35,
+ "styles": {
+  "hair": "hair",
+  "pants": "cloth",
+  "jacket": "cloth",
+  "jacketDark": "cloth",
+  "scarf": "cloth",
+  "leather": "leather",
+  "boots": "leather",
+  "metal": "metal"
+ }
+}

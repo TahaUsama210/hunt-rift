@@ -230,6 +230,16 @@ function Hud.start(controls: { string })
 	toastLabel.TextTransparency = 1
 	toastLabel.TextStrokeTransparency = 1
 	toastLabel.Parent = gui
+
+	-- Your health and the controls are for the hunt; camp has its own screen (CampHud).
+	local playerBar = playerFill.Parent :: Frame
+	local function showFor()
+		local inCamp = player:GetAttribute("Location") == "Camp"
+		playerBar.Visible = not inCamp
+		hint.Visible = not inCamp
+	end
+	player:GetAttributeChangedSignal("Location"):Connect(showFor)
+	showFor()
 end
 
 return Hud
