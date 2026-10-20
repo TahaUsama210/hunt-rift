@@ -1,5 +1,6 @@
 --!strict
--- Client entry point: input and swings, monster animation, and the on-screen bars.
+-- Client entry point: input and swings, monster animation, the on-screen bars, and the camp
+-- screen and station menus.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -11,10 +12,14 @@ local Hunt = require(Shared:WaitForChild("Config"):WaitForChild("Hunt"))
 local Hud = require(script:WaitForChild("Hud"))
 local MonsterAnimator = require(script:WaitForChild("MonsterAnimator"))
 local PlayerCombat = require(script:WaitForChild("PlayerCombat"))
+local CampHud = require(script:WaitForChild("CampHud"))
+local Stations = require(script:WaitForChild("Stations"))
 
 Hud.start(PlayerCombat.controls(Hunt.startingWeapon))
 MonsterAnimator.start()
 PlayerCombat.start()
+CampHud.start()
+Stations.start(CampHud.pin, Hud.toast)
 
 local function displayName(monsterId: string): string
 	local monster = Monsters[monsterId]

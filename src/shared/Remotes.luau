@@ -26,6 +26,15 @@ Remotes.Events = {
 	CraftRequest = "CraftRequest",
 	-- server -> client: { recipeId, ok, missing }
 	CraftResult = "CraftResult",
+	-- client -> server: {} asks for this player's inventory
+	InventoryRequest = "InventoryRequest",
+	-- server -> client: { items, gold } this player's inventory after any change
+	InventoryChanged = "InventoryChanged",
+	-- server -> client: { portalId, memberNames, secondsLeft, lockedReason } for the portal you
+	-- stand on (lockedReason set and no members if you cannot enter it), or { nil } once off it
+	PartyUpdate = "PartyUpdate",
+	-- client -> server: { portalId } a party member asks to leave now
+	PartyGo = "PartyGo",
 }
 
 local FOLDER_NAME = "Remotes"

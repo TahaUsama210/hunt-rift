@@ -23,10 +23,13 @@ local Swing = require(Rules:WaitForChild("Swing"))
 local Remotes = require(Shared:WaitForChild("Remotes"))
 local MonsterController = require(script:WaitForChild("MonsterController"))
 local Loadout = require(script:WaitForChild("Loadout"))
+local HubServer = require(script:WaitForChild("Hub"))
+local HubConfig = require(Config:WaitForChild("Hub"))
 
 Remotes.setup()
 Loadout.start(Hunt)
 MonsterController.start()
+HubServer.start()
 
 local rng = Random.new()
 local function roll(): number
@@ -47,9 +50,17 @@ local function getHunt(monsterId: string): Hunt
 	return hunt
 end
 
+local function sendInventory(player: Player)
+	local inventory = inventories[player]
+	if inventory then
+		Remotes.get("InventoryChanged"):FireClient(player, inventory.items, inventory.gold)
+	end
+end
+
 Players.PlayerAdded:Connect(function(player)
 	inventories[player] = { items = {}, gold = 500 }
 end)
+Remotes.get("InventoryRequest").OnServerEvent:Connect(sendInventory)
 Players.PlayerRemoving:Connect(function(player)
 	inventories[player] = nil
 	swings[player] = nil
@@ -144,15 +155,18 @@ Remotes.get("AttackHit").OnServerEvent:Connect(function(player, weaponId, moveNa
 
 	if hunt.hp == 0 then
 		local rewards = LootRoll.rollRewards(Loot[monster.lootTable], hunt.broken, roll)
+		-- Everyone out on the hunt shares the rewards; hunters still in camp get nothing.
 		for _, other in Players:GetPlayers() do
 			local inventory = inventories[other]
-			if inventory then
+			if inventory and other:GetAttribute("Location") ~= "Camp" then
 				for _, item in rewards do
 					inventory.items[item] = (inventory.items[item] or 0) + 1
 				end
+				sendInventory(other)
 			end
 		end
 		Remotes.get("HuntComplete"):FireAllClients(monsterId, rewards)
+		HubServer.returnHunters(HubConfig.returnSeconds)
 		MonsterController.kill(monsterId)
 		hunts[monsterId] = nil
 	end
@@ -162,12 +176,14 @@ end)
 Remotes.get("CraftRequest").OnServerEvent:Connect(function(player, recipeId)
 	local recipe = Recipes[recipeId]
 	local inventory = inventories[player]
-	if not (recipe and inventory) then
+	-- Crafting only happens at the blacksmith, not from anywhere in the world.
+	if not (recipe and inventory and HubServer.isAtStation(player, "Blacksmith")) then
 		return
 	end
 	local crafted = Crafting.craft(inventory, recipe, recipeId)
 	if crafted then
 		inventories[player] = crafted
+		sendInventory(player)
 	end
 	Remotes.get("CraftResult")
 		:FireClient(player, recipeId, crafted ~= nil, Crafting.missing(inventory, recipe))

@@ -103,6 +103,10 @@ local function watchMonsters(fill: Frame, label: TextLabel)
 				end
 			end
 		end
+		-- No monster bar while you are in camp, high above the hunting ground.
+		if player:GetAttribute("Location") == "Camp" then
+			best = nil
+		end
 		frame.Visible = best ~= nil
 		if best then
 			local monster = Monsters[best:GetAttribute("MonsterId")]

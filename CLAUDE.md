@@ -30,6 +30,8 @@ All four must pass before anything is tested in Studio:
 - New weapon: add it to `Config/Weapons.luau` with its moves' motion values and a `swings`
   entry per move (button, arm style, timings, reach).
 - New rule: put it in `Rules/`, add a `tests/<Name>.spec.luau`, then call it from the server.
+- New biome portal or station: add it to `Config/Hub.luau`. A portal opens once its `monsterId`
+  can spawn (the tests check this); until then it shows as coming soon.
 
 ## Monster meshes
 Roblox caps a mesh at 20,000 triangles. Aim for about 6,000 for a whole monster, and keep the
@@ -53,6 +55,17 @@ monster always works without the import. Triangle budgets per segment live in th
   is checked against monster parts with a `Hitzone` attribute and `AttackHit` is sent once.
   The server only accepts it inside that swing's window (`Rules/Swing`) and within reach.
 
+## Rift Camp (the hub)
+- Players spawn in Rift Camp, built from plain parts by `server/HubWorld` 400 studs above the
+  hunting ground. Design boards (layout, UI kit, every menu): the "Hunt Rift hub and UI" canvas.
+- `server/Hub` tracks who stands on each portal pad (`Rules/PortalParty`: up to 4, 10 second
+  countdown, Go now) and moves the party to the portal's `arrival`. The player attribute
+  `Location` is `"Camp"` or the portal id. After a kill the party returns to camp.
+- Station prompts (F, since E is the heavy attack) open the client menus in `client/Stations`,
+  drawn with the shared kit in `client/Ui`. The server re-checks every action (crafting only
+  at the blacksmith). The nest raid countdown is `Rules/NestRotation` on server time.
+
 ## Traps
 Write each mistake that cost real time here, with the reason, so it is not repeated.
-- (none yet)
+- Monster distances are flat (x/z only), and camp floats right above the hunting ground, so
+  anything that looks for players near a monster must skip `Location == "Camp"`.
