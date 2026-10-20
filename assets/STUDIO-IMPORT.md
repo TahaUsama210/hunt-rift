@@ -1,8 +1,10 @@
 # Seeing the Hunt Rift monsters in Roblox Studio
 
 These steps show a monster in Studio so you can walk around it and check its size and look.
-It won't move or fight yet. That needs its animations and stats, which the game thread adds
-when it wires the monster in.
+On its own the import is only the body. A monster moves and fights once the game thread has
+wired it in (stats, AI, loot and animations in `src/`, which arrive with `git pull`). There is
+no animation file to import: the game animates the mesh pieces by name. Wired so far:
+Puffgourd (spawns at -160, 0, 40). For a wired monster, do steps 1 and 4 and press Play.
 
 ## 1. Import one monster
 1. `git pull` in your hunt-rift folder. Each monster has its own folder, for example
