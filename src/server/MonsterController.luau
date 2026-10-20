@@ -30,6 +30,8 @@ type Brain = {
 	nextGroundCheck: number,
 	busyUntil: number,
 	readyAt: { [string]: number },
+	-- Parts broken this hunt, so attacks that need them stop.
+	broken: { [string]: boolean },
 	alive: boolean,
 	-- Bumped on death so attacks scheduled before it do nothing.
 	token: number,
@@ -90,10 +92,12 @@ local function hold(brain: Brain)
 	brain.mover.Position = Vector3.new(p.X, brain.groundY + brain.rig.hipHeight, p.Z)
 end
 
-local function hitPlayers(brain: Brain, attack: any)
+-- Hurts everyone in the hit area once; `already` remembers who this attack has hit.
+local function hitPlayers(brain: Brain, attack: any, already: { [Humanoid]: boolean })
 	for _, target in livingCharacters() do
 		local distance, angle = measure(brain, target.root.Position)
-		if MonsterAI.inHitArea(attack, distance, angle) then
+		if not already[target.humanoid] and MonsterAI.inHitArea(attack, distance, angle) then
+			already[target.humanoid] = true
 			target.humanoid:TakeDamage(attack.damage)
 		end
 	end
@@ -114,11 +118,24 @@ local function startAttack(brain: Brain, name: string, now: number)
 			brain.mover.Position += look * attack.lunge
 		end
 	end)
-	task.delay(attack.windup + attack.active * 0.5, function()
-		if brain.token == token then
-			hitPlayers(brain, attack)
-		end
-	end)
+	-- Most attacks land once, halfway through. A sweep (a rolling charge) keeps checking the
+	-- whole time it moves, but still hits each player only once.
+	local already = {}
+	if attack.sweep then
+		task.delay(attack.windup, function()
+			local stop = os.clock() + attack.active
+			while brain.token == token and os.clock() <= stop do
+				hitPlayers(brain, attack, already)
+				task.wait(0.1)
+			end
+		end)
+	else
+		task.delay(attack.windup + attack.active * 0.5, function()
+			if brain.token == token then
+				hitPlayers(brain, attack, already)
+			end
+		end)
+	end
 end
 
 local function think(brain: Brain, now: number)
@@ -145,7 +162,15 @@ local function think(brain: Brain, now: number)
 	end
 
 	local distance, angle, offset = measure(brain, targets[index].root.Position)
-	local attack = MonsterAI.pickAttack(ai, distance, angle, brain.readyAt, now, rng:NextNumber())
+	local attack = MonsterAI.pickAttack(
+		ai,
+		distance,
+		angle,
+		brain.readyAt,
+		now,
+		rng:NextNumber(),
+		brain.broken
+	)
 	if attack then
 		startAttack(brain, attack, now)
 		return
@@ -168,6 +193,11 @@ local function spawnMonster(spawn: any)
 	model:SetAttribute("MonsterId", id)
 	model:SetAttribute("MaxHp", monster.maxHp)
 	model:SetAttribute("Hp", monster.maxHp)
+	if not model:GetAttribute("UsesMesh") then
+		print(
+			`{id}: no mesh at ServerStorage.Assets.{monster.rig}, so it is built from plain parts`
+		)
+	end
 	-- Stream the whole monster at once so clients never see half a rig.
 	model.ModelStreamingMode = Enum.ModelStreamingMode.Atomic
 	local root = model.PrimaryPart :: BasePart
@@ -214,6 +244,7 @@ local function spawnMonster(spawn: any)
 		nextGroundCheck = 0,
 		busyUntil = 0,
 		readyAt = {},
+		broken = {},
 		alive = true,
 		token = if old then old.token + 1 else 0,
 	}
@@ -250,24 +281,25 @@ function MonsterController.setHp(id: string, hp: number)
 	end
 end
 
--- Hides the pieces that break off with this part (the crest when the head breaks) and staggers.
+-- Hides the pieces that fall off with this part (Thornjaw's crest, Puffgourd's lanterns) and
+-- staggers: a flinch, or the longer action the monster's ai.breakActions names for that part.
 function MonsterController.breakPart(id: string, part: string)
 	local brain = brains[id]
 	if not (brain and brain.alive) then
 		return
 	end
+	brain.broken[part] = true
 	for _, piece in brain.model:GetDescendants() do
-		if piece:IsA("BasePart") and piece:GetAttribute("BreaksWith") == part then
+		if piece:IsA("BasePart") and piece:GetAttribute("FallsOffWith") == part then
 			piece.Transparency = 1
 			piece.CanQuery = false
 		end
 	end
-	local timing = brain.rig.animations.flinch.timing
-	local now = os.clock()
+	local action = brain.ai.breakActions and brain.ai.breakActions[part] or "flinch"
 	brain.token += 1 -- a break interrupts whatever attack was coming
-	brain.busyUntil = now + timing.windup + timing.active + timing.recovery
+	brain.busyUntil = os.clock() + MonsterAI.actionSeconds(brain.rig.animations[action].timing)
 	hold(brain)
-	Remotes.get("MonsterAction"):FireAllClients(id, "flinch")
+	Remotes.get("MonsterAction"):FireAllClients(id, action)
 end
 
 function MonsterController.kill(id: string)

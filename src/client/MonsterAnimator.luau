@@ -65,7 +65,12 @@ local function marker(t: Track, attack: any): BasePart
 	part.Color = WARNING
 	part.Transparency = 0.85
 	local ground = t.root.CFrame * CFrame.new(0, 0.15 - t.rig.hipHeight, 0)
-	if attack.hitArc >= 360 then
+	if attack.sweep then
+		-- A charge: mark the lane it will travel down.
+		local length = attack.lunge + attack.hitRange
+		part.Size = Vector3.new(attack.hitRange * 2, 0.2, length)
+		part.CFrame = ground * CFrame.new(0, 0, -length / 2)
+	elseif attack.hitArc >= 360 then
 		part.Shape = Enum.PartType.Cylinder
 		part.Size = Vector3.new(0.2, attack.hitRange * 2, attack.hitRange * 2)
 		part.CFrame = ground * CFrame.Angles(0, 0, math.pi / 2)
@@ -120,30 +125,34 @@ local function step(t: Track, dt: number, now: number)
 	local gait = t.rig.gait
 	local v = t.root.AssemblyLinearVelocity
 	local speed = Vector3.new(v.X, 0, v.Z).Magnitude
-	local walk = math.clamp(speed / t.monster.ai.walkSpeed, 0, 1)
+	-- No walk cycle during an attack or stagger: the action's own pose takes over.
+	local walk = if t.action then 0 else math.clamp(speed / t.monster.ai.walkSpeed, 0, 1)
 	t.phase = (t.phase + speed * dt / gait.stepLength * math.pi * 2) % (math.pi * 2)
 
-	local s, c = math.sin(t.phase), math.cos(t.phase)
+	local s = math.sin(t.phase)
 	local stride, knee = gait.stride * walk, gait.knee * walk
 	local pose: Pose.Pose = {
-		HipFL = { pitch = s * stride },
-		HipBR = { pitch = s * stride },
-		HipFR = { pitch = -s * stride },
-		HipBL = { pitch = -s * stride },
-		KneeFL = { pitch = -math.max(0, c) * knee },
-		KneeBR = { pitch = -math.max(0, c) * knee },
-		KneeFR = { pitch = -math.max(0, -c) * knee },
-		KneeBL = { pitch = -math.max(0, -c) * knee },
 		Spine = {
 			y = math.abs(s) * gait.bob * walk + math.sin(now * 2) * 0.06,
 			roll = s * 2 * walk,
 		},
-		Neck = { pitch = math.sin(now * 1.1) * 3, yaw = -s * 4 * walk },
-		Jaw = { pitch = -math.max(0, math.sin(now * 0.7)) * 4 },
 	}
-	for i, name in { "TailA", "TailB", "TailC" } do
-		pose[name] =
+	-- Each leg swings on its own beat; knees bend while their leg is lifting.
+	for joint, offset in gait.legs do
+		pose[joint] = { pitch = math.sin(t.phase + offset * math.pi * 2) * stride }
+	end
+	for joint, offset in gait.knees do
+		pose[joint] = { pitch = -math.max(0, math.cos(t.phase + offset * math.pi * 2)) * knee }
+	end
+	for i, joint in gait.tail do
+		pose[joint] =
 			{ yaw = math.sin(now * 1.4 + t.phase - i * 0.7) * gait.tailSway * (0.5 + walk) }
+	end
+	if gait.neck then
+		pose[gait.neck] = { pitch = math.sin(now * 1.1) * 3, yaw = -s * 4 * walk }
+	end
+	if gait.jaw then
+		pose[gait.jaw] = { pitch = -math.max(0, math.sin(now * 0.7)) * 4 }
 	end
 
 	if t.action and t.timing then

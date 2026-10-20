@@ -49,7 +49,8 @@ local function meshPieces(rig: any, rigName: string): { [string]: BasePart }
 	local pieces = {}
 	local assets = ServerStorage:FindFirstChild("Assets")
 	local template = assets and assets:FindFirstChild(rigName)
-	local anchor = template and template:FindFirstChild("Root")
+	-- Search the whole template: the importer sometimes wraps the pieces in an extra model.
+	local anchor = template and template:FindFirstChild("Root", true)
 	if not (template and anchor and anchor:IsA("BasePart")) then
 		return pieces
 	end
@@ -57,7 +58,7 @@ local function meshPieces(rig: any, rigName: string): { [string]: BasePart }
 	local rootCFrame = CFrame.new(0, rig.hipHeight, 0)
 	local skin = template:FindFirstChildOfClass("SurfaceAppearance")
 	for _, seg in rig.segments do
-		local source = template:FindFirstChild(seg.name)
+		local source = template:FindFirstChild(seg.name, true)
 		if source and source:IsA("BasePart") then
 			local rel = anchor.CFrame:ToObjectSpace(source.CFrame)
 			local piece = source:Clone()
@@ -103,8 +104,8 @@ function MonsterRig.build(rig: any, rigName: string): Model
 		local part = meshes[seg.name] or primitive(rig, seg)
 		part.Name = seg.name
 		part:SetAttribute("Hitzone", seg.hitzone)
-		if seg.breaksWith then
-			part:SetAttribute("BreaksWith", seg.breaksWith)
+		if seg.breaksWith and rig.fallsOff and rig.fallsOff[seg.name] then
+			part:SetAttribute("FallsOffWith", seg.breaksWith)
 		end
 		part.Parent = model
 		built[seg.name] = part
@@ -125,7 +126,7 @@ function MonsterRig.build(rig: any, rigName: string): Model
 			local part = primitive(rig, d)
 			part.Name = d.segment .. "Detail"
 			part.CanQuery = false
-			part:SetAttribute("BreaksWith", seg:GetAttribute("BreaksWith"))
+			part:SetAttribute("FallsOffWith", seg:GetAttribute("FallsOffWith"))
 			part.Parent = model
 			local weld = Instance.new("Weld")
 			weld.Part0 = seg
